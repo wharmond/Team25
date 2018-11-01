@@ -1,6 +1,6 @@
 from flask import Flask,render_template, request,json,session
 
-from flask.ext.mysql import MySQL
+## from flask.ext.mysql import MySQL
 
 app = Flask(__name__)
 
