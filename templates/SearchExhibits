@@ -3,8 +3,15 @@
     <title> Search for Exhibits </title>
   </head>
   <body>
-    
-    <table class="table">
+    <h2 class="ZooHeading"> Atlanta Zoo </h2>
+    <h3 class="SiteHeading"> Exhibits </h3>
+    <form class="Exhibit-Search">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+      <input type="checkbox">
+    </form>
+    <table class="data-table">
       <thead>
         <tr>
           <th>Name</th>
