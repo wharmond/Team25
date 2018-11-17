@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	 <meta charset="utf-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta name="description" content="">
+	 <meta name="author" content="wharmond3">
+
+	 <title> Atlanta Zoo </title>
+
+	 <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+	 <link href="../static/css/signup.css" rel="stylesheet">
+
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <form class="form-signin"  role="form">
+        <h2 class="form-signin-heading">Atlanta Zoo</h2>
+        <input type="email" id="inputUsername" name="username" class="form-control" placeholder="Email" required autofocus>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <button id="Login_btn" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
+            <button id="Register_btn" class="btn btn-lg btn-primary btn-block" type="button">Registration</button>
+ 		</form>
+        <p id="valid-pass" hidden></p>
+        <p id="invalid-pass" hidden>no</p>
+     </div>
+</body>
+
+<script type="text/javascript">
+$(function(){
+	$('button').click(function(){
+
+	   $('#Login_btn').click(function(){
+
+           console.log("success in Login button press");
+
+            var user = $('#inputUsername').val();
+            var pass = $('#inputPassword').val();
+            $.ajax({
+                url: '/signIn',
+                data: $('form').serialize(),
+                type: 'POST',
+                success: function(response) {
+                        var obj = JSON.parse(response);
+                        if (obj.status === 'OK') {
+                            $("#inputUsername").val("");
+                            $("#inputPassword").val("");
+                            console.log(response);
+
+                            //Scripts for determining type of user and type of screen redirect
+                            //default is Visitor Homepage until future commit
+
+                            setTimeout(openVisitorHomepage, 3000);
+                        }
+                        else{
+                            $("#inputPassword").val("");
+                            var errorMessage = ''
+                            var errorResponses = ["Should be at least 8 characters in length. "
+                                ,"Should have at least 1 uppercase character. ","Should have at least 1 number. "];
+                            var UserNotFound = "User not found in database";
+
+                            obj.pass.forEach(function(e_m){
+                                errorMessage += errorResponses[e_m];
+                            });
+                            $("#invalid-pass").removeAttr('hidden')
+                                              .text(user + ", the password or user login data is invalid: " + errorMessage
+                                                  + "Or " + UserNotFound + ", Please try again");
+                            }
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+	    });
+
+	   $('#Register_btn').click(function() {
+
+            console.log("success in Registration button press");
+            window.location.href = "/Register";
+        });
+	});
+});
+
+function openVisitorHomepage(){
+    window.location.href = "/visitorHomePage";
+}
+
+</script>
+
+
+
+
+</html>

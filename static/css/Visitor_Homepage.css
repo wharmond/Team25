@@ -1,0 +1,34 @@
+div.Visitor_Homepage {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.divTable.Visitor_Homepage .divTableCell, .divTable.Visitor_Homepage .divTableHead {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+.divTable.Visitor_Homepage .divTableBody .divTableCell {
+  font-size: 13px;
+}
+.divTable.Visitor_Homepage .divTableRow:nth-child(even) {
+  background: #D0E4F5;
+}
+.divTable.Visitor_Homepage .divTableHeading {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+.divTable.Visitor_Homepage .divTableHeading .divTableHead {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+.divTable.Visitor_Homepage .divTableHeading .divTableHead:first-child {
+  border-left: none;
+}

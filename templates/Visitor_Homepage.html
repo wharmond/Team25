@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="description" content="s">
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/Visitor_Homepage.css" rel="stylesheet">
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="divTable Visitor_Homepage">
+<div class="divTableBody">
+    <div class="divTableRowTitle">Atlanta Zoo</div>
+<div class="divTableRow">
+<div class="divTableCell">
+    <button id="search_exhibits_btn" class="btn btn-lg btn-primary btn-block">Search Exhibits</button> </div>
+<div class="divTableCell">
+    <button id="view_exhibit-history" class="btn btn-lg btn-primary btn-block" type="button">View Exhibits History</button> </div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">
+    <button id="view_shows" class="btn btn-lg btn-primary btn-block" type="button">View Shows</button></div>
+<div class="divTableCell">
+    <button id="view_show_history" class="btn btn-lg btn-primary btn-block" type="button">View Show History</button> </div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">
+    <button id="search_for_animals" class="btn btn-lg btn-primary btn-block" type="button">Search for Animals</button>
+</div>
+<div class="divTableCell">
+    <button id="log_out" class="btn btn-lg btn-primary btn-block" type="button">Log Out</button>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+ <script type="text/javascript">
+$(function(){
+    $('button').click(function() {
+        $('#search_exhibits_btn').click(function(){
+           console.log("success in search exhibit button press");
+           window.location.href = "/searchExhibits";
+        });
+
+        $('#view_exhibit-history').click(function() {
+            console.log("success in view exhibit history button press");
+            window.location.href = "/viewExhibitHistory";
+        });
+
+        $('#view_shows').click(function() {
+            console.log("success in view shows  button press");
+            window.location.href = "/viewShows";
+        });
+
+        $('#view_show_history').click(function() {
+            console.log("success in view show history button press");
+            window.location.href = "/viewShowHistory";
+        });
+
+        $('#search_for_animals').click(function() {
+            console.log("success in search for animals button press");
+            window.location.href = "/SearchAnimals";
+        });
+
+        $('#log_out').click(function() {
+            console.log("success in log out button press");
+            window.location.href = "/";
+        });
+
+    });
+});
+
+ </script>
+
+</html>

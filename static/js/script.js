@@ -6,9 +6,9 @@ $(function(){
 			url: '/signUpUser',
 			data: $('form').serialize(),
 			type: 'POST',
-			success: function(response){
+			success: function(response) {
                     var obj = JSON.parse(response);
-                    if (obj.status == 'OK') {
+                    if (obj.status === 'OK') {
                         $("#invalid-pass").text("");
                         $("#valid-pass").removeAttr('hidden')
                                         .text("Congratulations on registering for CSE6242, " + user + ". Redirecting you to the course homepage...");
