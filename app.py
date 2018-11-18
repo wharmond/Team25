@@ -1,8 +1,26 @@
-from flask import Flask,render_template, request,json,session
+from flask import Flask, render_template, request, json
+import pymysql
+import hashlib
 
 ## from flask.ext.mysql import MySQL
 
 app = Flask(__name__)
+
+class Database:
+    def __init__(self):
+        host = "..."
+        user = "..."
+        password = "..."
+        db = "..."
+        
+        self.con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.
+                                   DictCursor)
+        self.cur = self.con.cursor()
+        
+        def list_employees(self):
+            self.cur.execute("SELECT first_name, last_name, gender FROM employees LIMIT 50")
+            result = self.cur.fetchall()
+            return result
 
 @app.route("/")
 def hello():
@@ -12,14 +30,13 @@ def hello():
 def addNote():
     return(json.dumps({'status':'OK','note':note}))
 
-@app.route("/signUp")
-def signUp():
-    return(render_template('signUp.html'))
+@app.route("/registration")
+def register():
+    return(render_template('Registration.html'))
 
-@app.route('/signUpUser', methods=['POST'])
-def signUpUser():
+@app.route('/registerUser', methods=['POST'])
+def registerUser():
     user =  request.form['username'];
-    session['username'] = user
     password = request.form['password'];
     p_err = []
     if not (len(password)>7):
