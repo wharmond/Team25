@@ -3,6 +3,22 @@
     <meta charset="utf-8" />
     <title> New User Registration </title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/Javascript">
+      function checkPass() {
+        var password = $("#passWord").val();
+        var confirmPassword = $("#confirmPass").val();
+        
+        if (password != confirmPassword)
+          $("#divCheckPass").html("Passwords do not match!");
+        else
+          $("#divCheckPass").html("");
+      }  
+      
+      $(document).ready(function() {
+        $("#confirmPass").keyup(checkPass);
+      });
+    </script>  
   </head>
   <body>
     <div class="form-container">
@@ -12,8 +28,9 @@
         <h2>
         <input class="form-control" name="email" placeholder="email" type="email"/>
         <input class="form-control" name="username" placeholder="Username" type="text"/>
-        <input class="form-control" name="password" placeholder="Password" type="password"/>
-        <input class="form-control" name="password2" placeholder="Repeat Password" type="password"/>
+        <input id="passWord" class="form-control" name="password" placeholder="Password" type="password"/>
+        <input id="confirmPass" class="form-control" name="password2" placeholder="Repeat Password" type="password" onChange="checkPass();" />
+          <div class="registrationFormAlert" id="divCheckPass"></div>
         <label class="form-check-label">
           <input class="form-check-input" name="user-type" type="checkbox"/>
           "Register as Staff Member"
