@@ -1,8 +1,26 @@
-from flask import Flask, render_template, request, json, session
+from flask import Flask, render_template, request, json
+import pymysql
+import hashlib
 
-##from flask.ext.mysql import MySQL
 
 app = Flask(__name__)
+
+
+class Database:
+    def __init__(self):
+        host = "..."
+        user = "..."
+        password = "..."
+        db = "..."
+
+        self.con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.
+                                   DictCursor)
+        self.cur = self.con.cursor()
+
+        def list_employees(self):
+            self.cur.execute("SELECT first_name, last_name, gender FROM employees LIMIT 50")
+            result = self.cur.fetchall()
+            return result
 
 
 @app.route("/")
