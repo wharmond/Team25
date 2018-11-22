@@ -1,14 +1,7 @@
 $(function(){
-	$('button').click(function(){
 
-	    $('#Register_btn').click(function() {
-
-            console.log("success in Registration button press");
-            window.location.href = "/Register";
-        });
-
-	   $('#Login_btn').click(function(){
-
+	   $('#Login_btn').on("click", function(event){
+           event.preventDefault();
            console.log("success in Login button press");
 
             var user = $('#inputUsername').val();
@@ -34,14 +27,14 @@ $(function(){
                             var errorMessage = ''
                             var errorResponses = ["Should be at least 8 characters in length. "
                                 ,"Should have at least 1 uppercase character. ","Should have at least 1 number. "];
-                            var UserNotFound = "Invalid User: User not found in database";
+                            var UserNotFound = "User not found in database";
 
                             obj.pass.forEach(function(e_m){
                                 errorMessage += errorResponses[e_m];
                             });
                             $("#invalid-pass").removeAttr('hidden')
                                               .text(user + ", the password or user login data is invalid: " + errorMessage
-                                                  + "or " + UserNotFound + ", Please try again");
+                                                  + "Or " + UserNotFound + ", Please try again");
                             }
                 },
                 error: function(error){
@@ -50,7 +43,11 @@ $(function(){
             });
 	    });
 
-	});
+	   $('#Register_btn').click(function() {
+
+            console.log("success in Registration button press");
+            window.location.href = "/Register";
+	   });
 });
 
 function openVisitorHomepage(){

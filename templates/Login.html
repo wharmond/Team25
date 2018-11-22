@@ -34,10 +34,9 @@
 
 <script type="text/javascript">
 $(function(){
-	$('button').click(function(){
 
-	   $('#Login_btn').click(function(){
-
+	   $('#Login_btn').on("click", function(event){
+           event.preventDefault();
            console.log("success in Login button press");
 
             var user = $('#inputUsername').val();
@@ -83,8 +82,7 @@ $(function(){
 
             console.log("success in Registration button press");
             window.location.href = "/Register";
-        });
-	});
+	   });
 });
 
 function openVisitorHomepage(){
