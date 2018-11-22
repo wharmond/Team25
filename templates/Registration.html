@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> New User Registration </title>
+    <link rel="stylesheet" href="../static/css/signup.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  </head>
+
+
+  <body>
+    <div class="form-container">
+      <form  action="../Register" method="post">
+        <h2 class="text-center">
+          "Create an account"
+        </h2>
+        <input class="form-control" name="email" placeholder="email" type="email" id= "email"/>
+        <input class="form-control" name="username" placeholder="Username" type="text" id= "username"/>
+        <input class="form-control" name="password" placeholder="Password" type="password" id= "passWord"/>
+        <input class="form-control" name="password2" placeholder="Repeat Password" type="password" id= "confirmPass" onChange="checkPass();"/>
+          <div class="registrationFormAlert" id="divCheckPass"></div>
+        <label class="form-check-label">
+          <input class="form-check-input" name="user-type" type="checkbox"/>
+          "Register as Staff Member"
+        </label>
+        <button id="signUpBtn" class="btn btn-primary btn-block" type="button" onClick="RegisterSubmit();"> Sign Up! </button>
+      </form>
+    </div>
+  </body>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+            $("#passWord").keyup(checkPass);
+            $("#confirmPass").keyup(checkPass);
+        });
+
+          function checkPass() {
+            var password = $("#passWord").val();
+            var confirmPassword = $("#confirmPass").val();
+
+            if (password !== confirmPassword)
+              $("#divCheckPass").html("Passwords do not match!");
+            else
+                //Do password and username validation scripts here before letting a post occur
+              $("#divCheckPass").html("");
+          }
+
+
+          function RegisterSubmit() {
+
+              $("#divCheckPass").html("Validating Form..");
+
+              var email = $('#email').val();
+                var user = $('#username').val();
+                var pass = $('#passWord').val();
+                var confirmPass = $('#confirmPass').val();
+
+                if (pass === confirmPass) {
+                    $.ajax({
+                        url: '/Register',
+                        data: $('form').serialize(),
+                        type: 'POST',
+                        success: function (response) {
+                            var obj = JSON.parse(response);
+                            if (obj.status === 'OK') {
+                                $("#username").val("");
+                                $("#password").val("");
+                                $("#confirmPass").val("");
+                                $("#email").val("");
+                                console.log(response);
+
+                                //Scripts for determining type of user and type of screen redirect
+                                //default is Visitor Homepage until future commit
+
+                                setTimeout(openVisitorHomepage, 2000);
+                            }
+                            else {
+                               $("#divCheckPass").html("Error in submitted Form: Please make sure your Email, username "
+                                   + "are valid and passwords match, User may already exist");
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                } else {
+                    $("#divCheckPass").html("Passwords do not match!");
+                }
+          }
+
+        function openVisitorHomepage() {
+            window.location.href = "/visitorHomePage";
+        }
+    </script>
+</html>
+
+

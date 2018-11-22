@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, json
-import pymysql
+import pymysql, re
 import hashlib
 
 app = Flask(__name__)
@@ -15,8 +15,9 @@ class Database:
     db = "AtlantaZoo"
     charSet = "utf8mb4"
 
-    # Create the connection with configured parameters
-    con = pymysql.connect(host=host, user=user, password=password, db=db, charset=charSet,
+    # Create the connection with configured parameters, autocommit specifies whether SQL INSERT statements actually
+    # insert, leave to false if you just want to test if an INSERT query executes correctly
+    con = pymysql.connect(host=host, user=user, password=password, autocommit=True, db=db, charset=charSet,
                           cursorclass=pymysql.cursors.DictCursor)
 
     # Obtain a cursor for executing queries
@@ -114,20 +115,33 @@ class Database:
         return result
 
     @classmethod
-    def login(cls, user, user_pass):
-        print("login: user: " + user + ", pass: " + user_pass)
+    def login(cls, email, user_pass):
+        print("login: email: " + email + ", pass: " + user_pass)
 
         # Query matches email field and password to Users table in database, returns boolean 0 if not found, 1 otherwise
-        login_query = "SELECT * FROM Users WHERE exists (SELECT * FROM Users WHERE Users.Email = %s AND Users.Password = %s )"
-        print("Query returned: " + str(cls.cur.execute(login_query, (user, user_pass))))
-        result = cls.cur.fetchone()
+        login_query = "SELECT * FROM Users WHERE Users.Email = %s AND Users.Password = %s"
+        result = cls.cur.execute(login_query, (email, user_pass))
+        print("Query returned: " + str(result))
 
         return result
 
-    # TODO
     @classmethod
-    def register(cls, name):
-        return ''
+    def register(cls, username, password, email, user_type):
+        """
+            Returns 0 if the SQL INSERT Operation fails, returns a non-zero value otherwise (INSERT successful)
+        :param username:
+        :param password:
+        :param email:
+        :param user_type:
+        :return: 0 if INSERT fails, > 0 otherwise
+        """
+        print("register query provided parameters: " + username + ',' + password + "," + email + "," + user_type)
+
+        Register_query = "Insert into Users values (%s, %s, %s, %s)"
+        result = cls.cur.execute(Register_query, (username, password, email, user_type))
+        print("Register Query returned: " + str(result))
+
+        return result
 
     @classmethod
     def showTables(cls):
@@ -139,7 +153,7 @@ class Database:
 
 @app.route("/")
 def hello():
-    return (render_template('Login.html'))
+    return render_template('Login.html')
 
 
 @app.route("/signIn", methods=['POST'])
@@ -148,34 +162,62 @@ def signIn():
     # session['username'] = user
     password = request.form['password']
 
-    p_err = []
-    if not (len(password) > 7):
-        p_err.append(0)
-    if not (any(c.isdigit() for c in password)):
-        p_err.append(1)
-    if not (any(c.isupper() for c in password)):
-        p_err.append(2)
-
-    # Implement SQL queries here for signing in #
-
-    if p_err == []:
+    if isValidPassword(password):
         Database.showTables()
         result = Database.login(user, password)
 
-        if result:
+        if result is not None:
             print("query returned valid username")
-            return (json.dumps({'status': 'OK', 'user': user, 'pass': password}))
+            return json.dumps({'status': 'OK', 'user': user, 'pass': password})
         else:
             print("User not found in resulted query")
-            return (json.dumps({'status': 'BAD', 'user': user, 'pass': p_err}))
+            return json.dumps({'status': 'BAD', 'user': user, 'pass': 'error'})
     else:
         print("Error in inputs")
-        return (json.dumps({'status': 'BAD', 'user': user, 'pass': p_err}))
+        return json.dumps({'status': 'BAD', 'user': user, 'pass': 'error'})
 
 
-@app.route('/Register')
+@app.route('/RegisterScreen')
+def RegisterScreen():
+    return render_template("Registration.html")
+
+
+@app.route('/Register', methods=['POST'])
 def Register():
-    return render_template("TestPage.html")
+    print("Register POST request received")
+    email = request.form['email']
+    # session['username'] = user
+    username = request.form['username']
+    password = request.form['password']
+    password2 = request.form['password']
+
+    # Conditional Statement checks if email, password and confirmPass are all correct and that the user does not exist
+    # already in the database
+    if isValidEmail(email) and isValidPassword(password) and (password == password2) and (
+            Database.login(email, password) is 0):
+        print("valid email & pass provided: " + email + ", " + password)
+
+        # Check if Staff checkbox is checked
+        if request.form.get('user-type'):
+            print("Staff checkbox in Registration page checked")
+            visitor_userType = "Staff"
+        else:
+            print("Staff checkbox in Registration page NOT checked")
+            visitor_userType = "Visitor"
+
+        result = Database.register(username, password, email, visitor_userType)
+        print("result value: " + str(result))
+
+        if result is not None:
+            print("returning valid json with status OK")
+            return json.dumps({'status': 'OK', 'email': email, 'pass': password})
+        else:
+            print("returning json with status BAD")
+            return json.dumps({'status': 'BAD', 'email': email, 'pass': 'error'})
+
+    else:
+        print("Invalid email or password input provided or User Exists in database: " + email + ", pass: " + password)
+        return json.dumps({'status': 'BAD', 'email': email, 'pass': 'error', 'error': 'User_Exists'})
 
 
 @app.route("/addNote")
@@ -224,16 +266,43 @@ def signUpUser():
     # session['username'] = user
     password = request.form['password'];
     p_err = []
+    if not (len(password) > 6):
+        p_err.append(0)
+    if not (any(c.isdigit() for c in password)):
+        p_err.append(1)
+    if not (any(c.isupper() for c in password)):
+        p_err.append(2)
+    if not p_err:
+        return (json.dumps({'status': 'OK', 'user': user, 'pass': password}))
+    else:
+        return (json.dumps({'status': 'BAD', 'user': user, 'pass': p_err}))
+
+
+def isValidEmail(email):
+    if len(email) > 6:
+        if re.match("[^@]+@[^@]+\.[^@]+", email, re.IGNORECASE):
+            print("valid Email, true returned")
+            return True
+
+    print("Invalid Email, false returned")
+    return False
+
+
+def isValidPassword(password):
+    p_err = []
     if not (len(password) > 7):
         p_err.append(0)
     if not (any(c.isdigit() for c in password)):
         p_err.append(1)
     if not (any(c.isupper() for c in password)):
         p_err.append(2)
-    if p_err == []:
-        return (json.dumps({'status': 'OK', 'user': user, 'pass': password}))
+
+    if not p_err:
+        print("valid password, true returned")
+        return True
     else:
-        return (json.dumps({'status': 'BAD', 'user': user, 'pass': p_err}))
+        print("Invalid password, false returned")
+        return False
 
 
 if __name__ == "__main__":
