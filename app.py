@@ -120,8 +120,22 @@ class Database:
                         Insert into Users values ("admin1","adminpassword",	"adminemail@mail.com", "admin");
                         """
 
-    # # # # # # # # # # # # SQL Scripts Below (called by syntax: "Database.{class_method_name}  # # # # # # # # # # # #
+    # Create Exhibits SQL Query, execute this if you want to run SQL server with this schema data w/o manually doing it
+    create_exhibits = ('INSERT into Exhibits values("Pacific", 1, 850);\n'
+                       '                        INSERT into Exhibits values("Jungle", 0, 600);\n'
+                       '                        INSERT into Exhibits values("Sahara", 0, 1000);\n'
+                       '                        INSERT into Exhibits values("Mountainous", 0, 1200);\n'
+                       '                        INSERT into Exhibits values("Birds", 1, 1000);')
 
+    # Create Animals SQL Query, execute if your preference is to avoid setting up the server manually
+    create_animals = """Insert into Animals values ("Goldy", "Goldfish" , "Pacific", 2, "Fish");                        
+                        Insert into Animals values ("Nemo", "Clownfish" , "Pacific", 2, "Fish");                        
+                        Insert into Animals values ("Pedro", "Poison Dart frog" , "Jungle", 3, "Amphibian");                        
+                        Insert into Animals values ("Lincoln", "Lion" , "Sahara", 8, "Mammal");                        
+                        Insert into Animals values ("Greg", "Goat" , "Mountainous", 6, "Mammal");                        
+                        Insert into Animals values ("Brad", "Bald Eagle" , "Birds", 4, "Bird");"""
+
+    # # # # # # # # # # # # SQL Scripts Below (called by syntax: "Database.{class_method_name}  # # # # # # # # # # # #
     #
     #
     # # # # # # # # # # # # SQL Scripts for Login/Registration and Validation # # # # # # # # # # # #
@@ -206,6 +220,17 @@ class Database:
             " as Type FROM Animals as a G"
             "ROUP BY a.AnimalName, a.Species, a.Exhibit, a.Age, a.Type_of_Animal")
         cls.cur.execute(search_animals_query)
+        result = cls.cur.fetchall()
+        print("Search for animals result: " + str(result))
+        return result
+
+    @classmethod
+    def view_exhibit_history(cls):
+        exhibit_history_query = (
+            "SELECT DISTINCT a.AnimalName as Name, a.Species, a.Exhibit, a.Age, a.Type_of_Animal  \n"
+            " as Type FROM Animals as a G"
+            "ROUP BY a.AnimalName, a.Species, a.Exhibit, a.Age, a.Type_of_Animal")
+        cls.cur.execute(exhibit_history_query)
         result = cls.cur.fetchall()
         print("Search for animals result: " + str(result))
         return result
@@ -305,17 +330,17 @@ def addNote():
 
 @app.route('/visitorHomePage')
 def visitor_homepage():
-    return render_template("Visitor_Homepage.html")
+    return render_template("./VisitorTemplates/Visitor_Homepage.html")
 
 
 @app.route('/staffHomePage')
 def staff_homepage():
-    return render_template("staff_Homepage.html")
+    return render_template("./StaffTemplates/staff_Homepage.html")
 
 
 @app.route('/adminHomePage')
 def admin_homepage():
-    return render_template("Admin_Homepage.html")
+    return render_template("./AdminTemplates/Admin_Homepage.html")
 
 
 #
@@ -329,12 +354,12 @@ def admin_homepage():
 def search_exhibits():
     rows = Database.searchExhibits()
     # pass returned SQL query into jinja HTML template
-    return render_template("SearchExhibits.html", rows=rows)
+    return render_template("./VisitorTemplates/SearchExhibits.html", rows=rows)
 
 
 @app.route('/viewExhibitHistory')
 def view_exhibit_history():
-    return render_template("TestPage.html")
+    return render_template("./VisitorTemplates/ExhibitHistory.html")
 
 
 @app.route('/viewShows')
@@ -351,7 +376,7 @@ def view_show_history():
 def search_for_animals():
     rows = Database.search_for_animals()
     # pass returned SQL query into jinkja HTML template
-    return render_template("searchAnimals.html", rows=rows)
+    return render_template("./VisitorTemplates/searchAnimals.html", rows=rows)
 
 
 #
@@ -429,11 +454,6 @@ def Log_Out():
     return render_template('Login.html')
 
 
-@app.route("/signUp")
-def signUp():
-    return render_template('signUp.html')
-
-
 #
 #
 # # # # # # # # # # # # Helper Functions # # # # # # # # # # # #
@@ -466,24 +486,6 @@ def isValidPassword(password):
     else:
         print("Invalid password, false returned")
         return False
-
-
-@app.route('/signUpUser', methods=['POST'])
-def signUpUser():
-    user = request.form['username'];
-    # session['username'] = user
-    password = request.form['password'];
-    p_err = []
-    if not (len(password) > 6):
-        p_err.append(0)
-    if not (any(c.isdigit() for c in password)):
-        p_err.append(1)
-    if not (any(c.isupper() for c in password)):
-        p_err.append(2)
-    if not p_err:
-        return (json.dumps({'status': 'OK', 'user': user, 'pass': password}))
-    else:
-        return (json.dumps({'status': 'BAD', 'user': user, 'pass': p_err}))
 
 
 if __name__ == "__main__":
