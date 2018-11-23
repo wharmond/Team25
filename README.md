@@ -88,6 +88,7 @@
     - Type (drop down with above choices)
     - Search button
     - Table - name, speciies, exhibit, age, type (at bottom)
+    - Clicking on any of the animals should take you to the animal details page
 #### /Search Shows
     - Name
     - Date (with calendar option)
