@@ -79,6 +79,7 @@
     - Age (in months)
     - Exhibit name
     - type (mammal, bird, amphibian, reptile, fish, or invertebrate)
+    - Staff members can access animal care by clicking on the animal
 #### /Search Animals
     - Exhibit
     - Name
@@ -100,6 +101,7 @@
     - Time (with calendar option)
     - Search button
     - Table - name, time (day and time), number of visits (at bottom)
+    - Clicking on any of the exhibits should take you to the exhibit details page
 #### /Show History
     - Name
     - Exhibit (with drop down)
@@ -107,23 +109,24 @@
     - Search button
     - Table - name, time (day and time), exhibit (at bottom)
 #### /Animal Care
+    - This is accesses via the search animals page when a staff member clicks on the animal
     - Name, species, age, exhibit, type all already entrered
     - text box for notes
     - button to log notes
     - Table - staff member, note, time (day and time) (at bottom)
 #### /View Visitors
     - Table - username, email
-    - Delete Visitor button
+    - Delete Visitor button (for admin)
 #### /View Staff
     - Table - username, email
-    - Delete Staff Member button
+    - Delete Staff Member button (for admin)
 #### /View Shows
     - Name
     - Date (calendar option)
     - Exhibit
     - Search button
     - Table - name, exhibit, date (day and time) (at bottom)
-    - Remove Show button
+    - Remove Show button (for admin)
 #### /View Animals
     - Exhibit (drop down menu)
     - Name
@@ -132,7 +135,7 @@
     - Type (with drop down menu)
     - Search button
     - Table - name, species, exhibit, age, type (at bottom)
-    - Remove Animal Button
+    - Remove Animal Button (for admin)
 #### /Add Animal
     - Name
     - Exhibit (drop down)
