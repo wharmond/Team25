@@ -1,0 +1,1 @@
+SELECT DISTINCT a.Name, a.Species, a.Exhibit, a.Age, a.Type FROM Animals GROUP BY a.Type
