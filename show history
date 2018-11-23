@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title> Show History </title>
+  </head>
+  <body>
+    <h2 class="ZooHeading"> Atlanta Zoo </h2>
+    <h3 class="SiteHeading"> Show History </h3>
+    <form class="Show-History">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+    </form>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Time</th>
+          <th>Exhibit</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for row in rows %}
+    <tr>
+        <td>{{ row.Name }}</td>
+        <td>{{ row.Time }}</td>
+        <td>{{ row.Exhibit }}</td>
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html> 
