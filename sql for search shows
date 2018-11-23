@@ -1,0 +1,1 @@
+SELECT DISCINCT  s.Name, s.Exhibit, s.Date FROM Shows GROUP BY s.Date
