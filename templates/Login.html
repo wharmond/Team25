@@ -47,29 +47,32 @@ $(function(){
                 type: 'POST',
                 success: function(response) {
                         var obj = JSON.parse(response);
+
                         if (obj.status === 'OK') {
+                            $("#valid-pass").removeAttr('hidden').text("Server returned OK");
                             $("#inputUsername").val("");
                             $("#inputPassword").val("");
                             console.log(response);
 
                             //Scripts for determining type of user and type of screen redirect
                             //default is Visitor Homepage until future commit
-
-                            setTimeout(openVisitorHomepage, 3000);
+                            if (obj.user_type.toUpperCase() === 'VISITOR') {
+                                setTimeout(openVisitorHomepage, 3000);
+                            } else if (obj.user_type.toUpperCase() === 'STAFF') {
+                                setTimeout(openStaffHomepage, 3000);
+                            } else {
+                               setTimeout(openAdminHomepage, 3000);
+                            }
                         }
                         else{
                             $("#inputPassword").val("");
-                            var errorMessage = ''
+                            var errorMessage = '';
                             var errorResponses = ["Should be at least 8 characters in length. "
                                 ,"Should have at least 1 uppercase character. ","Should have at least 1 number. "];
                             var UserNotFound = "User not found in database";
 
-                            obj.pass.forEach(function(e_m){
-                                errorMessage += errorResponses[e_m];
-                            });
-                            $("#invalid-pass").removeAttr('hidden')
-                                              .text(user + ", the password or user login data is invalid: " + errorMessage
-                                                  + "Or " + UserNotFound + ", Please try again");
+                            $("#invalid-pass").removeAttr('hidden').text(user + ", the password or user login data is" +
+                                " invalid: " + errorResponses.join(", ") + " or User not found, Please try again");
                             }
                 },
                 error: function(error){
@@ -87,6 +90,14 @@ $(function(){
 
 function openVisitorHomepage(){
     window.location.href = "/visitorHomePage";
+}
+
+function openStaffHomepage() {
+    window.location.href = "/staffHomePage"
+}
+
+function openAdminHomepage() {
+    window.location.href = "/adminHomePage";
 }
 
 </script>

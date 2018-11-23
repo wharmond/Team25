@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, json
+from flask import Flask, render_template, request, json, session
 import pymysql, re
 import hashlib
 
 app = Flask(__name__)
+# Secret key for secure user sessions
+app.secret_key = "Secret_Key"
 
 
 class Database:
@@ -108,11 +110,23 @@ class Database:
                 "        );\n"
                 "        ")
 
-    @classmethod
-    def list_employees(self):
-        self.cur.execute("SELECT first_name, last_name, gender FROM employees LIMIT 50")
-        result = self.cur.fetchall()
-        return result
+    # Create Initial Users SQL Query, execute this if you want to run SQL server with this schema data
+    create_users = """Insert into Users values ("martha_johnson","password1",	"marthajohnson@hotmail.com", "staff");
+                        Insert into Users values ("ethan_roswell","password3",	"ethanroswell@yahoo.com", "staff");                    
+                        Insert into Users values ("xavier_swenson","password4",	"xavierswenson@outlook.com", "visitor");                        
+                        Insert into Users values ("isabella_rodriguez","password5",	"isabellarodriguez@mail.com", "visitor");                        
+                        Insert into Users values ("nadias_tevens","password6",	"nadiastevens@gmail.com", "visitor");                
+                        Insert into Users values ("robert_bernheardt","password7",	"robertbernheardt@yahoo.com", "visitor");                  
+                        Insert into Users values ("admin1","adminpassword",	"adminemail@mail.com", "admin");
+                        """
+
+    # # # # # # # # # # # # SQL Scripts Below (called by syntax: "Database.{class_method_name}  # # # # # # # # # # # #
+
+    #
+    #
+    # # # # # # # # # # # # SQL Scripts for Login/Registration and Validation # # # # # # # # # # # #
+    #
+    #
 
     @classmethod
     def login(cls, email, user_pass):
@@ -124,6 +138,14 @@ class Database:
         print("Query returned: " + str(result))
 
         return result
+
+    @classmethod
+    def get_userType(cls, email):
+        userType_query = ("Select UserType FROM Users WHERE Users.Email = %s")
+        cls.cur.execute(userType_query, email)
+        result = cls.cur.fetchone()
+        print("User type returned: " + str(result))
+        return result['UserType']
 
     @classmethod
     def register(cls, username, password, email, user_type):
@@ -138,25 +160,17 @@ class Database:
         print("register query provided parameters: " + username + ',' + password + "," + email + "," + user_type)
 
         Register_query = "Insert into Users values (%s, %s, %s, %s)"
-        result = cls.cur.execute(Register_query, (username, password, email, user_type))
-        print("Register Query returned: " + str(result))
+        try:
+            result = cls.cur.execute(Register_query, (username, password, email, user_type))
 
-        return result
+            print("Register Query returned: " + str(result))
 
-    @classmethod
-    def searchExhibits(cls):
-        """
-            Query that gets all Exhibits available and animal count in the exhibit
-        :return:
-        """
-        Search_query = "SELECT Distinct e.ExhibitName, e.WaterFeature, e.Size, count(a.Exhibit = e.ExhibitName ) " \
-                       "as NumAnimals FROM Exhibits as e left join Animals as a on a.Exhibit = e.ExhibitName " \
-                       "group by e.Size, e.ExhibitName, e.WaterFeature"
-        cls.cur.execute(Search_query)
-        result = cls.cur.fetchall()
-        print("Search Exhibits result: " + str(result))
+            return result
 
-        return result
+        except Exception as e:
+            print("Exeception occured:{}".format(e))
+        finally:
+            return 0
 
     @classmethod
     def showTables(cls):
@@ -165,30 +179,71 @@ class Database:
         for row in rows:
             print(row)
 
+    #
+    #
+    # # # # # # # # # # # # SQL Scripts for Visitor # # # # # # # # # # # #
+    #
+    #
+
+    @classmethod
+    def searchExhibits(cls):
+        """
+        Query that gets all Exhibits available and animal count in the exhibit
+        :return:
+        """
+        Search_query = "SELECT Distinct e.ExhibitName, e.WaterFeature, e.Size, count(a.Exhibit = e.ExhibitName ) " \
+                       "as NumAnimals FROM Exhibits as e left join Animals as a on a.Exhibit = e.ExhibitName " \
+                       "group by e.Size, e.ExhibitName, e.WaterFeature"
+        cls.cur.execute(Search_query)
+        result = cls.cur.fetchall()
+        print("Search Exhibits result: " + str(result))
+        return result
+
+    @classmethod
+    def search_for_animals(cls):
+        search_animals_query = (
+            "SELECT DISTINCT a.AnimalName as Name, a.Species, a.Exhibit, a.Age, a.Type_of_Animal  \n"
+            " as Type FROM Animals as a G"
+            "ROUP BY a.AnimalName, a.Species, a.Exhibit, a.Age, a.Type_of_Animal")
+        cls.cur.execute(search_animals_query)
+        result = cls.cur.fetchall()
+        print("Search for animals result: " + str(result))
+        return result
+
+
+#
+#
+# # # # # # # # # # # # Login/Registration Pages & Validation Server Scripts Below # # # # # # # # # # # #
+#
+#
+
 
 @app.route("/")
-def hello():
+def login():
     return render_template('Login.html')
 
 
 @app.route("/signIn", methods=['POST'])
 def signIn():
     user = request.form['username']
-    # session['username'] = user
     password = request.form['password']
 
     if isValidPassword(password):
         Database.showTables()
         result = Database.login(user, password)
 
-        if result is not None:
+        if result is not 0:
+            # If user exists in database, find corresponding user type
             print("query returned valid username")
-            return json.dumps({'status': 'OK', 'user': user, 'pass': password})
+            session['email'] = user
+            session['user_type'] = Database.get_userType(user)
+            print("session user_type is: " + session['user_type'])
+            return json.dumps({'status': 'OK', 'user': user, 'user_type': session['user_type']})
         else:
             print("User not found in resulted query")
             return json.dumps({'status': 'BAD', 'user': user, 'pass': 'error'})
     else:
-        print("Error in inputs")
+        print("Error in login, invalid login data")
         return json.dumps({'status': 'BAD', 'user': user, 'pass': 'error'})
 
 
@@ -215,17 +270,18 @@ def Register():
         # Check if Staff checkbox is checked
         if request.form.get('user-type'):
             print("Staff checkbox in Registration page checked")
-            visitor_userType = "Staff"
+            visitor_userType = "staff"
         else:
             print("Staff checkbox in Registration page NOT checked")
-            visitor_userType = "Visitor"
+            visitor_userType = "visitor"
 
         result = Database.register(username, password, email, visitor_userType)
-        print("result value: " + str(result))
 
-        if result is not None:
-            print("returning valid json with status OK")
-            return json.dumps({'status': 'OK', 'email': email, 'pass': password})
+        if result is not 0:
+            print("returning valid json with status OK and setting current user session username and type")
+            session['email'] = email
+            session['user_type'] = Database.get_userType(email)
+            return json.dumps({'status': 'OK', 'email': email, 'user_type': session['user_type']})
         else:
             print("returning json with status BAD")
             return json.dumps({'status': 'BAD', 'email': email, 'pass': 'error'})
@@ -237,12 +293,14 @@ def Register():
 
 @app.route("/addNote")
 def addNote():
-    return (json.dumps({'status': 'OK', 'note': note}))
+    return json.dumps({'status': 'OK', 'note': "note"})
 
 
-@app.route("/signUp")
-def signUp():
-    return render_template('signUp.html')
+#
+#
+# # # # # # # # # Visitor, Staff, Admin HomePages # # # # # # # # #
+#
+#
 
 
 @app.route('/visitorHomePage')
@@ -250,10 +308,26 @@ def visitor_homepage():
     return render_template("Visitor_Homepage.html")
 
 
+@app.route('/staffHomePage')
+def staff_homepage():
+    return render_template("staff_Homepage.html")
+
+
+@app.route('/adminHomePage')
+def admin_homepage():
+    return render_template("Admin_Homepage.html")
+
+
+#
+#
+# # # # # # Visitor Pages (excluding /LogOut) # # # # # #
+#
+#
+
+
 @app.route('/searchExhibits')
 def search_exhibits():
     rows = Database.searchExhibits()
-
     # pass returned SQL query into jinja HTML template
     return render_template("SearchExhibits.html", rows=rows)
 
@@ -273,9 +347,125 @@ def view_show_history():
     return render_template("TestPage.html")
 
 
-@app.route('/SearchAnimals')
+@app.route('/SearchForAnimals')
 def search_for_animals():
+    rows = Database.search_for_animals()
+    # pass returned SQL query into jinkja HTML template
+    return render_template("searchAnimals.html", rows=rows)
+
+
+#
+#
+# # # # # # Staff Pages (excluding /LogOut) # # # # # #
+#
+#
+
+@app.route('/StaffSearchAnimals')
+def search_animals():
     return render_template("TestPage.html")
+
+
+@app.route('/StaffViewShows')
+def staff_view_shows():
+    return render_template("TestPage.html")
+
+
+#
+#
+# # # # # # # # Admin Pages Below (excluding /LogOut) # # # # # # # #
+#
+#
+
+
+@app.route('/viewVisitors')
+def view_visitors():
+    return render_template("TestPage.html")
+
+
+@app.route('/viewStaff')
+def view_staff():
+    return render_template("TestPage.html")
+
+
+@app.route('/AdminViewShows')
+def admin_view_shows():
+    return render_template("TestPage.html")
+
+
+@app.route('/AdminViewAnimals')
+def admin_view_animals():
+    return render_template("TestPage.html")
+
+
+@app.route('/addShow')
+def add_show():
+    return render_template("TestPage.html")
+
+
+#
+#
+# # # # # # # # # # # # Pages Common to Visitor & Staff # # # # # # # # # # # #
+#
+#
+# if needed, to be added later
+#
+#
+# # # # # # # # # # # # Pages Common to Visitor & Admin # # # # # # # # # # # #
+#
+#
+# if needed, to be added later
+#
+#
+# # # # # # # # # # # # Pages Common to All # # # # # # # # # # # #
+#
+#
+
+
+@app.route('/LogOut')
+def Log_Out():
+    print("User requests to Log Out, popping user's session variables")
+    session.pop('email', None)
+    session.pop('user_type', None)
+    return render_template('Login.html')
+
+
+@app.route("/signUp")
+def signUp():
+    return render_template('signUp.html')
+
+
+#
+#
+# # # # # # # # # # # # Helper Functions # # # # # # # # # # # #
+#
+#
+
+
+def isValidEmail(email):
+    if len(email) > 6:
+        if re.match("[^@]+@[^@]+\.[^@]+", email, re.IGNORECASE):
+            print("valid Email, true returned")
+            return True
+
+    print("Invalid Email, false returned")
+    return False
+
+
+def isValidPassword(password):
+    p_err = []
+    if not (len(password) > 7):
+        p_err.append(0)
+    # if not (any(c.isdigit() for c in password)):
+    # p_err.append(1)
+    # if not (any(c.isupper() for c in password)):
+    # p_err.append(2)
+
+    if not p_err:
+        print("valid password, true returned")
+        return True
+    else:
+        print("Invalid password, false returned")
+        return False
 
 
 @app.route('/signUpUser', methods=['POST'])
@@ -294,33 +484,6 @@ def signUpUser():
         return (json.dumps({'status': 'OK', 'user': user, 'pass': password}))
     else:
         return (json.dumps({'status': 'BAD', 'user': user, 'pass': p_err}))
-
-
-def isValidEmail(email):
-    if len(email) > 6:
-        if re.match("[^@]+@[^@]+\.[^@]+", email, re.IGNORECASE):
-            print("valid Email, true returned")
-            return True
-
-    print("Invalid Email, false returned")
-    return False
-
-
-def isValidPassword(password):
-    p_err = []
-    if not (len(password) > 7):
-        p_err.append(0)
-    if not (any(c.isdigit() for c in password)):
-        p_err.append(1)
-    if not (any(c.isupper() for c in password)):
-        p_err.append(2)
-
-    if not p_err:
-        print("valid password, true returned")
-        return True
-    else:
-        print("Invalid password, false returned")
-        return False
 
 
 if __name__ == "__main__":

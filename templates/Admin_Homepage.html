@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="s">
+    <title>Admin Homepage</title>
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/Visitor_Homepage.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<body>
+<h2 class="admin_homepage_heading"> Atlanta Zoo </h2>
+<button id="view_visitors_btn" class="btn btn-lg btn-primary btn-block" type="button">View Visitors</button>
+<button id="view_staff_btn" class="btn btn-lg btn-primary btn-block" type="button">View Staff</button>
+<button id="view_shows_btn" class="btn btn-lg btn-primary btn-block" type="button">View Shows</button>
+<button id="view_animals_btn" class="btn btn-lg btn-primary btn-block" type="button">View Animals</button>
+<button id="add_show_btn" class="btn btn-lg btn-primary btn-block" type="button">Add Show</button>
+<button id="log_out_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Out</button>
+</body>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#view_visitors_btn').click(function () {
+            window.location.href = "/viewVisitors";
+        });
+
+        $('#view_staff_btn').click(function () {
+            window.location.href = "/viewStaff";
+        });
+
+        $('#view_shows_btn').click(function () {
+            window.location.href = "/AdminViewShows";
+        });
+
+        $('#view_animals_btn').click(function () {
+            window.location.href = "/AdminViewAnimals";
+        });
+
+        $('#add_show_btn').click(function () {
+            window.location.href = "/addShow";
+        });
+
+        $('#log_out_btn').click(function () {
+            window.location.href = "LogOut";
+        });
+
+
+    });
+
+</script>
+</html>
