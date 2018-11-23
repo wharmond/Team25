@@ -1,0 +1,1 @@
+SELECT DISTINCT e.Name, e.Time, e.Number_of_Visits FROM Exhibit GROUP BY e.Name
