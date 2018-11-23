@@ -110,7 +110,10 @@ class Database:
                 "        );\n"
                 "        ")
 
+    #
     # Create Initial Users SQL Query, execute this if you want to run SQL server with this schema data
+    #
+
     create_users = """Insert into Users values ("martha_johnson","password1",	"marthajohnson@hotmail.com", "staff");
                         Insert into Users values ("ethan_roswell","password3",	"ethanroswell@yahoo.com", "staff");                    
                         Insert into Users values ("xavier_swenson","password4",	"xavierswenson@outlook.com", "visitor");                        
@@ -120,20 +123,79 @@ class Database:
                         Insert into Users values ("admin1","adminpassword",	"adminemail@mail.com", "admin");
                         """
 
+    #
     # Create Exhibits SQL Query, execute this if you want to run SQL server with this schema data w/o manually doing it
+    #
     create_exhibits = ('INSERT into Exhibits values("Pacific", 1, 850);\n'
                        '                        INSERT into Exhibits values("Jungle", 0, 600);\n'
                        '                        INSERT into Exhibits values("Sahara", 0, 1000);\n'
                        '                        INSERT into Exhibits values("Mountainous", 0, 1200);\n'
                        '                        INSERT into Exhibits values("Birds", 1, 1000);')
 
+    #
     # Create Animals SQL Query, execute if your preference is to avoid setting up the server manually
+    #
+
     create_animals = """Insert into Animals values ("Goldy", "Goldfish" , "Pacific", 2, "Fish");                        
                         Insert into Animals values ("Nemo", "Clownfish" , "Pacific", 2, "Fish");                        
                         Insert into Animals values ("Pedro", "Poison Dart frog" , "Jungle", 3, "Amphibian");                        
                         Insert into Animals values ("Lincoln", "Lion" , "Sahara", 8, "Mammal");                        
                         Insert into Animals values ("Greg", "Goat" , "Mountainous", 6, "Mammal");                        
                         Insert into Animals values ("Brad", "Bald Eagle" , "Birds", 4, "Bird");"""
+
+    #
+    # Populate Visitor table
+    #
+    create_visitor = """INSERT into Visitor
+                        values("xavier_swenson");                    
+                        INSERT into Visitor
+                        values("isabella_rodriguez");                        
+                        INSERT into Visitor
+                        values("nadias_tevens");                        
+                        INSERT into Visitor
+                        values("robert_bernheardt");                      
+                        """
+
+    #
+    # Populate Staff table needed for the Shows table "hosted_by" foreign key, must execute above queries in order to work
+    #
+
+    create_staff = """Insert into Staff values("martha_johnson");
+                        Insert into Staff values("benjamin_rao");
+                        Insert into Staff values("ethan_roswell");"""
+
+    #
+    # Populate Admin table
+    #
+    create_admin = """Insert into Admins values("admin1");"""
+
+    #
+    # Create Shows with foreign key "hosted_by" referencing staff table
+    #
+
+    create_shows = """INSERT into Shows
+                        values("Jungle Cruise", "2018-10-06 09:00:00", "Jungle", "martha_johnson");                       
+                        INSERT into Shows
+                        values("Feed the Fish", "2018-10-08 12:00:00", "Pacific", "martha_johnson");                       
+                        INSERT into Shows
+                        values("Fun Facts", "2018-10-09 15:00:00", "Sahara", "martha_johnson");                       
+                        INSERT into Shows
+                        values("Climbing", "2018-10-10 16:00:00", "Mountainous", "benjamin_rao");                        
+                        INSERT into Shows
+                        values("Flight of the Birds", "2018-10-11 15:00:00", "Birds", "ethan_roswell");                        
+                        INSERT into Shows
+                        values("Jungle Cruise", "2018-10-12 14:00:00", "Jungle", "martha_johnson");                        
+                        INSERT into Shows
+                        values("Feed the Fish", "2018-10-12 14:00:00", "Pacific", "ethan_roswell");                       
+                        INSERT into Shows
+                        values("Fun Facts", "2018-10-13 13:00:00", "Sahara", "benjamin_rao");                       
+                        INSERT into Shows
+                        values("Climbing", "2018-10-13 17:00:00", "Mountainous", "benjamin_rao");                        
+                       INSERT into Shows
+                        values("Flight of the Birds", "2018-10-14 14:00:00", "Birds", "ethan_roswell");                       
+                        INSERT into Shows
+                        values("Bald Eagle", "2018-10-15 14:00:00", "Birds", "ethan_roswell");
+                        """
 
     # # # # # # # # # # # # SQL Scripts Below (called by syntax: "Database.{class_method_name}  # # # # # # # # # # # #
     #
