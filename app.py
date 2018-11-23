@@ -144,6 +144,21 @@ class Database:
         return result
 
     @classmethod
+    def searchExhibits(cls):
+        """
+            Query that gets all Exhibits available and animal count in the exhibit
+        :return:
+        """
+        Search_query = "SELECT Distinct e.ExhibitName, e.WaterFeature, e.Size, count(a.Exhibit = e.ExhibitName ) " \
+                       "as NumAnimals FROM Exhibits as e left join Animals as a on a.Exhibit = e.ExhibitName " \
+                       "group by e.Size, e.ExhibitName, e.WaterFeature"
+        cls.cur.execute(Search_query)
+        result = cls.cur.fetchall()
+        print("Search Exhibits result: " + str(result))
+
+        return result
+
+    @classmethod
     def showTables(cls):
         cls.cur.execute("show tables")
         rows = cls.cur.fetchall()
@@ -237,7 +252,10 @@ def visitor_homepage():
 
 @app.route('/searchExhibits')
 def search_exhibits():
-    return render_template("TestPage.html")
+    rows = Database.searchExhibits()
+
+    # pass returned SQL query into jinja HTML template
+    return render_template("SearchExhibits.html", rows=rows)
 
 
 @app.route('/viewExhibitHistory')

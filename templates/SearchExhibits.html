@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title> Search for Exhibits </title>
+  </head>
+  <body>
+    <h2 class="ZooHeading"> Atlanta Zoo </h2>
+    <h3 class="SiteHeading"> Exhibits </h3>
+    <form class="Exhibit-Search">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+      <input type="checkbox">
+    </form>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Size</th>
+          <th>NumAnimals</th>
+          <th>Water</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for row in rows %}
+    <tr>
+        <td>{{ row.ExhibitName }}</td>
+        <td>{{ row.Size }}</td>
+        <td>{{ row.NumAnimals }}</td>
+        {% if row.WaterFeature == 1 %}
+            <td>{{ "Yes" }}</td>
+        {% else %}
+            <td>{{ "No" }}</td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
