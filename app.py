@@ -19,7 +19,7 @@ class Database:
 
     # Create the connection with configured parameters, autocommit specifies whether SQL INSERT statements actually
     # insert, leave to false if you just want to test if an INSERT query executes correctly
-    con = pymysql.connect(host=host, user=user, password=password, autocommit=True, db=db, charset=charSet,
+    con = pymysql.connect(host=host, user=user, password=password, autocommit=False, db=db, charset=charSet,
                           cursorclass=pymysql.cursors.DictCursor)
 
     # Obtain a cursor for executing queries
@@ -306,11 +306,10 @@ class Database:
         return result
 
     @classmethod
-    def search_for_animals(cls):
+    def view_all_animals(cls):
         search_animals_query = (
             "SELECT DISTINCT a.AnimalName as Name, a.Species, a.Exhibit, a.Age, a.Type_of_Animal  \n"
-            " as Type FROM Animals as a G"
-            "ROUP BY a.AnimalName, a.Species, a.Exhibit, a.Age, a.Type_of_Animal")
+            " as Type FROM Animals as a GROUP BY a.AnimalName, a.Species, a.Exhibit, a.Age, a.Type_of_Animal")
         cls.cur.execute(search_animals_query)
         result = cls.cur.fetchall()
         print("Search for animals result: " + str(result))
@@ -341,6 +340,33 @@ class Database:
         result = cls.cur.fetchall()
         print("view show history result: " + str(result))
         return result
+
+    #
+    #
+    # # # # # # # # # # # # SQL Scripts for Admin # # # # # # # # # # # #
+    #
+    #
+
+    @classmethod
+    def add_animal(cls, animalname, species, exhibit, age, animaltype):
+        """
+        :rtype: returns an boolean of 1 if successful insertion of animal in the database, 0 otherwise
+        """
+        try:
+            add_animal_query = """Insert into Animals values (%s, %s , %s, %s, %s)"""
+            cls.cur.execute(add_animal_query, (animalname, species, exhibit, age, animaltype))
+            result = cls.cur.fetchall()
+            print("add animal result: " + str(result))
+
+            return 1
+
+        except Exception as e:
+            print("Exception occurred:{}".format(e))
+            return 0
+
+    @classmethod
+    def add_shows(cls):
+        add_show_query = """"""
 
 
 #
@@ -505,7 +531,7 @@ def view_show_history():
 
 @app.route('/SearchForAnimals')
 def search_for_animals():
-    rows = Database.search_for_animals()
+    rows = Database.view_all_animals()
     # pass returned SQL query into jinkja HTML template
     return render_template("./VisitorTemplates/searchAnimals.html", rows=rows)
 
@@ -560,12 +586,42 @@ def admin_view_shows():
 
 @app.route('/AdminViewAnimals')
 def admin_view_animals():
-    return render_template("TestPage.html")
+    rows = Database.view_all_animals()
+    # inject SQL data into jinja html template
+    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
 
 
 @app.route('/addShow')
 def add_show():
-    return render_template("TestPage.html")
+    return render_template("./AdminTemplates/addShow.html")
+
+
+@app.route('/addShowValidation', methods=['POST'])
+def add_show_query():
+    print("add_show Request Recieved from Admin")
+    show_name = request.form['showName']
+    date_time = request.form['dateTime']
+    located_at = request.form['locatedAt']
+    hosted_by = request.form['hostedBy']
+
+
+@app.route('/addAnimal', methods=['POST'])
+def add_animal_query():
+    print("add_animal Request Received from Admin")
+    animal_name = request.form['animalName']
+    species = request.form['species']
+    exhibit = request.form['exhibit']
+    age = request.form['age']
+    animal_type = request.form['type']
+
+    result = Database.add_animal(animal_name, species, exhibit, age, animal_type)
+
+    if result is not 0:
+        print("returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
 
 
 #
