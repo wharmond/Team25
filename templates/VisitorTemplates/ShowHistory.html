@@ -1,11 +1,11 @@
 <html>
   <head>
-    <title> Exhibit History </title>
+    <title> Show History </title>
   </head>
   <body>
     <h2 class="ZooHeading"> Atlanta Zoo </h2>
-    <h3 class="SiteHeading"> Exhibit History </h3>
-    <form class="Exhibit-History">
+    <h3 class="SiteHeading"> Show History </h3>
+    <form class="Show-History">
       <input type="text">
       <input type="text">
       <input type="text">
@@ -15,7 +15,7 @@
         <tr>
           <th>Name</th>
           <th>Time</th>
-          <th>Number of Visits</th>
+          <th>Exhibit</th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,7 @@
     <tr>
         <td>{{ row.Name }}</td>
         <td>{{ row.Time }}</td>
-        <td>{{ row['Number of Visits'] }}</td>
+        <td>{{ row.Exhibit }}</td>
     </tr>
     {% endfor %}
       </tbody>
