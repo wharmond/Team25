@@ -18,5 +18,27 @@
         <button id="addAnimalBtn" class="btn btn-primary btn-block" type="button"> Add Animal </button>
       </form>
     </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Species</th>
+          <th>Exhibit</th>
+          <th>Age</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for row in rows %}
+    <tr>
+        <td>{{ row.Name }}</td>
+        <td>{{ row.Species }}</td>
+        <td>{{ row.Exhibit }}</td>
+        <td>{{ row.Age }}</td>
+        <td>{{ row.Type }}</td>
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
 </body>
 </html>
