@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+<html>
+  <head>
+    <title> Shows </title>
+  </head>
+  <body>
+    <h2 class="ZooHeading"> Atlanta Zoo </h2>
+    <h3 class="SiteHeading"> Shows </h3>
+    <form class="Shows-Search">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+    </form>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Exhibit</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for row in rows %}
+    <tr>
+        <td>{{ row.Name }}</td>
+        <td>{{ row.Exhibit }}</td>
+        <td>{{ row.Date }}</td>
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+  </body>
 </html>

@@ -581,7 +581,9 @@ def view_staff():
 
 @app.route('/AdminViewShows')
 def admin_view_shows():
-    return render_template("TestPage.html")
+    rows = Database.search_shows()
+    #inject SQL data into jinja html template
+    return render_template('./AdminTemplates/viewShows.html', rows=rows)
 
 
 @app.route('/AdminViewAnimals')

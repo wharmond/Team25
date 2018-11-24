@@ -1,10 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="utf-8"/>
+    <title> Add Animal </title>
+    <link rel="stylesheet" href="../static/css/signup.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
-$END$
+<div class="form-container">
+    <form action="../addAnimal" method="post">
+        <h2 class="text-center">
+            "Add Animal"
+        </h2>
+        <input class="form-control" name="animalName" placeholder="Animal Name" type="text" id="animalName"/>
+        <input class="form-control" name="species" placeholder="Species" type="text" id="species"/>
+        <input class="form-control" name="exhibit" placeholder="Exhibit" type="text" id="exhibit"/>
+        <input class="form-control" name="age" placeholder="Age" type="text" id="age"/>
+        <input class="form-control" name="type" placeholder="Animal Type" type="text" id="type"/>
+
+        <button id="addAnimalBtn" class="btn btn-primary btn-block" type="button" onClick="AnimalSubmit()"> Add Animal
+        </button>
+    </form>
+</div>
+<table class="data-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Species</th>
+        <th>Exhibit</th>
+        <th>Age</th>
+        <th>Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row.Name }}</td>
+            <td>{{ row.Species }}</td>
+            <td>{{ row.Exhibit }}</td>
+            <td>{{ row.Age }}</td>
+            <td>{{ row.Type }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="add_animal_alert" id="div_add_alert"></div>
 </body>
+<script type="text/javascript">
+
+    function AnimalSubmit() {
+
+        $("#div_add_alert").html("Validating Animal Data..");
+
+        var animal_name = $('#animalName').val();
+        var species = $('#species').val();
+        var exhibit = $('#exhibit').val();
+        var age = $('#age').val();
+        var type = $('#type').val();
+
+        if (animal_name.length !== 0 && species.length !== 0 && exhibit.length !== 0 && (age >= 0) && type.length !== 0) {
+            $.ajax({
+                url: '/addAnimal',
+                data: $('form').serialize(),
+                type: 'POST',
+                success: function (response) {
+                    var obj = JSON.parse(response);
+                    if (obj.status === 'OK') {
+                        $('#animalName').val("");
+                        $('#species').val("");
+                        $('#exhibit').val("");
+                        $('#age').val("");
+                        $('#type').val("");
+
+                        //refresh the page to update table with added animal
+                        updatePage();
+                    }
+                    else {
+                        $("#div_add_alert").html("Error in adding Animal: Please make sure to specify the exact valid"
+                            + " exhibit name and that all fields are non empty");
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        } else {
+            $("#div_add_alert").html("Error in adding Animal PLease make sure all fields are non empty");
+        }
+    }
+
+    function updatePage() {
+        window.location.href = "/AdminViewAnimals";
+    }
+
+</script>
 </html>
