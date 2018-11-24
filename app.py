@@ -297,6 +297,31 @@ class Database:
         print("Search for animals result: " + str(result))
         return result
 
+    #
+    #
+    # # # # # # # # # # # # SQL Scripts for Admin # # # # # # # # # # # #
+    #
+    #
+
+    @classmethod
+    def add_animals(cls, animal_name, species, exhibit, age):
+        add_animal_query = "Insert into Users values (%s, %s, %s, %s)"
+
+        cls.cur.execute(add_animal_query)
+        try:
+            result = cls.cur.execute(add_animal_query, (animal_name, species, exhibit, age))
+
+            print("Add Animal Query returned: " + str(result))
+
+            return result
+
+        except Exception as e:
+            print("Exeception occured:{}".format(e))
+        finally:
+            return 0
+        searchResult = cls.cur.fetchall()
+        print("Animal Search result: " + str(searchResult))
+
 
 #
 #
@@ -481,7 +506,38 @@ def admin_view_shows():
 
 @app.route('/AdminViewAnimals')
 def admin_view_animals():
-    return render_template("TestPage.html")
+    rows = Database.search_for_animals()
+    # pass returned SQL query into HTML template
+    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
+
+@app.route('/addAnimal')
+def add_animal():
+    animal = request.form['animalName']
+    species = request.form['species']
+    exhibit = request.form['exhibit']
+    age = request.form['age']
+    result = Database.add_animals(animal, species, exhibit, age)
+
+    if isValidPassword(password):
+        Database.showTables()
+        result = Database.login(user, password)
+
+        if result is not 0:
+            # If user exists in database, find corresponding user type
+            print("query returned valid username")
+            session['email'] = user
+            session['user_type'] = Database.get_userType(user)
+            print("session user_type is: " + session['user_type'])
+            return json.dumps({'status': 'OK', 'user': user, 'user_type': session['user_type']})
+        else:
+            print("User not found in resulted query")
+            return json.dumps({'status': 'BAD', 'user': user, 'pass': 'error'})
+    else:
+        print("Error in login, invalid login data")
+        return json.dumps({'status': 'BAD', 'user': user, 'pass': 'error'})
+
+    rows = Database.search_for_animals()
+    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
 
 
 @app.route('/addShow')
