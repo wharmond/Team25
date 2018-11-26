@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title> Animal Detail </title>
+  </head>
+  <body>
+    <h2 class="ZooHeading"> Atlanta Zoo </h2>
+    <h3 class="SiteHeading"> Animals </h3>
+    <form class="Animal Note">
+      <input type="text">
+    </form>
+        <button id="create_animal_detail_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Notes</button>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Staff Member</th>
+          <th>Note</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for row in rows %}
+    <tr>
+        <td>{{ row.Staff Member }}</td>
+        <td>{{ row.Note }}</td>
+        <td>{{ row.Time }}</td>
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
