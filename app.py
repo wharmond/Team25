@@ -297,6 +297,26 @@ class Database:
         print("Search for animals result: " + str(result))
         return result
 
+    #
+    #
+    # # # # # # # # # # # # SQL Scripts for Admin # # # # # # # # # # # #
+    #
+    #
+
+    @classmethod
+    def add_animals(cls, animal_name, species, exhibit, age, animal_type):
+        add_animal_query = "Insert into Users values (%s, %s, %s, %s, %s)"
+
+        cls.cur.execute(add_animal_query)
+        try:
+            result = cls.cur.execute(add_animal_query, (animal_name, species, exhibit, age, animal_type))
+
+            print("Add Animal Query returned: " + str(result))
+
+            return 1
+        except Exception as e:
+            print("Exeception occured:{}".format(e))
+            return 0
 
 #
 #
@@ -481,8 +501,24 @@ def admin_view_shows():
 
 @app.route('/AdminViewAnimals')
 def admin_view_animals():
-    return render_template("TestPage.html")
+    rows = Database.search_for_animals()
+    # pass returned SQL query into HTML template
+    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
 
+
+@app.route('/addAnimal', methods=['POST'])
+def add_animal():
+    animal = request.form['animalName']
+    species = request.form['species']
+    exhibit = request.form['exhibit']
+    age = request.form['age']
+    animalType = request.form['animalType']
+    result = Database.add_animals(animal, species, exhibit, age, animalType)
+    print(result)
+    if result == 1:
+        return json.dumps({'status': 'OK'})
+    else:
+        return json.dumps({'status': 'BAD'})
 
 @app.route('/addShow')
 def add_show():
