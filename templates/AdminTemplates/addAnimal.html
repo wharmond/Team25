@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Animal</title>
+    <link rel="stylesheet" href="../static/css/signup.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="../static/js/addAnimal.js"></script>
+</head>
+<body>
+    <div class="form-container">
+      <form  action="../addAnimal" method="post">
+        <h2 class="text-center">
+          "Add Show"
+        </h2>
+        <input class="form-control" name="animalName" placeholder="Animal Name" type="text" id= "animalName"/>
+        <input class="form-control" name="species" placeholder="Species" type="text" id= "species"/>
+        <input class="form-control" name="exhibit" placeholder="Exhibit" type="text" id= "exhibit"/>
+        <input class="form-control" name="age" placeholder="Age" type="text" id= "age"/>
+        <input class="form-control" name="animalType" placeholder="Animal Type" type="text" id= "animalType"/>
+        <button id="addAnimalBtn" class="btn btn-primary btn-block" type="button" onclick="addAnimalSubmit()"> Add Animal </button>
+      </form>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Species</th>
+          <th>Exhibit</th>
+          <th>Age</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for row in rows %}
+    <tr>
+        <td>{{ row.Name }}</td>
+        <td>{{ row.Species }}</td>
+        <td>{{ row.Exhibit }}</td>
+        <td>{{ row.Age }}</td>
+        <td>{{ row.Type }}</td>
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+</body>
+</html>
