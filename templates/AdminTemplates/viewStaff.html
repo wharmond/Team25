@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title> Staff </title>
+  </head>
+  <body>
+    <h2 class="ZooHeading"> Atlanta Zoo </h2>
+    <h3 class="SiteHeading"> Staff </h3>
+    <form class="Staff-Search">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+    </form>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for row in rows %}
+    <tr>
+        <td>{{ row.Username }}</td>
+        <td>{{ row.Email }}</td>
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+    <button id="delete_staff_btn" class="btn btn-lg btn-primary btn-block" type="button">Delete Staff</button>
+  </body>
+</html>
