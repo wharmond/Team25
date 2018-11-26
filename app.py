@@ -19,7 +19,7 @@ class Database:
 
     # Create the connection with configured parameters, autocommit specifies whether SQL INSERT statements actually
     # insert, leave to false if you just want to test if an INSERT query executes correctly
-    con = pymysql.connect(host=host, user=user, password=password, autocommit=True, db=db, charset=charSet,
+    con = pymysql.connect(host=host, user=user, password=password, autocommit=False, db=db, charset=charSet,
                           cursorclass=pymysql.cursors.DictCursor)
 
     # Obtain a cursor for executing queries
@@ -197,6 +197,18 @@ class Database:
                         values("Bald Eagle", "2018-10-15 14:00:00", "Birds", "ethan_roswell");
                         """
 
+    #
+    # Extra data for testing- Visitor visits Exhibits - 2 visits to same exhibit should show a Count() of 2
+    #
+    add_exhibit_visit = """INSERT into ExhibitVisits values("xavier_swenson", "Pacific",Default);"""
+    add_exhibit_visit_2 = """INSERT into ExhibitVisits values("xavier_swenson", "Pacific",Default);"""
+
+    #
+    # Extra data for testing- Visitor visits Show should show up in Show History
+    #
+
+    addShowVisit = """Insert into ShowVisits values ("Feed the Fish", "2018-10-08 12:00:00", "xavier_swenson");"""
+
     # # # # # # # # # # # # SQL Scripts Below (called by syntax: "Database.{class_method_name}  # # # # # # # # # # # #
     #
     #
@@ -224,14 +236,31 @@ class Database:
         return result['UserType']
 
     @classmethod
+    def get_Username(cls, email):
+        userType_query = ("Select Username FROM Users WHERE Users.Email = %s")
+        cls.cur.execute(userType_query, email)
+        result = cls.cur.fetchone()
+        print("Username returned: " + str(result))
+        return result['Username']
+
+    @classmethod
+    def addto_StaffTable(cls, username):
+        add_staff_query = "INSERT into Staff values (%s)"
+        cls.cur.execute(add_staff_query, username)
+        result = cls.cur.fetchone()
+        print("Staff table added: " + str(result))
+
+    @classmethod
+    def addto_VisitorTable(cls, username):
+        add_visitor_query = "INSERT into Visitor values (%s)"
+        cls.cur.execute(add_visitor_query, username)
+        result = cls.cur.fetchone()
+        print("Visitor table added: " + str(result))
+
+    @classmethod
     def register(cls, username, password, email, user_type):
         """
             Returns 0 if the SQL INSERT Operation fails, returns a non-zero value otherwise (INSERT successful)
-        :param username:
-        :param password:
-        :param email:
-        :param user_type:
-        :return: 0 if INSERT fails, > 0 otherwise
         """
         print("register query provided parameters: " + username + ',' + password + "," + email + "," + user_type)
 
@@ -240,12 +269,13 @@ class Database:
             result = cls.cur.execute(Register_query, (username, password, email, user_type))
 
             print("Register Query returned: " + str(result))
-
-            return result
+            if result is not 0:
+                return 1
+            else:
+                return 0
 
         except Exception as e:
             print("Exeception occured:{}".format(e))
-        finally:
             return 0
 
     @classmethod
@@ -276,25 +306,39 @@ class Database:
         return result
 
     @classmethod
-    def search_for_animals(cls):
+    def view_all_animals(cls):
         search_animals_query = (
             "SELECT DISTINCT a.AnimalName as Name, a.Species, a.Exhibit, a.Age, a.Type_of_Animal  \n"
-            " as Type FROM Animals as a G"
-            "ROUP BY a.AnimalName, a.Species, a.Exhibit, a.Age, a.Type_of_Animal")
+            " as Type FROM Animals as a GROUP BY a.AnimalName, a.Species, a.Exhibit, a.Age, a.Type_of_Animal")
         cls.cur.execute(search_animals_query)
         result = cls.cur.fetchall()
         print("Search for animals result: " + str(result))
         return result
 
     @classmethod
-    def view_exhibit_history(cls):
-        exhibit_history_query = (
-            "SELECT DISTINCT a.AnimalName as Name, a.Species, a.Exhibit, a.Age, a.Type_of_Animal  \n"
-            " as Type FROM Animals as a G"
-            "ROUP BY a.AnimalName, a.Species, a.Exhibit, a.Age, a.Type_of_Animal")
-        cls.cur.execute(exhibit_history_query)
+    def view_exhibit_history(cls, username):
+        exhibit_history_query = ("SELECT Distinct e.ExhibitName as Name, e.Date_Time as Time, count(*) over \n"
+                                 "        ( partition by e.ExhibitName ) as \"Number of Visits\" from ExhibitVisits as e Where e.Visitor = %s""")
+        cls.cur.execute(exhibit_history_query, username)
         result = cls.cur.fetchall()
         print("Search for animals result: " + str(result))
+        return result
+
+    @classmethod
+    def search_shows(cls):
+        get_shows_query = """SELECT s.ShowName as Name, s.LocatedAt as Exhibit, s.Date_Time as Date FROM Shows as s"""
+        cls.cur.execute(get_shows_query)
+        result = cls.cur.fetchall()
+        print("search shows result: " + str(result))
+        return result
+
+    @classmethod
+    def view_show_history(cls, username):
+        show_history_query = """Select Distinct s.ShowName as Name, s.Date_Time as Time, shows.LocatedAt as Exhibit 
+                        From ShowVisits as s, Shows as shows where s.Visitor = %s and s.Date_Time = shows.Date_Time"""
+        cls.cur.execute(show_history_query, username)
+        result = cls.cur.fetchall()
+        print("view show history result: " + str(result))
         return result
 
     #
@@ -304,23 +348,25 @@ class Database:
     #
 
     @classmethod
-    def add_animals(cls, animal_name, species, exhibit, age):
-        add_animal_query = "Insert into Users values (%s, %s, %s, %s)"
-
-        cls.cur.execute(add_animal_query)
+    def add_animal(cls, animalname, species, exhibit, age, animaltype):
+        """
+        :rtype: returns an boolean of 1 if successful insertion of animal in the database, 0 otherwise
+        """
         try:
-            result = cls.cur.execute(add_animal_query, (animal_name, species, exhibit, age))
+            add_animal_query = """Insert into Animals values (%s, %s , %s, %s, %s)"""
+            cls.cur.execute(add_animal_query, (animalname, species, exhibit, age, animaltype))
+            result = cls.cur.fetchall()
+            print("add animal result: " + str(result))
 
-            print("Add Animal Query returned: " + str(result))
-
-            return result
+            return 1
 
         except Exception as e:
-            print("Exeception occured:{}".format(e))
-        finally:
+            print("Exception occurred:{}".format(e))
             return 0
-        searchResult = cls.cur.fetchall()
-        print("Animal Search result: " + str(searchResult))
+
+    @classmethod
+    def add_shows(cls):
+        add_show_query = """"""
 
 
 #
@@ -349,6 +395,7 @@ def signIn():
             print("query returned valid username")
             session['email'] = user
             session['user_type'] = Database.get_userType(user)
+            session['username'] = Database.get_Username(user)
             print("session user_type is: " + session['user_type'])
             return json.dumps({'status': 'OK', 'user': user, 'user_type': session['user_type']})
         else:
@@ -389,10 +436,20 @@ def Register():
 
         result = Database.register(username, password, email, visitor_userType)
 
+        print("result value of register is: " + str(result))
         if result is not 0:
+
+            # Add user to respective staff or visitor table
+            if visitor_userType == "staff":
+                Database.addto_StaffTable(username)
+            else:
+                Database.addto_VisitorTable(username)
+
             print("returning valid json with status OK and setting current user session username and type")
             session['email'] = email
             session['user_type'] = Database.get_userType(email)
+            session['username'] = username
+            print("user type after registering is: " + str(session['user_type']))
             return json.dumps({'status': 'OK', 'email': email, 'user_type': session['user_type']})
         else:
             print("returning json with status BAD")
@@ -446,24 +503,47 @@ def search_exhibits():
 
 @app.route('/viewExhibitHistory')
 def view_exhibit_history():
-    return render_template("./VisitorTemplates/ExhibitHistory.html")
+    # Only for testing purposes- after testing completed, remove the if/else, session must contain a username
+    if 'username' in session:
+        rows = Database.view_exhibit_history(session['username'])
+    else:
+        rows = Database.view_exhibit_history("xavier_swenson")
+    # pass returned SQL query into jinja HTML template
+    return render_template("./VisitorTemplates/ExhibitHistory.html", rows=rows)
 
 
 @app.route('/viewShows')
 def view_shows():
-    return render_template("TestPage.html")
+    rows = Database.search_shows()
+    return render_template('./VisitorTemplates/searchShows.html', rows=rows)
 
 
 @app.route('/viewShowHistory')
 def view_show_history():
-    return render_template("TestPage.html")
+    # Only for testing purposes- after testing completed, remove the if/else, session must contain a username
+    if 'username' in session:
+        rows = Database.view_show_history(session['username'])
+    else:
+        rows = Database.view_show_history("xavier_swenson")
+    # pass returned SQL query into jinja HTML template
+    return render_template('./VisitorTemplates/ShowHistory.html', rows=rows)
 
 
 @app.route('/SearchForAnimals')
 def search_for_animals():
-    rows = Database.search_for_animals()
+    rows = Database.view_all_animals()
     # pass returned SQL query into jinkja HTML template
     return render_template("./VisitorTemplates/searchAnimals.html", rows=rows)
+
+
+@app.route('/exhibitDetail')
+def exhibit_detail():
+    return render_template("TestPage.html")
+
+
+@app.route('/animalDetails')
+def animal_details():
+    return render_template("TestPage.html")
 
 
 #
@@ -501,48 +581,49 @@ def view_staff():
 
 @app.route('/AdminViewShows')
 def admin_view_shows():
-    return render_template("TestPage.html")
+    rows = Database.search_shows()
+    #inject SQL data into jinja html template
+    return render_template('./AdminTemplates/viewShows.html', rows=rows)
 
 
 @app.route('/AdminViewAnimals')
 def admin_view_animals():
-    rows = Database.search_for_animals()
-    # pass returned SQL query into HTML template
-    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
-
-@app.route('/addAnimal')
-def add_animal():
-    animal = request.form['animalName']
-    species = request.form['species']
-    exhibit = request.form['exhibit']
-    age = request.form['age']
-    result = Database.add_animals(animal, species, exhibit, age)
-
-    if isValidPassword(password):
-        Database.showTables()
-        result = Database.login(user, password)
-
-        if result is not 0:
-            # If user exists in database, find corresponding user type
-            print("query returned valid username")
-            session['email'] = user
-            session['user_type'] = Database.get_userType(user)
-            print("session user_type is: " + session['user_type'])
-            return json.dumps({'status': 'OK', 'user': user, 'user_type': session['user_type']})
-        else:
-            print("User not found in resulted query")
-            return json.dumps({'status': 'BAD', 'user': user, 'pass': 'error'})
-    else:
-        print("Error in login, invalid login data")
-        return json.dumps({'status': 'BAD', 'user': user, 'pass': 'error'})
-
-    rows = Database.search_for_animals()
+    rows = Database.view_all_animals()
+    # inject SQL data into jinja html template
     return render_template("./AdminTemplates/addAnimal.html", rows=rows)
 
 
 @app.route('/addShow')
 def add_show():
-    return render_template("TestPage.html")
+    return render_template("./AdminTemplates/addShow.html")
+
+
+@app.route('/addShowValidation', methods=['POST'])
+def add_show_query():
+    print("add_show Request Recieved from Admin")
+    show_name = request.form['showName']
+    date_time = request.form['dateTime']
+    located_at = request.form['locatedAt']
+    hosted_by = request.form['hostedBy']
+
+
+@app.route('/addAnimal', methods=['POST'])
+def add_animal_query():
+    print("add_animal Request Received from Admin")
+    animal_name = request.form['animalName']
+    species = request.form['species']
+    exhibit = request.form['exhibit']
+    age = request.form['age']
+    animal_type = request.form['type']
+
+    result = Database.add_animal(animal_name, species, exhibit, age, animal_type)
+
+    if result is not 0:
+        print("returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
 
 
 #

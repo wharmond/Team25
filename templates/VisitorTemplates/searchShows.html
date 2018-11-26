@@ -1,30 +1,30 @@
 <html>
   <head>
-    <title> Exhibit History </title>
+    <title> Search for Shows </title>
   </head>
   <body>
     <h2 class="ZooHeading"> Atlanta Zoo </h2>
-    <h3 class="SiteHeading"> Exhibit History </h3>
-    <form class="Exhibit-History">
+    <h3 class="SiteHeading"> Shows </h3>
+    <form class="Shows-Search">
       <input type="text">
       <input type="text">
       <input type="text">
     </form>
-    <button id="search_exhibit_history_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
+    <button id="search_shows_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
     <table class="data-table">
       <thead>
         <tr>
           <th>Name</th>
-          <th>Time</th>
-          <th>Number of Visits</th>
+          <th>Exhibit</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>
          {% for row in rows %}
     <tr>
         <td>{{ row.Name }}</td>
-        <td>{{ row.Time }}</td>
-        <td>{{ row['Number of Visits'] }}</td>
+        <td>{{ row.Exhibit }}</td>
+        <td>{{ row.Date }}</td>
     </tr>
     {% endfor %}
       </tbody>

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title> Visitor </title>
+  </head>
+  <body>
+    <h2 class="ZooHeading"> Atlanta Zoo </h2>
+    <h3 class="SiteHeading"> Visitor </h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for row in rows %}
+    <tr>
+        <td>{{ row.Username }}</td>
+        <td>{{ row.Email }}</td>
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+    <button id="delete_visitor_btn" class="btn btn-lg btn-primary btn-block" type="button">Delete Visitor</button>
+  </body>
+</html>

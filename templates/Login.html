@@ -56,9 +56,9 @@ $(function(){
 
                             //Scripts for determining type of user and type of screen redirect
                             //default is Visitor Homepage until future commit
-                            if (obj.user_type.toUpperCase() === 'VISITOR') {
+                            if (obj.user_type === 'visitor') {
                                 setTimeout(openVisitorHomepage, 3000);
-                            } else if (obj.user_type.toUpperCase() === 'STAFF') {
+                            } else if (obj.user_type === "staff") {
                                 setTimeout(openStaffHomepage, 3000);
                             } else {
                                setTimeout(openAdminHomepage, 3000);
