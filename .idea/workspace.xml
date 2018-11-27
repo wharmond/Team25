@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a75c927-1ad2-4e4f-a707-e50cdf711911" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/Registration.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/Registration.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Visitor_Homepage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +14,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="560" column="23" lean-forward="true" selection-start-line="560" selection-start-column="23" selection-end-line="560" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#64#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -56,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="722" />
     <option name="width" value="1205" />
     <option name="height" value="1038" />
@@ -84,12 +96,6 @@
             <path>
               <item name="Team25" type="b2602c69:ProjectViewProjectNode" />
               <item name="Team25" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Team25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team25" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -104,12 +110,6 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="StaffTemplates" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Team25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team25" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="VisitorTemplates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -123,6 +123,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wharm\Desktop\CS 4400\Team25\templates\StaffTemplates" />
       <recent name="C:\Users\wharm\Desktop\CS 4400\Team25\templates\AdminTemplates" />
     </key>
   </component>
@@ -166,14 +167,24 @@
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.12818792" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12818792" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
+      <window_info active="true" anchor="bottom" id="Python Console" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -182,7 +193,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="right" id="R Packages" />
       <window_info anchor="right" id="R Graphics" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -295,10 +306,22 @@
     <entry file="file://$PROJECT_DIR$/templates/TestPage.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="312" lean-forward="true" selection-start-line="312" selection-end-line="312" />
+        <state relative-caret-position="357">
+          <caret line="560" column="23" lean-forward="true" selection-start-line="560" selection-start-column="23" selection-end-line="560" selection-end-column="23" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
