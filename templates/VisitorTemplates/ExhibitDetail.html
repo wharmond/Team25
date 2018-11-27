@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title> Exhibit Detail </title>
+  </head>
+  <body>
+    <h2 class="ZooHeading"> Atlanta Zoo </h2>
+    <h3 class="SiteHeading"> Exhibit Detail </h3>
+    <button id="log_visit_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Visit</button>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Species</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for row in rows %}
+    <tr>
+        <td>{{ row.Name }}</td>
+        <td>{{ row.Species }}</td>
+    </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
