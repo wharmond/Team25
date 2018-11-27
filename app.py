@@ -554,7 +554,8 @@ def animal_details():
 
 @app.route('/StaffSearchAnimals')
 def search_animals():
-    return render_template("./StaffTemplates/StaffSearchAnimals.html")
+    rows = Database.searchExhibits()
+    return render_template("./StaffTemplates/StaffSearchAnimals.html", rows=rows)
 
 
 @app.route('/StaffViewShows')
