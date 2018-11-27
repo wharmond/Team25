@@ -560,7 +560,8 @@ def search_animals():
 
 @app.route('/StaffViewShows')
 def staff_view_shows():
-    return render_template("./StaffTemplates/StaffViewShows.html")
+    rows = Database.search_shows()
+    return render_template("./StaffTemplates/StaffViewShows.html", rows=rows)
 
 
 #
