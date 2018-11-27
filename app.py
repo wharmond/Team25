@@ -115,10 +115,10 @@ class Database:
     #
 
     create_users = """Insert into Users values ("martha_johnson","password1",	"marthajohnson@hotmail.com", "staff");
-                        Insert into Users values ("ethan_roswell","password3",	"ethanroswell@yahoo.com", "staff");                    
-                        Insert into Users values ("xavier_swenson","password4",	"xavierswenson@outlook.com", "visitor");                        
-                        Insert into Users values ("isabella_rodriguez","password5",	"isabellarodriguez@mail.com", "visitor");                        
-                        Insert into Users values ("nadias_tevens","password6",	"nadiastevens@gmail.com", "visitor");                
+                        Insert into Users values ("ethan_roswell","password3",	"ethanroswell@yahoo.com", "staff");
+                        Insert into Users values ("xavier_swenson","password4",	"xavierswenson@outlook.com", "visitor");
+                        Insert into Users values ("isabella_rodriguez","password5",	"isabellarodriguez@mail.com", "visitor");
+                        Insert into Users values ("nadias_tevens","password6",	"nadiastevens@gmail.com", "visitor");
                         Insert into Users values ("robert_bernheardt","password7",	"robertbernheardt@yahoo.com", "visitor");                  
                         Insert into Users values ("admin1","adminpassword",	"adminemail@mail.com", "admin");
                         """
@@ -136,24 +136,24 @@ class Database:
     # Create Animals SQL Query, execute if your preference is to avoid setting up the server manually
     #
 
-    create_animals = """Insert into Animals values ("Goldy", "Goldfish" , "Pacific", 2, "Fish");                        
-                        Insert into Animals values ("Nemo", "Clownfish" , "Pacific", 2, "Fish");                        
-                        Insert into Animals values ("Pedro", "Poison Dart frog" , "Jungle", 3, "Amphibian");                        
-                        Insert into Animals values ("Lincoln", "Lion" , "Sahara", 8, "Mammal");                        
-                        Insert into Animals values ("Greg", "Goat" , "Mountainous", 6, "Mammal");                        
+    create_animals = """Insert into Animals values ("Goldy", "Goldfish" , "Pacific", 2, "Fish");
+                        Insert into Animals values ("Nemo", "Clownfish" , "Pacific", 2, "Fish");
+                        Insert into Animals values ("Pedro", "Poison Dart frog" , "Jungle", 3, "Amphibian");
+                        Insert into Animals values ("Lincoln", "Lion" , "Sahara", 8, "Mammal");
+                        Insert into Animals values ("Greg", "Goat" , "Mountainous", 6, "Mammal");
                         Insert into Animals values ("Brad", "Bald Eagle" , "Birds", 4, "Bird");"""
 
     #
     # Populate Visitor table
     #
     create_visitor = """INSERT into Visitor
-                        values("xavier_swenson");                    
+                        values("xavier_swenson");
                         INSERT into Visitor
-                        values("isabella_rodriguez");                        
+                        values("isabella_rodriguez");
                         INSERT into Visitor
-                        values("nadias_tevens");                        
+                        values("nadias_tevens");
                         INSERT into Visitor
-                        values("robert_bernheardt");                      
+                        values("robert_bernheardt");
                         """
 
     #
@@ -174,25 +174,25 @@ class Database:
     #
 
     create_shows = """INSERT into Shows
-                        values("Jungle Cruise", "2018-10-06 09:00:00", "Jungle", "martha_johnson");                       
+                        values("Jungle Cruise", "2018-10-06 09:00:00", "Jungle", "martha_johnson");
                         INSERT into Shows
-                        values("Feed the Fish", "2018-10-08 12:00:00", "Pacific", "martha_johnson");                       
+                        values("Feed the Fish", "2018-10-08 12:00:00", "Pacific", "martha_johnson");
                         INSERT into Shows
-                        values("Fun Facts", "2018-10-09 15:00:00", "Sahara", "martha_johnson");                       
+                        values("Fun Facts", "2018-10-09 15:00:00", "Sahara", "martha_johnson");
                         INSERT into Shows
-                        values("Climbing", "2018-10-10 16:00:00", "Mountainous", "benjamin_rao");                        
+                        values("Climbing", "2018-10-10 16:00:00", "Mountainous", "benjamin_rao");
                         INSERT into Shows
-                        values("Flight of the Birds", "2018-10-11 15:00:00", "Birds", "ethan_roswell");                        
+                        values("Flight of the Birds", "2018-10-11 15:00:00", "Birds", "ethan_roswell");
                         INSERT into Shows
-                        values("Jungle Cruise", "2018-10-12 14:00:00", "Jungle", "martha_johnson");                        
+                        values("Jungle Cruise", "2018-10-12 14:00:00", "Jungle", "martha_johnson");
                         INSERT into Shows
-                        values("Feed the Fish", "2018-10-12 14:00:00", "Pacific", "ethan_roswell");                       
+                        values("Feed the Fish", "2018-10-12 14:00:00", "Pacific", "ethan_roswell");
                         INSERT into Shows
-                        values("Fun Facts", "2018-10-13 13:00:00", "Sahara", "benjamin_rao");                       
+                        values("Fun Facts", "2018-10-13 13:00:00", "Sahara", "benjamin_rao");
                         INSERT into Shows
-                        values("Climbing", "2018-10-13 17:00:00", "Mountainous", "benjamin_rao");                        
+                        values("Climbing", "2018-10-13 17:00:00", "Mountainous", "benjamin_rao");
                        INSERT into Shows
-                        values("Flight of the Birds", "2018-10-14 14:00:00", "Birds", "ethan_roswell");                       
+                        values("Flight of the Birds", "2018-10-14 14:00:00", "Birds", "ethan_roswell");
                         INSERT into Shows
                         values("Bald Eagle", "2018-10-15 14:00:00", "Birds", "ethan_roswell");
                         """
@@ -334,7 +334,7 @@ class Database:
 
     @classmethod
     def view_show_history(cls, username):
-        show_history_query = """Select Distinct s.ShowName as Name, s.Date_Time as Time, shows.LocatedAt as Exhibit 
+        show_history_query = """Select Distinct s.ShowName as Name, s.Date_Time as Time, shows.LocatedAt as Exhibit
                         From ShowVisits as s, Shows as shows where s.Visitor = %s and s.Date_Time = shows.Date_Time"""
         cls.cur.execute(show_history_query, username)
         result = cls.cur.fetchall()
@@ -554,12 +554,12 @@ def animal_details():
 
 @app.route('/StaffSearchAnimals')
 def search_animals():
-    return render_template("TestPage.html")
+    return render_template("./StaffTemplates/StaffSearchAnimals.html")
 
 
 @app.route('/StaffViewShows')
 def staff_view_shows():
-    return render_template("TestPage.html")
+    return render_template("./StaffTemplates/StaffViewShows.html")
 
 
 #
