@@ -1,19 +1,38 @@
 <html>
   <head>
     <title> Animals </title>
+    <script type="text/javascript">
+      function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("animalTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <h2 class="ZooHeading"> Atlanta Zoo </h2>
     <h3 class="SiteHeading"> Animals </h3>
+    <a href="./StaffTemplates/AnimalDetail.html">View Animal Details</a>
     <form class="Animals-Search">
-      <input type="text">
-      <input type="text">
-      <input type="text">
-      <input type="text">
-      <input type="text">
-      <input type="text">
+      <input id="searchInput" type="text">
     </form>
-    <button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
+    <button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="myFunction()">Search</button>
     <table class="data-table">
       <thead>
         <tr>
@@ -24,7 +43,7 @@
           <th>Type</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="animalTable">
          {% for row in rows %}
     <tr>
         <td>{{ row.Name }}</td>
@@ -36,6 +55,5 @@
     {% endfor %}
       </tbody>
     </table>
-    <button id="delete_animal_btn" class="btn btn-lg btn-primary btn-block" type="button">Delete Animal</button>
   </body>
 </html>
