@@ -5,7 +5,7 @@
       function myFunction() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
-        var x;
+        var x, cur_td;
         input = document.getElementById("searchInput");
         filter = input.value.toUpperCase();
         table = document.getElementById("animalTable");
@@ -13,10 +13,11 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[0];
+          td = tr[i].getElementsByTagName("td");
           x = 0;
-          if (td) {
-            txtValue = td.textContent || td.innerText;
+          for (i=0, i < td.length; i++){
+            cur_td = td[i];
+            txtValue = cur_td.textContent || cur_td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
               x = 1;
             }
@@ -33,7 +34,6 @@
   <body>
     <h2 class="ZooHeading"> Atlanta Zoo </h2>
     <h3 class="SiteHeading"> Animals </h3>
-    <a href="./StaffTemplates/AnimalDetail.html">View Animal Details</a>
     <form class="Animals-Search">
       <input id="searchInput" type="text">
     </form>
