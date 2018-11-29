@@ -16,10 +16,14 @@
         <input type="text">
         <input type="text"> 
         <input type="text">
-        <select>
+        <div class="unselected-field" style="display: inline-block;" id="Water">
+          <label>Water Feature:<select id="Water" name="Water Feature:"> <!-- I kind of like the title being tied to this-->
+            <option selected disabled>Choose one</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
-        </select>  
+            </select>
+          </label>
+        </div>     
       </div>
     </form>
     <button id="search_exhibit_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
