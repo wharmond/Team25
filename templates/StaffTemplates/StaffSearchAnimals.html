@@ -31,19 +31,26 @@
     <form class="Animals-Search">
       <input type="text">
       <input type="text">
-      <input type="text">
+      <select>
+        <option selected disabled>Choose one</option>
+        <option value="Pacific">Pacific</option>
+        <option value="Jungle">Jungle</option>
+        <option value="Sahara">Sahara</option>
+        <option value="Mountainous">Mountainous</option>
+        <option value="Birds">Birds</option>
+      </select>  
       <input type="text">
       <div class="unselected-field" style="display: inline-block;" id="Water">
-        <select>
-            <option selected disabled>Choose one</option>
-            <option value="Mammal">Mammal</option>
-            <option value="Bird">Bird</option>
-            <option value="Amphibian">Amphibian</option>
-            <option value="Reptile">Reptile</option>
-            <option value="Fish">Fish</option>
-            <option value="Invertebrate">Invertevbrate</option>
-            </select>
-        </div>
+      <select>
+          <option selected disabled>Choose one</option>
+          <option value="Mammal">Mammal</option>
+          <option value="Bird">Bird</option>
+          <option value="Amphibian">Amphibian</option>
+          <option value="Reptile">Reptile</option>
+          <option value="Fish">Fish</option>
+          <option value="Invertebrate">Invertevbrate</option>
+       </select>
+       </div>
     </form>
     <button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="myFunction()">Search</button>
     <table class="data-table">
