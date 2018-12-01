@@ -306,6 +306,20 @@ class Database:
         return result
 
     @classmethod
+    def exhibit_details_info(cls, exhibit_name):
+
+        print("exhibit name for exhibit details: " + exhibit_name)
+
+        exhibit_detail_query = (
+            "SELECT Distinct e.ExhibitName, e.WaterFeature, e.Size, count(a.Exhibit = e.ExhibitName ) \n"
+            "        as NumAnimals FROM Exhibits as e left join Animals as a on a.Exhibit = e.ExhibitName \n"
+            "        where e.ExhibitName= %s   group by e.Size, e.ExhibitName, e.WaterFeature ")
+        cls.cur.execute(exhibit_detail_query, exhibit_name)
+        result = cls.cur.fetchone()
+        print("Exhibit Detail info result: " + str(result))
+        return result
+
+    @classmethod
     def view_all_animals(cls):
         search_animals_query = (
             "SELECT DISTINCT a.AnimalName as Name, a.Species, a.Exhibit, a.Age, a.Type_of_Animal  \n"
@@ -340,6 +354,15 @@ class Database:
         result = cls.cur.fetchall()
         print("view show history result: " + str(result))
         return result
+
+    @classmethod
+    def get_exhibit_animals(cls, exhibit_name):
+        exhibit_animals_query = "SELECT AnimalName as Name, Species FROM Animals WHERE Exhibit= %s"
+        cls.cur.execute(exhibit_animals_query, exhibit_name)
+        result = cls.cur.fetchall()
+        print("exhibit animals query: " + str(result))
+        return result;
+
 
     #
     #
@@ -536,14 +559,21 @@ def search_for_animals():
     return render_template("./VisitorTemplates/searchAnimals.html", rows=rows)
 
 
-@app.route('/exhibitDetail')
+@app.route('/ExhibitDetail', methods=['POST'])
 def exhibit_detail():
-    return render_template("TestPage.html")
+    print("request from exhibit detail: " + str(request.json))
+    exhibit_name = str(request.json['exhibit'])
+    exhibit_name = exhibit_name.replace(" ", "").replace("\n", "")
+    print("new exhibit name replaced: " + exhibit_name)
+
+    exhibit_rows = Database.exhibit_details_info(exhibit_name)
+    exhibit_animals_row = Database.get_exhibit_animals(exhibit_name)
+    return render_template("./VisitorTemplates/ExhibitDetail.html", exhibit=exhibit_rows, animals_row=exhibit_animals_row)
 
 
-@app.route('/animalDetails')
+@app.route('/AnimalDetails')
 def animal_details():
-    return render_template("TestPage.html")
+    return render_template('./VisitorTemplates/AnimalDetail.html')
 
 
 #
@@ -570,29 +600,21 @@ def staff_view_shows():
 #
 #
 
-
 @app.route('/viewVisitors')
 def view_visitors():
-    return render_template("TestPage.html")
+    return render_template('./AdminTemplates/viewVisitors.html')
 
 
 @app.route('/viewStaff')
 def view_staff():
-    return render_template("TestPage.html")
+    return render_template('./AdminTemplates/viewStaff.html')
 
 
 @app.route('/AdminViewShows')
 def admin_view_shows():
     rows = Database.search_shows()
-    #inject SQL data into jinja html template
-    return render_template('./AdminTemplates/viewShows.html', rows=rows)
-
-
-@app.route('/AdminViewAnimals')
-def admin_view_animals():
-    rows = Database.view_all_animals()
     # inject SQL data into jinja html template
-    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
+    return render_template('./AdminTemplates/viewShows.html', rows=rows)
 
 
 @app.route('/addShow')
@@ -607,6 +629,20 @@ def add_show_query():
     date_time = request.form['dateTime']
     located_at = request.form['locatedAt']
     hosted_by = request.form['hostedBy']
+
+
+@app.route('/AdminViewAnimals')
+def admin_view_animals():
+    rows = Database.view_all_animals()
+    # inject SQL data into jinja html template
+    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
+
+
+@app.route('/AddAnimalsPage')
+def admin_add_animals():
+    rows = Database.view_all_animals()
+    # inject SQL data into jinja html template
+    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
 
 
 @app.route('/addAnimal', methods=['POST'])

@@ -8,18 +8,26 @@
     <form class="Animals-Search">
       <input type="text">
       <input type="text">
-      <input type="text">
-      <input type="text">
+      <select>
+        <option selected disabled>Choose one</option>
+        <option value="Pacific">Pacific</option>
+        <option value="Jungle">Jungle</option>
+        <option value="Sahara">Sahara</option>
+        <option value="Mountainous">Mountainous</option>
+        <option value="Birds">Birds</option>
+      </select>  
+      Min Age of Animal:<input type="number" id="min_age" name="min_age" min="0" value="0">
+      Max Age:<input type="number" id="max_age" name="max_age" min="0" max="9999999">
       <div class="unselected-field" style="display: inline-block;" id="Water">
-        <select>
-          <option selected disabled>Choose one</option>
-          <option value="Mammal">Mammal</option>
-          <option value="Bird">Bird</option>
-          <option value="Amphibian">Amphibian</option>
-          <option value="Reptile">Reptile</option>
-          <option value="Fish">Fish</option>
-          <option value="Invertebrate">Invertevbrate</option>
-        </select>  
+      <select>
+        <option selected disabled>Choose one</option>
+        <option value="Mammal">Mammal</option>
+        <option value="Bird">Bird</option>
+        <option value="Amphibian">Amphibian</option>
+        <option value="Reptile">Reptile</option>
+        <option value="Fish">Fish</option>
+        <option value="Invertebrate">Invertevbrate</option>
+      </select>  
       </div>  
     </form>
     <button id="search_animal_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>

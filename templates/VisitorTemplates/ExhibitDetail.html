@@ -1,26 +1,33 @@
 <html>
-  <head>
+<head>
     <title> Exhibit Detail </title>
-  </head>
-  <body>
-    <h2 class="ZooHeading"> Atlanta Zoo </h2>
-    <h3 class="SiteHeading"> Exhibit Detail </h3>
-    <button id="log_visit_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Visit</button>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Species</th>
-        </tr>
-      </thead>
-      <tbody>
-         {% for row in rows %}
+</head>
+<body>
+<h2 class="ZooHeading"> Atlanta Zoo </h2>
+<h3 class="SiteHeading"> Exhibit Detail </h3>
+<p>Name: {{ exhibit.ExhibitName }} </p>
+<p>Size: {{ exhibit.Size }} </p>
+<p>Number of Animals: {{ exhibit.NumAnimals }}</p>
+<p>Water Feature: {{ exhibit.WaterFeature }}</p>
+<button id="log_visit_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Visit</button>
+<table class="data-table">
+    <thead>
     <tr>
-        <td>{{ row.Name }}</td>
-        <td>{{ row.Species }}</td>
+        <th>Name</th>
+        <th>Species</th>
     </tr>
+    </thead>
+    <tbody>
+    {% for row in animals_row %}
+        <tr>
+            <td>{{ row.Name }}</td>
+            <td>{{ row.Species }}</td>
+        </tr>
     {% endfor %}
-      </tbody>
-    </table>
-  </body>
+    </tbody>
+</table>
+<button id="back_btn" class="btn btn-lg btn-primary btn-block" type="button"
+        onclick="window.location.href='/searchExhibits'">Go Back
+</button>
+</body>
 </html>
