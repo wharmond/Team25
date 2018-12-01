@@ -1,54 +1,71 @@
 <html>
-  <head>
+<head>
     <title> Search for Exhibits </title>
-  </head>
-  <body>
-    <h2 class="ZooHeading"> Atlanta Zoo </h2>
-    <h3 class="SiteHeading"> Exhibits </h3>
-    <form class="Exhibit-Search">
-      <div id="form-fields">
-          <span>Name</span>
-          <span>Size (ft^2)</span>
-          <span>Number of Animals</span>
-          <span>Water Features (Y/N)</span>
-      </div>
-      <div id="form-inputs">
-        <input type="text">
-        <input type="text"> 
-        <input type="text">
+</head>
+<body>
+<h2 class="ZooHeading"> Atlanta Zoo </h2>
+<h3 class="SiteHeading"> Exhibits </h3>
+<form class="Exhibit-Search">
+    <div id="form-fields">
+    </div>
+    <div id="form-inputs">
+        Name:<input type="text">
+        Min Size of Exhibit:<input type="number" id="min_size_exhibit" name="min_size" min="0" value="0">
+        Max Size:<input type="number" id="max_size_exhibit" name="max_size" min="0" max="9999999">
+        Min Number of animals:<input type="number" id="min_num_animals" name="min_animals" min="0" value="0">
+        Max Number: <input type="number" id="max_num_animals" name="max_animals" min="0" max="9999999">
+        Water Feature Y/N:
         <div class="unselected-field" style="display: inline-block;" id="Water">
-          <select>  
-            <option selected disabled>Choose one</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>     
-      </div>
-    </form>
-    <button id="search_exhibit_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Size</th>
-          <th>NumAnimals</th>
-          <th>Water</th>
-        </tr>
-      </thead>
-      <tbody>
-         {% for row in rows %}
+            <select>
+                <option selected disabled>Choose one</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+    </div>
+</form>
+<button id="search_exhibit_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
+<table class="data-table">
+    <thead>
     <tr>
-        <td>{{ row.ExhibitName }}</td>
-        <td>{{ row.Size }}</td>
-        <td>{{ row.NumAnimals }}</td>
-        {% if row.WaterFeature == 1 %}
-            <td>{{ "Yes" }}</td>
-        {% else %}
-            <td>{{ "No" }}</td>
-        {% endif %}
+        <th>Name</th>
+        <th>Size</th>
+        <th>NumAnimals</th>
+        <th>Water</th>
     </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>
+                <a href="\ExhibitDetail" onclick="getExhibitDetail()">
+                    {{ row.ExhibitName }}</a>
+            </td>
+            <td>{{ row.Size }}</td>
+            <td>{{ row.NumAnimals }}</td>
+            {% if row.WaterFeature == 1 %}
+                <td>{{ "Yes" }}</td>
+            {% else %}
+                <td>{{ "No" }}</td>
+            {% endif %}
+        </tr>
     {% endfor %}
-      </tbody>
-    </table>
-  </body>
+    </tbody>
+</table>
+</body>
+
+<script type="text/javascript">
+    $(function () {
+
+    });
+
+    function getExhibitDetail() {
+
+        var Something = $(this).closest('tr').find('td:eq(0)').text();
+        console.log(Something);
+
+
+    }
+
+</script>
 </html>

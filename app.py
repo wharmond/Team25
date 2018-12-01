@@ -536,14 +536,14 @@ def search_for_animals():
     return render_template("./VisitorTemplates/searchAnimals.html", rows=rows)
 
 
-@app.route('/exhibitDetail')
+@app.route('/ExhibitDetail')
 def exhibit_detail():
-    return render_template("TestPage.html")
+    return render_template("./VisitorTemplates/ExhibitDetail.html")
 
 
-@app.route('/animalDetails')
+@app.route('/AnimalDetails')
 def animal_details():
-    return render_template("TestPage.html")
+    return render_template('./VisitorTemplates/AnimalDetail.html')
 
 
 #
@@ -573,26 +573,19 @@ def staff_view_shows():
 
 @app.route('/viewVisitors')
 def view_visitors():
-    return render_template("TestPage.html")
+    return render_template('./AdminTemplates/viewVisitors.html')
 
 
 @app.route('/viewStaff')
 def view_staff():
-    return render_template("TestPage.html")
+    return render_template('./AdminTemplates/viewStaff.html')
 
 
 @app.route('/AdminViewShows')
 def admin_view_shows():
     rows = Database.search_shows()
-    #inject SQL data into jinja html template
-    return render_template('./AdminTemplates/viewShows.html', rows=rows)
-
-
-@app.route('/AdminViewAnimals')
-def admin_view_animals():
-    rows = Database.view_all_animals()
     # inject SQL data into jinja html template
-    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
+    return render_template('./AdminTemplates/viewShows.html', rows=rows)
 
 
 @app.route('/addShow')
@@ -607,6 +600,20 @@ def add_show_query():
     date_time = request.form['dateTime']
     located_at = request.form['locatedAt']
     hosted_by = request.form['hostedBy']
+
+
+@app.route('/AdminViewAnimals')
+def admin_view_animals():
+    rows = Database.view_all_animals()
+    # inject SQL data into jinja html template
+    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
+
+
+@app.route('/AddAnimalsPage')
+def admin_add_animals():
+    rows = Database.view_all_animals()
+    # inject SQL data into jinja html template
+    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
 
 
 @app.route('/addAnimal', methods=['POST'])

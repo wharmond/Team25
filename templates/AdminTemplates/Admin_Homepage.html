@@ -17,6 +17,7 @@
 <button id="view_staff_btn" class="btn btn-lg btn-primary btn-block" type="button">View Staff</button>
 <button id="view_shows_btn" class="btn btn-lg btn-primary btn-block" type="button">View Shows</button>
 <button id="view_animals_btn" class="btn btn-lg btn-primary btn-block" type="button">View Animals</button>
+<button id="add_animals_btn" class="btn btn-lg btn-primary btn-block" type="button">Add Animals</button>
 <button id="add_show_btn" class="btn btn-lg btn-primary btn-block" type="button">Add Show</button>
 <button id="log_out_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Out</button>
 </body>
@@ -38,6 +39,10 @@
 
         $('#view_animals_btn').click(function () {
             window.location.href = "/AdminViewAnimals";
+        });
+
+        $('#add_animals_btn').click(function () {
+            window.location.href = "/AddAnimals";
         });
 
         $('#add_show_btn').click(function () {
