@@ -12,9 +12,22 @@
           "Add Show"
         </h2>
         <input class="form-control" name="showName" placeholder="Show Name" type="text" id= "showName"/>
-        <input class="form-control" name="dateTime" placeholder="Date & Times" type="text" id= "dateTime"/>
-        <input class="form-control" name="locatedAt" placeholder="Location" type="text" id= "locatedAt"/>
-        <input class="form-control" name="hostedBy" placeholder="Host" type="text" id= "hostedBy"/>
+        <select>
+            <option selected disabled>Exhibit</option>
+            <option value="Pacific">Pacific</option>
+            <option value="Jungle">Jungle</option>
+            <option value="Sahara">Sahara</option>
+            <option value="Mountainous">Mountainous</option>
+            <option value="Birds">Birds</option>
+        </select>
+        <select>
+            <option selected disabled>Staff Member</option>
+            <option value="Martha_Johnson">Martha_Johnson</option>
+            <option value="Benjamin_Rao">Benjamin_Rao</option>
+            <option value="Ethan_Roswell">Ethan_Roswell</option>
+        </select>      
+        <input class="form-control" name="date" placeholder="Date" type="date" id= "date"/>
+        <input class="form-control" name="time" placeholder="Time" type="time" id= "time"/>
 
         <button id="addShowBtn" class="btn btn-primary btn-block" type="button"> Create Show </button>
       </form>

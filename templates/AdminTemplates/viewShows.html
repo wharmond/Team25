@@ -43,8 +43,18 @@
     <h2 class="ZooHeading"> Atlanta Zoo </h2>
     <h3 class="SiteHeading"> Shows </h3>
     <form class="Shows-Search">
-      <p>Name: <input id="showName" type="text"></p>
-      <p>Exhibit: <input id="showExhibit" type="text"></p>
+    <p>Name: <input id="name" type="text"></p>  
+    <p>
+        Exhibit: 
+        <select>
+        <option selected disabled>Choose one</option>
+        <option value="Pacific">Pacific</option>
+        <option value="Jungle">Jungle</option>
+        <option value="Sahara">Sahara</option>
+        <option value="Mountainous">Mountainous</option>
+        <option value="Birds">Birds</option>
+        </select>  
+      </p>
       <p>Date: <input id="showDate" type="date"></p>
     </form>
     <button id="search_shows_btn" onclick="searchTable()" btn btn-lg btn-primary btn-block" type="button">Search</button>
