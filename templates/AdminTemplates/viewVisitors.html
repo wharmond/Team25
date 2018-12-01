@@ -5,9 +5,11 @@
   <body>
     <h2 class="ZooHeading"> Atlanta Zoo </h2>
     <h3 class="SiteHeading"> Visitor </h3>
+    <form action="../deleteAnimal" method="post">
     <table class="data-table">
       <thead>
         <tr>
+          <th></th>
           <th>Username</th>
           <th>Email</th>
         </tr>
@@ -15,6 +17,7 @@
       <tbody>
          {% for row in rows %}
     <tr>
+        <td><input name={{ row.Username }} type="checkbox"></td>
         <td>{{ row.Username }}</td>
         <td>{{ row.Email }}</td>
     </tr>
