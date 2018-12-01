@@ -570,7 +570,6 @@ def staff_view_shows():
 #
 #
 
-
 @app.route('/viewVisitors')
 def view_visitors():
     return render_template("TestPage.html")
