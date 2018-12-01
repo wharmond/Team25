@@ -554,12 +554,14 @@ def animal_details():
 
 @app.route('/StaffSearchAnimals')
 def search_animals():
-    return render_template("./StaffTemplates/StaffSearchAnimals.html")
+    rows = Database.view_all_animals()
+    return render_template("./StaffTemplates/StaffSearchAnimals.html", rows=rows)
 
 
 @app.route('/StaffViewShows')
 def staff_view_shows():
-    return render_template("./StaffTemplates/StaffViewShows.html")
+    rows = Database.search_shows()
+    return render_template("./StaffTemplates/StaffViewShows.html", rows=rows)
 
 
 #
