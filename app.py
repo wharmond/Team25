@@ -391,6 +391,21 @@ class Database:
     def add_shows(cls):
         add_show_query = """"""
 
+    @classmethod
+    def search_Visitors(cls):
+        get_visitor_query = """SELECT s.Username as Username, s.Email as Email FROM Users as s WHERE s.UserType='visitor'"""
+        cls.cur.execute(get_visitor_query)
+        result = cls.cur.fetchall()
+        print("search staff result: " + str(result))
+        return result
+
+    @classmethod
+    def search_Staff(cls):
+        get_staff_query = """SELECT s.Username as Username, s.Email as Email FROM Users as s WHERE s.UserType='staff'"""
+        cls.cur.execute(get_staff_query)
+        result = cls.cur.fetchall()
+        print("search staff result: " + str(result))
+        return result
 
 #
 #
@@ -602,12 +617,14 @@ def staff_view_shows():
 
 @app.route('/viewVisitors')
 def view_visitors():
-    return render_template('./AdminTemplates/viewVisitors.html')
+    rows = Database.search_Visitors()
+    return render_template('./AdminTemplates/viewVisitors.html', rows=rows)
 
 
 @app.route('/viewStaff')
 def view_staff():
-    return render_template('./AdminTemplates/viewStaff.html')
+    rows = Database.search_Staff()
+    return render_template('./AdminTemplates/viewStaff.html', rows=rows)
 
 
 @app.route('/AdminViewShows')

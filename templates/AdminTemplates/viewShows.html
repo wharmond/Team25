@@ -3,23 +3,23 @@
     <title> Shows </title>
     <script type="text/javascript">
       function searchTable() {
-        var showName, showExhibit, showDate, table, tr;
+        var showName, showExhibit, showDate, table, tr, y;
         showName = document.getElementById("showName").value;
         showExhibit = document.getElementById("showExhibit").value;
         showDate = document.getElementById("showDate").value;
         table = document.getElementById("showsTable");
         tr = table.getElementsByTagName("tr");
+        y = 0;
 
         // Check if inputs have values and run appropriate script
         if (showName != "") {
           nameFilter(showName, tr, 0);
+          y = 1;
         }
-        if (showExhibit != "") {
-          nameFilter(showExhibit, tr, 1);
-        }
+        nameFilter(showExhibit, tr, 1, y);
       }
 
-      function nameFilter(input, tr, k) {
+      function nameFilter(input, tr, k, y) {
         // Declare variables
         var td, i, txtValue;
         filter = input.toUpperCase();
@@ -30,7 +30,7 @@
           if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
+                tr[i].style.display = "";
             } else {
               tr[i].style.display = "none";
             }
@@ -48,7 +48,7 @@
         Exhibit: 
         <select id="showExhibit">
         <option selected disabled>Choose one</option>
-        <option value="All">All Exhibits</option>
+        <option value="">All Exhibits</option>
         <option value="Pacific">Pacific</option>
         <option value="Jungle">Jungle</option>
         <option value="Sahara">Sahara</option>
