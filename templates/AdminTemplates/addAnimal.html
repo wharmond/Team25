@@ -14,9 +14,24 @@
         </h2>
         <input class="form-control" name="animalName" placeholder="Animal Name" type="text" id="animalName"/>
         <input class="form-control" name="species" placeholder="Species" type="text" id="species"/>
-        <input class="form-control" name="exhibit" placeholder="Exhibit" type="text" id="exhibit"/>
+        <select>
+            <option selected disabled>Exhibit</option>
+            <option value="Pacific">Pacific</option>
+            <option value="Jungle">Jungle</option>
+            <option value="Sahara">Sahara</option>
+            <option value="Mountainous">Mountainous</option>
+            <option value="Birds">Birds</option>
+        </select>    
         <input class="form-control" name="age" placeholder="Age" type="number" id="age"/>
-        <input class="form-control" name="type" placeholder="Animal Type" type="text" id="type"/>
+        <select>
+            <option selected disabled>Animal Type</option>
+            <option value="Mammal">Mammal</option>
+            <option value="Bird">Bird</option>
+            <option value="Amphibian">Amphibian</option>
+            <option value="Reptile">Reptile</option>
+            <option value="Fish">Fish</option>
+            <option value="Invertebrate">Invertebrate</option>
+        </select>    
 
         <button id="addAnimalBtn" class="btn btn-primary btn-block" type="button" onClick="AnimalSubmit()"> Add Animal
         </button>
