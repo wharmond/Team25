@@ -51,6 +51,7 @@
     <table id="showsTable" class="data-table">
       <thead>
         <tr>
+          <th></th>
           <th>Name</th>
           <th>Exhibit</th>
           <th>Date</th>
@@ -59,6 +60,7 @@
       <tbody>
          {% for row in rows %}
     <tr>
+        <td> <input id="deleteMe" type="checkbox"> </td>
         <td>{{ row.Name }}</td>
         <td>{{ row.Exhibit }}</td>
         <td>{{ row.Date }}</td>
