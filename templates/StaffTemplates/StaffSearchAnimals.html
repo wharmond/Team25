@@ -29,7 +29,21 @@
     <h2 class="ZooHeading"> Atlanta Zoo </h2>
     <h3 class="SiteHeading"> Animals </h3>
     <form class="Animals-Search">
-      <input id="searchInput" type="text">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+      <div class="unselected-field" style="display: inline-block;" id="Water">
+        <select>
+            <option selected disabled>Choose one</option>
+            <option value="Mammal">Mammal</option>
+            <option value="Bird">Bird</option>
+            <option value="Amphibian">Amphibian</option>
+            <option value="Reptile">Reptile</option>
+            <option value="Fish">Fish</option>
+            <option value="Invertebrate">Invertevbrate</option>
+            </select>
+        </div>
     </form>
     <button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="myFunction()">Search</button>
     <table class="data-table">
