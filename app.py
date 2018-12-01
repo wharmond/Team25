@@ -422,6 +422,20 @@ class Database:
         print("search staff result: " + str(result))
         return result
 
+    @classmethod
+    def search_staff(cls, username):
+    try:
+        delete_user_query = """DELETE FROM Users as s WHERE s.Username = %s"""
+        cls.cur.execute(delete_user_query, username)
+        result = cls.cur.fetchall()
+        print("delete user result: " + str(result))
+        return 1
+
+    except Exception as e:
+        print("Exception occurred:{}".format(e))
+        return 0
+
+
 #
 #
 # # # # # # # # # # # # Login/Registration Pages & Validation Server Scripts Below # # # # # # # # # # # #
@@ -697,9 +711,10 @@ def add_animal_query():
 
 @app.route('/deleteVisitor', methods=['POST'])
 def delete_animal_query():
-    print("delte_animal Request Received from Admin")
-    username = request.form['user_to_delete']
-    print("Username to be deleted: " & username)
+    print("delete animal Request Received from Admin")
+    username = request.form['user']
+    print("Username to be deleted: " + username)
+    return json.dumps({'status': 'OK'})
 
 #
 #

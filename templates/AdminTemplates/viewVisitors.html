@@ -6,9 +6,9 @@
 
     function deleteVisitor() {
 
-        var username = $('#user_to_delete').find(":selected").val();
-
-        if (username.length !== 0) {
+        var user = $('#user').find(":selected").val();
+        alert(user);
+        if (user.length !== 0) {
             $.ajax({
                 url: '/deleteVisitor',
                 data: $('form').serialize(),
@@ -16,12 +16,12 @@
                 success: function (response) {
                     var obj = JSON.parse(response);
                     if (obj.status === 'OK') {
-                        alert("User " + username + " successfully deleted");
+                        alert("User " + user + " successfully deleted");
                         //refresh the page to update table with added animal
                         updatePage();
                     }
                     else {
-                        alert("Error in deleting User" + username);
+                        alert("Error in deleting User" + user);
                     }
                 },
                 error: function (error) {
@@ -34,7 +34,7 @@
     }
 
     function updatePage() {
-        window.location.href = "/ViewVisitors";
+        window.location.href = "/viewVisitors";
     }
 
 </script>
@@ -61,14 +61,14 @@
     </table>
     <div>
       <form action="../deleteAnimal" method="post">>
-        <select id="user_to_delete">
+        <select class="form-control" name="user" id="user">
         {% for row in rows %}
           <option value={{ row.Username }}>
             {{ row.Username }}
           </option>
         {% endfor %}
         </select>
-        <button id="delete_visitor_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="deleteVisitor()">
+        <button id="delete-visitor-btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="deleteVisitor()">
           Delete Visitor
         </button>
       </form>
