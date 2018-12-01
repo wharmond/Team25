@@ -695,10 +695,11 @@ def add_animal_query():
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
-@app.route('/deleteAnimal', methods=['POST'])
+@app.route('/deleteVisitor', methods=['POST'])
 def delete_animal_query():
     print("delte_animal Request Received from Admin")
-    username = request.form['username']
+    username = request.form['user_to_delete']
+    print("Username to be deleted: " & username)
 
 #
 #
