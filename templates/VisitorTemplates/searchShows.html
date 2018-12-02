@@ -14,30 +14,33 @@
             color: #FFF;
         }</style>
      <script type="text/javascript">
+      $(document).ready(function () {
+        $("#searchBox").keyup(myFunction);
+        });
+
       function myFunction() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
-        input = [document.getElementById("searchInput1").value.toUpperCase(),
-                 document.getElementById("searchInput2").value.toUpperCase(),
-                 document.getElementById("searchInput3").value.toUpperCase()];
+        input = document.getElementById("searchBox").value.toUpperCase();
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
-        alert("Filtering results");
-        // for (j = 0; j < input.length; j++){
-            filter = input[1];
+        // alert("Filtering results");
+        for (i = 0; i < tr.length; i++ ){
+            filter = input;
             // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-              td = tr[i].getElementsByTagName("td")[1];
+            for (j = 0; j < 3; j++) {
+              td = tr[i].getElementsByTagName("td")[j];
               if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
                   tr[i].style.display = "";
+                  break;s
                 } else {
                   tr[i].style.display = "none";
                 }
               }
             }
-        // }
+        }
       }
     function sortMyTable(n) {
       var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -100,7 +103,8 @@
 <h2 class="ZooHeading"> Atlanta Zoo </h2>
 <h3 class="SiteHeading"> Shows </h3>
 <form class="Shows-Search">
-    Name: <input type="text" id="searchInput1">
+    Search: <input type="text" id="searchBox">
+<!--    Name: <input type="text" id="searchInput1">
     Exhibit: <select id="searchInput2">
                 <option value="All">All Exhibits</option>
                 <option value="Pacific">Pacific</option>
@@ -110,7 +114,7 @@
                 <option value="Birds">Birds</option>
             </select>
     <input type="date" name="date" id="searchInput3">
-    <button id="reset-search" onclick="myFunction()" type="reset" value="reset"> Reset </button>
+    <button id="reset-search" onclick="myFunction()" type="reset" value="reset"> Reset </button>-->
 </form>
 <button id="search_shows_btn" onclick="myFunction()" class="btn btn-lg btn-primary btn-block" type="button">
     Search
