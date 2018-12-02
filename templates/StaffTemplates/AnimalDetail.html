@@ -116,25 +116,32 @@
                 $("#logging_info").text("Successfully added Note");
                 var obj = JSON.parse(response);
 
-                var refresh_page = {
-                    'animal': obj.animal_name,
-                    'species': obj.animal_species
+                if (obj.status === 'OK') {
+
+                    var refresh_page = {
+                        'animal': obj.animal_name,
+                        'species': obj.animal_species
+                    };
+
+                    $.ajax({
+                        url: '/AnimalCare',
+                        type: 'POST',
+                        contentType: "application/json",
+                        data: JSON.stringify(refresh_page),
+                        success: function (response) {
+                            document.open();
+
+                            setTimeout(document.write(response), 5000);
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                } else {
+
+                    $("#logging_info").text("Error adding Note,  make sure animal Exists (species and unique name)");
+
                 }
-
-                $.ajax({
-                    url: '/AnimalCare',
-                    type: 'POST',
-                    contentType: "application/json",
-                    data: JSON.stringify(refresh_page),
-                    success: function (response) {
-                        document.open();
-
-                        setTimeout(document.write(response), 5000);
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
             },
             error: function (error) {
                 $("#logging_info").text("Error adding Note, make sure animal Exists (species and unique name");

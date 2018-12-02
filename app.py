@@ -706,8 +706,6 @@ def log_show_visit():
         username = "xavier_swenson"
 
     show_name = str(request.json['show_name'])
-    exhibit = str(request.json['exhibit'])
-    exhibit = exhibit.replace(" ", "").replace("\n", "")
     show_date = str(request.json['date_time'])
 
     print("log Show information before query: " + show_name + ", " + show_date + ", " + username)
@@ -776,7 +774,7 @@ def log_exhibit_visit():
 def animal_details():
     print("request json for Animal Details: " + str(request.json))
     animal_name = str(request.json['animal'])
-    animal_name = animal_name.replace(" ", "").replace("\n", "")
+    animal_name = animal_name.strip().replace("\n", "")
     animal_species = str(request.json['species'])
     print("animal_name for animal Details: " + animal_name + ", species: " + animal_species)
     animal_row = Database.get_animal_details(animal_name, animal_species)
@@ -805,7 +803,7 @@ def staff_view_shows():
 def render_animal_care():
     print("request json for Animal Care: " + str(request.json))
     animal_name = str(request.json['animal'])
-    animal_name = animal_name.replace(" ", "").replace("\n", "")
+    animal_name = animal_name.strip().replace("\n", "")
     animal_species = str(request.json['species'])
 
     animal_data = Database.get_animal_details(animal_name, animal_species)
@@ -826,9 +824,9 @@ def log_staff_note():
         username = "staff"
 
     animal_name = str(request.json['animal'])
-    animal_name = animal_name.replace("Name: ", "").replace(" ", "")
+    animal_name = animal_name.replace("Name: ", "")
     animal_species = str(request.json['species'])
-    animal_species = animal_species.replace("Species: ", "").replace(" ", "")
+    animal_species = animal_species.replace("Species: ", "")
     staff_note = str(request.json['staff_note'])
     print("final log staff note query vars: " + username + ", " + animal_name + ", " + animal_species + ", "
           + staff_note)
