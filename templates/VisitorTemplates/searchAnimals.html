@@ -110,7 +110,7 @@
     </div>
 </form>
 <button id="search_animal_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
-<table class="data-table" id="animal_table">
+<table class="data-table" id="myTable">
     <thead>
     <tr>
         <th onclick="sortMyTable(0)">Name</th>
@@ -120,7 +120,7 @@
         <th onclick="sortMyTable(4)">Type</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="animal_table">
     {% for row in rows %}
         <tr>
             <td>{{ row.Name }}</td>
