@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e6c1155-920d-4dd2-8613-2a2f652cccd5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/js/sortTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,11 +42,56 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+            <state relative-caret-position="403">
+              <caret line="81" column="13" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="81" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="30" column="78" selection-start-line="30" selection-start-column="78" selection-end-line="30" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="27" column="78" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="112" column="38" selection-start-line="112" selection-start-column="38" selection-end-line="112" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-192">
+              <caret line="89" column="9" lean-forward="true" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -109,15 +152,10 @@
       <list>
         <option value="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" />
         <option value="$PROJECT_DIR$/static/js/addAnimalScript.js" />
-        <option value="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" />
         <option value="$PROJECT_DIR$/templates/Login.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html" />
         <option value="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ddf0a379-d32f-4041-83ba-ccaa12950aa9/console_3.sql" />
         <option value="$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html" />
@@ -126,6 +164,11 @@
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/static/js/sortTables.js" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" />
+        <option value="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" />
       </list>
     </option>
   </component>
@@ -354,7 +397,28 @@
       <option name="project" value="LOCAL" />
       <updated>1543731888766</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* Sortable columns&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality">
+      <created>1543760476438</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1543760476438</updated>
+    </task>
+    <task id="LOCAL-00016" summary="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality">
+      <created>1543766851058</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1543766851058</updated>
+    </task>
+    <task id="LOCAL-00017" summary="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;Search For Animals:&#10;&#9;* search functionality">
+      <created>1543767024588</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1543767024588</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -371,8 +435,8 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49858356" visible="true" weight="0.13154362" />
-      <window_info id="Structure" order="2" sideWeight="0.50141644" side_tool="true" weight="0.13154362" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.71954674" visible="true" weight="0.13154362" />
+      <window_info id="Structure" order="2" sideWeight="0.28045326" side_tool="true" weight="0.13154362" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32857144" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50061053" side_tool="true" weight="0.32857144" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32857144" />
@@ -460,7 +524,9 @@
     <MESSAGE value="Exhibit Details has clickable exhibits and corresponding exhibit details page filled with exhibit info and the animals listed, log visits not implemented yet, clickable animal and sortable columns" />
     <MESSAGE value="Exhibit Details &amp; and Log Visits button and Animal Details pages all working, only missing &quot;sortable&quot; columns and search functionality" />
     <MESSAGE value="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* Sortable columns&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* Sortable columns&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality" />
+    <MESSAGE value="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality" />
+    <MESSAGE value="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;Search For Animals:&#10;&#9;* search functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;Search For Animals:&#10;&#9;* search functionality" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/SearchExhibits.html" />
@@ -524,13 +590,6 @@
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/core-scripting.rnc" />
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/globals.py" />
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/wrappers.py" />
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-44">
@@ -538,21 +597,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="69" column="72" lean-forward="true" selection-start-line="69" selection-start-column="72" selection-end-line="69" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/jupyterlab/build/main.bundle.js" />
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="92" column="74" lean-forward="true" selection-start-line="92" selection-start-column="74" selection-end-line="92" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -561,13 +606,6 @@
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ddf0a379-d32f-4041-83ba-ccaa12950aa9/console_3.sql" />
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/spyder/utils/help/js/jquery.js" />
     <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -611,23 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="274" column="24" lean-forward="true" selection-start-line="274" selection-start-column="24" selection-end-line="274" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addShow.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -652,10 +673,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="274" column="24" lean-forward="true" selection-start-line="274" selection-start-column="24" selection-end-line="274" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        <state relative-caret-position="403">
+          <caret line="81" column="13" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="81" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="30" column="78" selection-start-line="30" selection-start-column="78" selection-end-line="30" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="27" column="78" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="112" column="38" selection-start-line="112" selection-start-column="38" selection-end-line="112" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-192">
+          <caret line="89" column="9" lean-forward="true" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
         </state>
       </provider>
     </entry>
