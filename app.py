@@ -739,7 +739,6 @@ def delete_staff_query():
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
-
 #
 #
 # # # # # # # # # # # # Pages Common to Visitor & Staff # # # # # # # # # # # #
