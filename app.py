@@ -264,9 +264,9 @@ class Database:
         """
         print("register query provided parameters: " + username + ',' + password + "," + email + "," + user_type)
 
-        Register_query = "Insert into Users values (%s, %s, %s, %s)"
+        register_query = "Insert into Users values (%s, %s, %s, %s)"
         try:
-            result = cls.cur.execute(Register_query, (username, password, email, user_type))
+            result = cls.cur.execute(register_query, (username, password, email, user_type))
 
             print("Register Query returned: " + str(result))
             if result is not 0:
@@ -487,8 +487,7 @@ class Database:
                 Type_of_Animal = %s)"""
             cls.cur.execute(delete_animal_query, (animalname, species, exhibit, age, animaltype))
             result = cls.cur.fetchall()
-            print("add animal result: " + str(result))
-
+            print("delete animal result: " + str(result))
             return 1
 
         except Exception as e:
@@ -496,8 +495,17 @@ class Database:
             return 0
 
     @classmethod
-    def add_shows(cls):
-        add_show_query = """"""
+    def add_shows(cls, show_name, date_time, located_at, hosted_by):
+        try:
+            add_show_query = """INSERT INTO SHOWS VALUES (%s, %s, %s, %s)"""
+            cls.cur.execute(add_show_query, (show_name, date_time, located_at, hosted_by))
+            result = cls.cur.fetchall()
+            print("add show result: " + str(result))
+            return 1
+
+        except Exception as e:
+            print("Exception occurred:{}".format(e))
+            return 0
 
     @classmethod
     def search_visitors(cls):
@@ -852,11 +860,20 @@ def add_show():
 
 @app.route('/addShowValidation', methods=['POST'])
 def add_show_query():
-    print("add_show Request Recieved from Admin")
+    print("add_show Request Received from Admin")
     show_name = request.form['showName']
     date_time = request.form['dateTime']
     located_at = request.form['locatedAt']
     hosted_by = request.form['hostedBy']
+
+    result = Database.add_shows(show_name, date_time, located_at, hosted_by)
+
+    if result is not 0:
+        print("returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
 
 
 @app.route('/AdminViewAnimals')
