@@ -107,7 +107,9 @@
 </select>
     <input type="date" name="date" id="show_date_time">
 </form>
-<button id="search_shows_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
+<button id="search_shows_btn" onclick="myFunction()" class="btn btn-lg btn-primary btn-block" type="button">
+    Search
+</button>
 <table class="data-table" id="myTable">
     <thead>
     <tr>
@@ -129,7 +131,7 @@
     </tbody>
 </table>
 <button id="log_show_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Show</button>
-<p id="info">Click an Exhibit to see more details (*Note: JS is finicky, select row first then click exhibit name)</p>
+<p id="info">Click an Exhibit to see more details</p>
 <p id="show_info">Click on a row to Log a Show Visit</p>
 </body>
 
