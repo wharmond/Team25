@@ -317,6 +317,7 @@ class Database:
         cls.cur.execute(exhibit_detail_query, exhibit_name)
         result = cls.cur.fetchone()
         print("Exhibit Detail info result: " + str(result))
+
         return result
 
     @classmethod
@@ -327,6 +328,7 @@ class Database:
         cls.cur.execute(search_animals_query)
         result = cls.cur.fetchall()
         print("Search for animals result: " + str(result))
+
         return result
 
     @classmethod
@@ -335,7 +337,8 @@ class Database:
                                  "        ( partition by e.ExhibitName ) as \"Number of Visits\" from ExhibitVisits as e Where e.Visitor = %s""")
         cls.cur.execute(exhibit_history_query, username)
         result = cls.cur.fetchall()
-        print("Search for animals result: " + str(result))
+        print("View Exhibit History result: " + str(result))
+
         return result
 
     @classmethod
@@ -344,6 +347,7 @@ class Database:
         cls.cur.execute(get_shows_query)
         result = cls.cur.fetchall()
         print("search shows result: " + str(result))
+
         return result
 
     @classmethod
@@ -353,6 +357,7 @@ class Database:
         cls.cur.execute(show_history_query, username)
         result = cls.cur.fetchall()
         print("view show history result: " + str(result))
+
         return result
 
     @classmethod
@@ -361,8 +366,28 @@ class Database:
         cls.cur.execute(exhibit_animals_query, exhibit_name)
         result = cls.cur.fetchall()
         print("exhibit animals query: " + str(result))
-        return result;
 
+        return result
+
+    @classmethod
+    def log_exhibit_visit(cls, username, exhibit_name):
+        print("log exhibits vars provided: " + username + ", " + exhibit_name)
+        log_exhibit_query = """INSERT into ExhibitVisits values(%s, %s ,Default)"""
+        cls.cur.execute(log_exhibit_query, (username, exhibit_name))
+        result = cls.cur.fetchone()
+        print("log exhibit visit returned: " + str(result))
+
+        return result
+
+    @classmethod
+    def get_animal_details(cls, animal_name):
+        print("get animal details animal name provided: " + animal_name)
+        animal_details_query = "Select * From Animals where AnimalName = %s"
+        cls.cur.execute(animal_details_query, animal_name)
+        result = cls.cur.fetchone()
+        print("animal details returned: " + str(result))
+
+        return result
 
     #
     #
@@ -568,12 +593,34 @@ def exhibit_detail():
 
     exhibit_rows = Database.exhibit_details_info(exhibit_name)
     exhibit_animals_row = Database.get_exhibit_animals(exhibit_name)
-    return render_template("./VisitorTemplates/ExhibitDetail.html", exhibit=exhibit_rows, animals_row=exhibit_animals_row)
+    return render_template("./VisitorTemplates/ExhibitDetail.html", exhibit=exhibit_rows,
+                           animals_row=exhibit_animals_row)
 
 
-@app.route('/AnimalDetails')
+@app.route('/LogExhibitVisit', methods=['POST'])
+def log_exhibit_visit():
+    print("request json for log exhibit visit: " + str(request.json))
+
+    if 'username' in session:
+        username = session['username']
+    else:
+        # Use default username of xavier_swenson
+        username = "xavier_swenson"
+
+    exhibit_name = str(request.json['exhibit'])
+    exhibit_name = exhibit_name.replace("Name: ", "").replace(" ", "")
+    Database.log_exhibit_visit(username, exhibit_name)
+    return json.dumps({'status': 'OK'})
+
+
+@app.route('/AnimalDetails', methods=['POST'])
 def animal_details():
-    return render_template('./VisitorTemplates/AnimalDetail.html')
+    print("request json for Animal Details: " + str(request.json))
+    animal_name = str(request.json['animal'])
+    animal_name = animal_name.replace(" ", "").replace("\n", "")
+    print("animal_name for animal Details: " + animal_name)
+    animal_row = Database.get_animal_details(animal_name)
+    return render_template('./VisitorTemplates/AnimalDetail.html', animal=animal_row)
 
 
 #

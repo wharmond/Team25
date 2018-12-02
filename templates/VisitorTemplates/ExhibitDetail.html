@@ -1,16 +1,19 @@
 <html>
 <head>
     <title> Exhibit Detail </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 <h2 class="ZooHeading"> Atlanta Zoo </h2>
 <h3 class="SiteHeading"> Exhibit Detail </h3>
-<p>Name: {{ exhibit.ExhibitName }} </p>
+<p id="exhibit_name_p">Name: {{ exhibit.ExhibitName }} </p>
 <p>Size: {{ exhibit.Size }} </p>
 <p>Number of Animals: {{ exhibit.NumAnimals }}</p>
 <p>Water Feature: {{ exhibit.WaterFeature }}</p>
-<button id="log_visit_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Visit</button>
-<table class="data-table">
+<button id="log_visit_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="LogClick()">Log Visit
+</button>
+<p id="log_btn_success">Click Above to Log Visit to this Exhibit</p>
+<table class="data-table" id="animal_table">
     <thead>
     <tr>
         <th>Name</th>
@@ -20,7 +23,9 @@
     <tbody>
     {% for row in animals_row %}
         <tr>
-            <td>{{ row.Name }}</td>
+            <td>
+                <a id="animal_name_id" href="#">{{ row.Name }}</a>
+            </td>
             <td>{{ row.Species }}</td>
         </tr>
     {% endfor %}
@@ -30,4 +35,81 @@
         onclick="window.location.href='/searchExhibits'">Go Back
 </button>
 </body>
+
+<script type="text/javascript">
+
+
+    $('#animal_table tr').click(function () {
+        $("#log_btn_success").text("animal name clicked: " + $(this).closest('tr').find('td:eq(0)').text());
+
+        //JSON object containing exhibit name clicked
+        var animal = {
+            'animal': $(this).closest('tr').find('td:eq(0)').text()
+        };
+
+        $.ajax({
+            url: '/AnimalDetails',
+            type: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify(animal),
+            success: function (response) {
+                document.open();
+                document.write(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    });
+
+
+    /*function animalClick() {
+        $('#log_btn_success').text("Successfully clicked animal");
+        //JSON object containing exhibit name clicked
+        var animal = {
+            'animal': $(this).closest('tr').find('td:eq(0)').text()
+        };
+
+        $.ajax({
+            url: '/AnimalDetails',
+            type: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify(animal),
+            success: function (response) {
+
+                $('#log_btn_success').text("Successfully return from POST ");
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    };*/
+
+
+    function LogClick() {
+
+        var visit_info = {
+            'exhibit': $('#exhibit_name_p').text()
+        };
+
+        $.ajax({
+            url: '/LogExhibitVisit',
+            type: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify(visit_info),
+            success: function (response) {
+
+                $('#log_btn_success').text("Successfully logged visit");
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    }
+
+
+</script>
 </html>

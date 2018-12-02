@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a75c927-1ad2-4e4f-a707-e50cdf711911" name="Default Changelist" comment="Exhibit De">
+    <list default="true" id="4a75c927-1ad2-4e4f-a707-e50cdf711911" name="Default Changelist" comment="Exhibit Details has clickable exhibits and corresponding exhibit details page filled with exhibit info and the animals listed, log visits not implemented yet, clickable animal and sortable columns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" afterDir="false" />
     </list>
@@ -14,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Team25$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1543698695132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Team25$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1543711891764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1414574407">
@@ -26,32 +27,32 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="11" />
-          <entry key="js" value="1" />
+          <entry key="html" value="13" />
+          <entry key="js" value="3" />
           <entry key="py" value="2" />
           <entry key="rnc" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="11" />
-          <entry key="JavaScript" value="1" />
+          <entry key="HTML" value="13" />
+          <entry key="JavaScript" value="3" />
           <entry key="Python" value="2" />
           <entry key="RNG Compact" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="1353" />
-          <entry key="py" value="1159" />
-          <entry key="txt" value="129" />
+          <entry key="html" value="2023" />
+          <entry key="py" value="2556" />
+          <entry key="txt" value="352" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1353" />
-          <entry key="PLAIN_TEXT" value="129" />
-          <entry key="Python" value="1157" />
+          <entry key="HTML" value="2023" />
+          <entry key="PLAIN_TEXT" value="352" />
+          <entry key="Python" value="2554" />
           <entry key="SQL" value="2" />
         </counts>
       </usages-collector>
@@ -67,22 +68,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="570" column="95" selection-start-line="570" selection-start-column="95" selection-end-line="570" selection-end-column="95" />
+            <state relative-caret-position="300">
+              <caret line="340" lean-forward="true" selection-start-line="340" selection-end-line="340" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
-                <marker date="1543698692901" expanded="true" signature="15222:15752" ph="..." />
-                <marker date="1543698692901" expanded="true" signature="17546:17828" ph="..." />
+                <marker date="1543711888324" expanded="true" signature="15222:15753" ph="..." />
+                <marker date="1543711888324" expanded="true" signature="18317:18648" ph="..." />
+                <marker date="1543711888324" expanded="true" signature="25838:26220" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="66" column="72" lean-forward="true" selection-start-line="66" selection-start-column="72" selection-end-line="66" selection-end-column="72" />
+            <state relative-caret-position="165">
+              <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -90,8 +92,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+            <state relative-caret-position="210">
+              <caret line="14" column="68" lean-forward="true" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -99,17 +101,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="59" column="38" lean-forward="true" selection-start-line="59" selection-end-line="60" />
+            <state relative-caret-position="129">
+              <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+            <state relative-caret-position="-316">
+              <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -124,15 +126,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="587">
               <caret line="56" column="30" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -152,6 +145,8 @@
       <find>\n</find>
       <find>&quot;</find>
       <find>exhibitdeta</find>
+      <find>exhibit_name</find>
+      <find>xavier</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -169,6 +164,7 @@
         <option value="$PROJECT_DIR$/templates/AdminTemplates/Admin_Homepage.html" />
         <option value="$PROJECT_DIR$/templates/Login.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
@@ -496,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543685485983</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Exhibit Details has clickable exhibits and corresponding exhibit details page filled with exhibit info and the animals listed, log visits not implemented yet, clickable animal and sortable columns">
+      <created>1543698868589</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1543698868589</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -576,7 +579,8 @@
     <MESSAGE value="wilson's push" />
     <MESSAGE value="workspace file for pycharm IDE" />
     <MESSAGE value="updated search Exhibits for Visitor- changed style and href link for exhibits" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated search Exhibits for Visitor- changed style and href link for exhibits" />
+    <MESSAGE value="Exhibit Details has clickable exhibits and corresponding exhibit details page filled with exhibit info and the animals listed, log visits not implemented yet, clickable animal and sortable columns" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exhibit Details has clickable exhibits and corresponding exhibit details page filled with exhibit info and the animals listed, log visits not implemented yet, clickable animal and sortable columns" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/SearchExhibits.html" />
@@ -631,13 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/spyder/utils/help/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="5478" column="4" selection-start-line="5478" selection-start-column="4" selection-end-line="5478" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -658,9 +655,6 @@
           <caret line="31" column="62" lean-forward="true" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/Visitor_Homepage.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -691,16 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="587">
@@ -722,20 +706,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/spyder/utils/help/js/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="5770" column="4" selection-start-line="5770" selection-start-column="4" selection-end-line="5770" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="59" column="38" lean-forward="true" selection-start-line="59" selection-end-line="60" />
         </state>
       </provider>
     </entry>
@@ -746,28 +727,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="66" column="72" lean-forward="true" selection-start-line="66" selection-start-column="72" selection-end-line="66" selection-end-column="72" />
+        <state relative-caret-position="-316">
+          <caret line="31" column="8" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+        <state relative-caret-position="210">
+          <caret line="14" column="68" lean-forward="true" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="570" column="95" selection-start-line="570" selection-start-column="95" selection-end-line="570" selection-end-column="95" />
+        <state relative-caret-position="300">
+          <caret line="340" lean-forward="true" selection-start-line="340" selection-end-line="340" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
-            <marker date="1543698692901" expanded="true" signature="15222:15752" ph="..." />
-            <marker date="1543698692901" expanded="true" signature="17546:17828" ph="..." />
+            <marker date="1543711888324" expanded="true" signature="15222:15753" ph="..." />
+            <marker date="1543711888324" expanded="true" signature="18317:18648" ph="..." />
+            <marker date="1543711888324" expanded="true" signature="25838:26220" ph="..." />
           </folding>
         </state>
       </provider>
