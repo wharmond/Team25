@@ -62,8 +62,7 @@
       - Table with name and species in exhibit
 ####  /Shows  
     - Show information  
-      - Show start time  
-      - Animals in show  
+      - Show start time   
       - Location  
       - Host(s)  
 #### /Search Exhibits
