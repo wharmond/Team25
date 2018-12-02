@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e6c1155-920d-4dd2-8613-2a2f652cccd5" name="Default Changelist" comment="">
+    <list default="true" id="4a75c927-1ad2-4e4f-a707-e50cdf711911" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,7 +25,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Team25$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1543740412204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Team25$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1543775265087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -28,100 +41,97 @@
     <expand />
     <select />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1414574407">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="61" />
+          <entry key="js" value="8" />
+          <entry key="py" value="2" />
+          <entry key="rnc" value="3" />
+          <entry key="sql" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="61" />
+          <entry key="JavaScript" value="8" />
+          <entry key="Python" value="2" />
+          <entry key="RNG Compact" value="3" />
+          <entry key="Scratch" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="4892" />
+          <entry key="py" value="6457" />
+          <entry key="sql" value="34" />
+          <entry key="txt" value="835" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="4892" />
+          <entry key="PLAIN_TEXT" value="835" />
+          <entry key="Python" value="6453" />
+          <entry key="SQL" value="4" />
+          <entry key="Scratch" value="34" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.merge" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Team25" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="274" column="24" lean-forward="true" selection-start-line="274" selection-start-column="24" selection-end-line="274" selection-end-column="24" />
+            <state relative-caret-position="374">
+              <caret line="957" selection-start-line="957" selection-end-line="957" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
+                <marker date="1543775740045" expanded="true" signature="38275:38335" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
+        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+            <state relative-caret-position="96">
+              <caret line="60" column="32" lean-forward="true" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
+        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1649">
-              <caret line="102" column="42" lean-forward="true" selection-start-line="102" selection-start-column="42" selection-end-line="102" selection-end-column="42" />
+            <state relative-caret-position="196">
+              <caret line="72" column="55" lean-forward="true" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/sortTables.js">
+        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#1958#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-229">
-              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+              <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -145,7 +155,12 @@
       <find>xavier</find>
       <find>search for animal</find>
       <find>gat</find>
-      <find>add_show</find>
+      <find>exhibit_table</find>
+      <find>search_animal</find>
+      <find>animalTable</find>
+      <find>aler</find>
+      <find>alert</find>
+      <find>alert(&quot;Sor</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -154,7 +169,6 @@
         <option value="Nestor Moreno &lt;nmoreno8@gatech.edu&gt;" />
       </list>
     </option>
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -162,23 +176,25 @@
       <list>
         <option value="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" />
         <option value="$PROJECT_DIR$/static/js/addAnimalScript.js" />
+        <option value="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" />
         <option value="$PROJECT_DIR$/templates/Login.html" />
-        <option value="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ddf0a379-d32f-4041-83ba-ccaa12950aa9/console_3.sql" />
-        <option value="$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html" />
-        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/Admin_Homepage.html" />
-        <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/static/js/sortTables.js" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" />
-        <option value="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" />
+        <option value="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html" />
+        <option value="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" />
+        <option value="$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" />
+        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html" />
+        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html" />
+        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -223,12 +239,6 @@
             <path>
               <item name="Team25" type="b2602c69:ProjectViewProjectNode" />
               <item name="Team25" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Team25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team25" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -236,18 +246,6 @@
               <item name="Team25" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="AdminTemplates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Team25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team25" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="StaffTemplates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Team25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team25" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="VisitorTemplates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -268,6 +266,123 @@
       <recent name="C:\Users\wharm\Desktop\CS 4400\Team25\templates\StaffTemplates" />
       <recent name="C:\Users\wharm\Desktop\CS 4400\Team25\templates\AdminTemplates" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -297,6 +412,11 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Flask server.Flask (app.py)" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -407,42 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543731888766</updated>
     </task>
-    <task id="LOCAL-00015" summary="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* Sortable columns&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality">
-      <created>1543760476438</created>
+    <task id="LOCAL-00015" summary="All Visitor &amp; Staff pages are completed with all SQL, Python and JS scripts completed except:&#10;&#10;Whats missing for Visitor &amp; Staff so far:&#10;-----------Visitor--------------:&#10;Search Exhibits:&#10;&#9;* Sortable columns (need SQL query for this)&#10;&#9;* search functionality (JS Script)&#10;View Exhibit History:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality&#10;&#10;&#10;-------------Staff--------------:&#10;Search animals:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Animal Care: &#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* sortable columns">
+      <created>1543740647932</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1543760476438</updated>
+      <updated>1543740647932</updated>
     </task>
-    <task id="LOCAL-00016" summary="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality">
-      <created>1543766851058</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1543766851058</updated>
-    </task>
-    <task id="LOCAL-00017" summary="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;Search For Animals:&#10;&#9;* search functionality">
-      <created>1543767024588</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1543767024588</updated>
-    </task>
-    <task id="LOCAL-00018" summary="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;Search For Animals:&#10;&#9;* search functionality">
-      <created>1543767095650</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1543767095650</updated>
-    </task>
-    <task id="LOCAL-00019" summary="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;Search For Animals:&#10;&#9;* search functionality">
-      <created>1543767852440</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1543767852440</updated>
-    </task>
-    <option name="localTasksCounter" value="20" />
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -455,26 +547,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.71954674" visible="true" weight="0.13154362" />
-      <window_info id="Structure" order="2" sideWeight="0.28045326" side_tool="true" weight="0.13154362" />
+      <window_info id="Favorites" order="0" sideWeight="0.121416524" side_tool="true" visible="true" weight="0.15811966" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.8785835" visible="true" weight="0.15811966" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Console" weight="0.48469388" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32857144" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50061053" side_tool="true" weight="0.32857144" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32857144" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.3286119" />
-      <window_info anchor="bottom" id="Version Control" order="5" weight="0.24929178" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4993895" visible="true" weight="0.3234694" />
+      <window_info anchor="bottom" id="Version Control" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4993895" visible="true" weight="0.39489797" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" weight="0.32959184" />
-      <window_info anchor="bottom" id="Database Console" order="13" weight="0.48469388" />
       <window_info anchor="right" id="R Graphics" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="R Packages" order="2" />
@@ -515,31 +607,8 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="wilson's push" />
@@ -548,9 +617,8 @@
     <MESSAGE value="Exhibit Details has clickable exhibits and corresponding exhibit details page filled with exhibit info and the animals listed, log visits not implemented yet, clickable animal and sortable columns" />
     <MESSAGE value="Exhibit Details &amp; and Log Visits button and Animal Details pages all working, only missing &quot;sortable&quot; columns and search functionality" />
     <MESSAGE value="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* Sortable columns&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality" />
-    <MESSAGE value="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality" />
-    <MESSAGE value="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;Search For Animals:&#10;&#9;* search functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="All Visitor pages are completed, here is what is missing from each page:&#10;Whats missing for Visitor:&#10;Search Exhibits:&#10;&#9;* search functionality&#10;View Exhibit History:&#10;&#9;* search functionality&#10;View Shows:&#10;&#9;* search functionality&#10;Search For Animals:&#10;&#9;* search functionality" />
+    <MESSAGE value="All Visitor &amp; Staff pages are completed with all SQL, Python and JS scripts completed except:&#10;&#10;Whats missing for Visitor &amp; Staff so far:&#10;-----------Visitor--------------:&#10;Search Exhibits:&#10;&#9;* Sortable columns (need SQL query for this)&#10;&#9;* search functionality (JS Script)&#10;View Exhibit History:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality&#10;&#10;&#10;-------------Staff--------------:&#10;Search animals:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Animal Care: &#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* sortable columns" />
+    <option name="LAST_COMMIT_MESSAGE" value="All Visitor &amp; Staff pages are completed with all SQL, Python and JS scripts completed except:&#10;&#10;Whats missing for Visitor &amp; Staff so far:&#10;-----------Visitor--------------:&#10;Search Exhibits:&#10;&#9;* Sortable columns (need SQL query for this)&#10;&#9;* search functionality (JS Script)&#10;View Exhibit History:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Search For Animals:&#10;&#9;* sortable columns&#10;&#9;*search functionality&#10;&#10;&#10;-------------Staff--------------:&#10;Search animals:&#10;&#9;* search functionality&#10;&#9;* sortable columns&#10;Animal Care: &#10;&#9;* sortable columns&#10;View Shows:&#10;&#9;* sortable columns" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/SearchExhibits.html" />
@@ -566,10 +634,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/addAnimalScript.js">
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addShow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -591,43 +659,59 @@
     <entry file="file://$PROJECT_DIR$/static/css/Visitor_Homepage.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/phrase.rnc" />
-    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/phrase.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="210">
+          <caret line="345" column="16" selection-start-line="345" selection-start-column="16" selection-end-line="345" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/Visitor_Homepage.html">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/globals.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337" />
+        <state relative-caret-position="516">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/staff_Homepage.html">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/wrappers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="98" column="8" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/jupyterlab/build/main.bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="25870" column="6" selection-start-line="25870" selection-start-column="6" selection-end-line="25870" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ddf0a379-d32f-4041-83ba-ccaa12950aa9/console_3.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="15" selection-start-column="15" selection-end-column="15" />
+          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/core-scripting.rnc" />
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/globals.py" />
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/wrappers.py" />
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/spyder/utils/help/js/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/jupyterlab/build/main.bundle.js" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ddf0a379-d32f-4041-83ba-ccaa12950aa9/console_3.sql" />
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/spyder/utils/help/js/jquery.js" />
-    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+        <state relative-caret-position="206">
+          <caret line="5387" selection-start-line="5387" selection-end-line="5387" />
         </state>
       </provider>
     </entry>
@@ -638,20 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="77" column="20" lean-forward="true" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/Admin_Homepage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -659,93 +729,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="60" column="12" lean-forward="true" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addShow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-229">
-          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/sortTables.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#1958#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="274" column="24" lean-forward="true" selection-start-line="274" selection-start-column="24" selection-end-line="274" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/Visitor_Homepage.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+        <state relative-caret-position="-899">
+          <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1649">
-          <caret line="102" column="42" lean-forward="true" selection-start-line="102" selection-start-column="42" selection-end-line="102" selection-end-column="42" />
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1183">
+          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-942">
+          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="122" column="4" selection-start-line="122" selection-start-column="4" selection-end-line="122" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-759">
+          <caret line="6" column="84" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-249">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/staff_Homepage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-129">
+          <caret column="15" selection-start-column="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1704">
+          <caret line="5" column="33" lean-forward="true" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/AnimalDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/addAnimalScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="34" lean-forward="true" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/core-scripting.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="957" selection-start-line="957" selection-end-line="957" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+            <marker date="1543775740045" expanded="true" signature="38275:38335" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="60" column="32" lean-forward="true" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="72" column="55" lean-forward="true" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
         </state>
       </provider>
     </entry>

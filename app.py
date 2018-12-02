@@ -395,12 +395,19 @@ class Database:
     @classmethod
     def log_exhibit_visit(cls, username, exhibit_name):
         print("log exhibits vars provided: " + username + ", " + exhibit_name)
-        log_exhibit_query = """INSERT into ExhibitVisits values(%s, %s ,Default)"""
-        cls.cur.execute(log_exhibit_query, (username, exhibit_name))
-        result = cls.cur.fetchone()
-        print("log exhibit visit returned: " + str(result))
+        try:
+            log_exhibit_query = """INSERT into ExhibitVisits values(%s, %s ,Default)"""
+            cls.cur.execute(log_exhibit_query, (username, exhibit_name))
+            result = cls.cur.fetchone()
+            print("log exhibit visit returned: " + str(result))
 
-        return result
+            if result is not 0:
+                return 1
+            else:
+                return 0
+        except Exception as e:
+            print("Exception occurred:{}".format(e))
+            return 0
 
     @classmethod
     def get_animal_details(cls, animal_name, animal_species):
@@ -707,7 +714,7 @@ def log_show_visit():
 
     result = Database.log_show_visits(show_name, show_date, username)
 
-    if result is not 1:
+    if result is not 0:
         return json.dumps({'status': 'OK'})
     else:
         return json.dumps({'status': 'BAD'})
@@ -756,8 +763,13 @@ def log_exhibit_visit():
 
     exhibit_name = str(request.json['exhibit'])
     exhibit_name = exhibit_name.replace("Name: ", "").replace(" ", "")
-    Database.log_exhibit_visit(username, exhibit_name)
-    return json.dumps({'status': 'OK'})
+    result = Database.log_exhibit_visit(username, exhibit_name)
+
+    print("result returned back for Log Exhibit Visits: " + str(result))
+    if result is not 0:
+        return json.dumps({'status': 'OK'})
+    else:
+        return json.dumps({'status' : 'BAD'})
 
 
 @app.route('/AnimalDetails', methods=['POST'])
@@ -918,10 +930,10 @@ def delete_visitor_query():
     result = Database.delete_user(username)
 
     if result is not 0:
-        print("returning json with status OK")
+        print("user deleted successfully, returning json with status OK")
         return json.dumps({'status': 'OK'})
     else:
-        print("returning json with status BAD")
+        print("user not deleted, error: returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
 
@@ -940,6 +952,9 @@ def delete_staff_query():
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
+@app.route('/deleteShow', methods=['POST'])
+def delete_show_query():
+    print("delete show user request recieved from Admin")
 
 #
 #

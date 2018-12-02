@@ -1,131 +1,187 @@
 <html>
-  <head>
+<head>
     <title> Shows </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript">
-    function deleteVisitor() {
-        var res = $('#show').find(":selected").val();
-        var name = res[0];
-        var dt = res[1];
-        alert(name + " | " | dt);
-        alert(user);
-        if (name.length !== 0) {
-            $.ajax({
-                url: '/deleteShow',
-                data: $('form').serialize(),
-                type: 'POST',
-                success: function (response) {
-                    var obj = JSON.parse(response);
-                    if (obj.status === 'OK') {
-                        alert("User " + user + " successfully deleted");
-                        //refresh the page to update table with added animal
-                        updatePage();
+        function sortMyTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("showsTable");
+            switching = true;
+            // Set the sorting direction to ascending:
+            dir = "asc";
+            /* Make a loop that will continue until
+            no switching has been done: */
+            while (switching) {
+                // Start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /* Loop through all table rows (except the
+                first, which contains table headers): */
+                for (i = 1; i < (rows.length - 1); i++) {
+                    // Start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /* Get the two elements you want to compare,
+                    one from current row and one from the next: */
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /* Check if the two rows should switch place,
+                    based on the direction, asc or desc: */
+                    if (dir === "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            // If so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir === "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            // If so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
                     }
-                    else {
-                        alert("Error in deleting User" + user);
-                    }
-                },
-                error: function (error) {
-                    console.log(error);
                 }
-            });
-        } else {
-            alert("Error in deleting User. Please refresh the page.");
-        }
-    }
-
-    function updatePage() {
-        window.location.href = "/viewStaff";
-    }
-    </script>
-    <script type="text/javascript">
-      function searchTable() {
-        var showName, showExhibit, showDate, table, tr, y;
-        showName = document.getElementById("showName").value;
-        showExhibit = document.getElementById("showExhibit").value;
-        showDate = document.getElementById("showDate").value;
-        table = document.getElementById("showsTable");
-        tr = table.getElementsByTagName("tr");
-        y = 0;
-
-        // Check if inputs have values and run appropriate script
-        if (showName != "") {
-          nameFilter(showName, tr, 0);
-          y = 1;
-        }
-        nameFilter(showExhibit, tr, 1, y);
-      }
-
-      function nameFilter(input, tr, k, y) {
-        // Declare variables
-        var td, i, txtValue;
-        filter = input.toUpperCase();
-
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[k];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
+                if (shouldSwitch) {
+                    /* If a switch has been marked, make the switch
+                    and mark that a switch has been done: */
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    // Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /* If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again. */
+                    if (switchcount === 0 && dir === "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
             }
-          }
         }
-      }
+
+        function deleteShow() {
+            var res = $('#show').find(":selected").val();
+            var name = res[0];
+            var dt = res[1];
+            alert(name + " | " | dt);
+            alert(user);
+            if (name.length !== 0) {
+                $.ajax({
+                    url: '/deleteShow',
+                    data: $('form').serialize(),
+                    type: 'POST',
+                    success: function (response) {
+                        var obj = JSON.parse(response);
+                        if (obj.status === 'OK') {
+                            alert("User " + user + " successfully deleted");
+                            //refresh the page to update table with added animal
+                            updatePage();
+                        }
+                        else {
+                            alert("Error in deleting User" + user);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            } else {
+                alert("Error in deleting User. Please refresh the page.");
+            }
+        }
+
+        function updatePage() {
+            window.location.href = "/viewStaff";
+        }
+
+        function searchTable() {
+            var showName, showExhibit, showDate, table, tr, y;
+            showName = document.getElementById("showName").value;
+            showExhibit = document.getElementById("showExhibit").value;
+            showDate = document.getElementById("showDate").value;
+            table = document.getElementById("showsTable");
+            tr = table.getElementsByTagName("tr");
+            y = 0;
+
+            // Check if inputs have values and run appropriate script
+            if (showName !== "") {
+                nameFilter(showName, tr, 0);
+                y = 1;
+            }
+            nameFilter(showExhibit, tr, 1, y);
+        }
+
+        function nameFilter(input, tr, k, y) {
+            // Declare variables
+            var td, i, txtValue;
+            filter = input.toUpperCase();
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[k];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
-  </head>
-  <body>
-    <h2 class="ZooHeading"> Atlanta Zoo </h2>
-    <h3 class="SiteHeading"> Shows </h3>
-    <form class="Shows-Search">
+</head>
+<body>
+<h2 class="ZooHeading"> Atlanta Zoo </h2>
+<h3 class="SiteHeading"> Shows </h3>
+<form class="Shows-Search">
     <p>Name: <input id="showName" type="text"></p>
     <p>
-        Exhibit: 
+        Exhibit:
         <select id="showExhibit">
-        <option selected disabled>Choose one</option>
-        <option value="">All Exhibits</option>
-        <option value="Pacific">Pacific</option>
-        <option value="Jungle">Jungle</option>
-        <option value="Sahara">Sahara</option>
-        <option value="Mountainous">Mountainous</option>
-        <option value="Birds">Birds</option>
-        </select>  
-      </p>
-      <p>Date: <input id="showDate" type="date"></p>
-    </form>
-    <button id="search_shows_btn" onclick="searchTable()" btn btn-lg btn-primary btn-block" type="button">Search</button>
-    <table id="showsTable" class="data-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Name</th>
-          <th>Exhibit</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-         {% for row in rows %}
+            <option selected disabled>Choose one</option>
+            <option value="">All Exhibits</option>
+            <option value="Pacific">Pacific</option>
+            <option value="Jungle">Jungle</option>
+            <option value="Sahara">Sahara</option>
+            <option value="Mountainous">Mountainous</option>
+            <option value="Birds">Birds</option>
+        </select>
+    </p>
+    <p>Date: <input id="showDate" type="date"></p>
+</form>
+<button id="search_shows_btn" onclick="searchTable()" class="btn btn-lg btn-primary btn-block" type="button">Search
+</button>
+<table id="showsTable" class="data-table">
+    <thead>
     <tr>
-        <td>{{ row.Name }}</td>
-        <td>{{ row.Exhibit }}</td>
-        <td>{{ row.Date }}</td>
+        <th onclick="sortMyTable(0)">Name</th>
+        <th onclick="sortMyTable(1)">Exhibit</th>
+        <th onclick="sortMyTable(2)">Date</th>
     </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row.Name }}</td>
+            <td>{{ row.Exhibit }}</td>
+            <td>{{ row.Date }}</td>
+        </tr>
     {% endfor %}
-      </tbody>
-    </table>
-    <div>
-      <form action="../deleteShow" method="post">
+    </tbody>
+</table>
+<div>
+    <form action="../deleteShow" method="post">
         <select class="form-control" name="user" id="user">
-        {% for row in rows %}
-          <option name={{ row.Name }} value="[{{ row.Name }}, {{ row.Date }}]">
-            {{ row.Name }} , {{ row.Date }}
-          </option>
-        {% endfor %}
-        <button id="delete-visitor-btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="deleteShow()">
-          Delete Show
+            {% for row in rows %}
+                <option name={{ row.Name }} value="[{{ row.Name }}, {{ row.Date }}]">
+                {{ row.Name }} , {{ row.Date }}
+            {% endfor %}
+        </select>
+        <button id="delete-visitor-btn" class="btn btn-lg btn-primary btn-block" type="button"
+                onclick="deleteShow()">
+            Delete Show
         </button>
-      </form>
-    </div>
-  </body>
+    </form>
+</div>
+</body>
 </html>
