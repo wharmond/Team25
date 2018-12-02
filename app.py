@@ -361,6 +361,29 @@ class Database:
         return result
 
     @classmethod
+    def log_show_visits(cls, show_name, date_time, username):
+
+        print("log show visits variables: " + show_name + ", " + date_time + ", " + username)
+        date_time_query_check = """SELECT * FROM ShowVisits  where %s <= NOW()"""
+        log_show_query = "INSERT into ShowVisits values(%s, %s, %s) "
+
+        try:
+            date_check = cls.cur.execute(date_time_query_check, date_time)
+
+            print("log show visits query returned: " + str(date_check))
+            if date_check is not 0:
+                result = cls.cur.execute(log_show_query, (str(show_name), str(date_time), str(username)))
+                print("add log Show Visits returned: " + str(result))
+                return 1
+            else:
+                return 0
+
+        except Exception as e:
+
+            print("Exeception occured:{}".format(e))
+            return 0
+
+    @classmethod
     def get_exhibit_animals(cls, exhibit_name):
         exhibit_animals_query = "SELECT AnimalName as Name, Species FROM Animals WHERE Exhibit= %s"
         cls.cur.execute(exhibit_animals_query, exhibit_name)
@@ -610,6 +633,32 @@ def view_shows():
     return render_template('./VisitorTemplates/searchShows.html', rows=rows)
 
 
+@app.route('/logShowVisit', methods=['POST'])
+def log_show_visit():
+    print("log show visit JSON request: " + str(request.json))
+
+    # Only for testing purposes- after testing completed, remove the if/else, session must contain a username
+    if 'username' in session:
+        username = session['username']
+    else:
+        # Use default username of xavier_swenson
+        username = "xavier_swenson"
+
+    show_name = str(request.json['show_name'])
+    exhibit = str(request.json['exhibit'])
+    exhibit = exhibit.replace(" ", "").replace("\n", "")
+    show_date = str(request.json['date_time'])
+
+    print("log Show information before query: " + show_name + ", " + show_date + ", " + username)
+
+    result = Database.log_show_visits(show_name, show_date, username)
+
+    if result == 1:
+        return json.dumps({'status': 'OK'})
+    else:
+        return json.dumps({'status': 'BAD'})
+
+
 @app.route('/viewShowHistory')
 def view_show_history():
     # Only for testing purposes- after testing completed, remove the if/else, session must contain a username
@@ -756,6 +805,7 @@ def add_animal_query():
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
+
 @app.route('/deleteVisitor', methods=['POST'])
 def delete_visitor_query():
     print("Delete Visitor User request received from Admin")
@@ -771,6 +821,7 @@ def delete_visitor_query():
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
+
 @app.route('/deleteStaff', methods=['POST'])
 def delete_staff_query():
     print("Delete Staff User request received from Admin")
@@ -785,6 +836,7 @@ def delete_staff_query():
     else:
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
+
 
 #
 #

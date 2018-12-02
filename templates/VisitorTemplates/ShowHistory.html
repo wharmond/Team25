@@ -1,40 +1,40 @@
 <html>
-  <head>
+<head>
     <title> Show History </title>
-  </head>
-  <body>
-    <h2 class="ZooHeading"> Atlanta Zoo </h2>
-    <h3 class="SiteHeading"> Show History </h3>
-    <form class="Show-History">
-      <input type="text">
-      <input type="time" name="time">
-      <select>
-        <option selected disabled>Choose one</option>
-        <option value="Pacific">Pacific</option>
-        <option value="Jungle">Jungle</option>
-        <option value="Sahara">Sahara</option>
-        <option value="Mountainous">Mountainous</option>
-        <option value="Birds">Birds</option>
-      </select>  
-    </form>
-    <button id="search_show_history_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Time</th>
-          <th>Exhibit</th>
-        </tr>
-      </thead>
-      <tbody>
-         {% for row in rows %}
+</head>
+<body>
+<h2 class="ZooHeading"> Atlanta Zoo </h2>
+<h3 class="SiteHeading"> Show History </h3>
+<form class="Show-History">
+    Name: <input type="text" id="show_history_search_txt">
+    Time: <input type="time" name="time" id="search_show_history_time">
+    Exhibit: <select>
+    <option selected disabled>Choose one</option>
+    <option value="Pacific">Pacific</option>
+    <option value="Jungle">Jungle</option>
+    <option value="Sahara">Sahara</option>
+    <option value="Mountainous">Mountainous</option>
+    <option value="Birds">Birds</option>
+</select>
+</form>
+<button id="search_show_history_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
+<table class="data-table">
+    <thead>
     <tr>
-        <td>{{ row.Name }}</td>
-        <td>{{ row.Time }}</td>
-        <td>{{ row.Exhibit }}</td>
+        <th>Name</th>
+        <th>Time</th>
+        <th>Exhibit</th>
     </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row.Name }}</td>
+            <td>{{ row.Time }}</td>
+            <td>{{ row.Exhibit }}</td>
+        </tr>
     {% endfor %}
-      </tbody>
-    </table>
-  </body>
+    </tbody>
+</table>
+</body>
 </html>
