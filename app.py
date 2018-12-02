@@ -229,7 +229,7 @@ class Database:
 
     @classmethod
     def get_userType(cls, email):
-        userType_query = ("Select UserType FROM Users WHERE Users.Email = %s")
+        userType_query = "Select UserType FROM Users WHERE Users.Email = %s"
         cls.cur.execute(userType_query, email)
         result = cls.cur.fetchone()
         print("User type returned: " + str(result))
@@ -237,7 +237,7 @@ class Database:
 
     @classmethod
     def get_Username(cls, email):
-        userType_query = ("Select Username FROM Users WHERE Users.Email = %s")
+        userType_query = "Select Username FROM Users WHERE Users.Email = %s"
         cls.cur.execute(userType_query, email)
         result = cls.cur.fetchone()
         print("Username returned: " + str(result))
@@ -395,12 +395,18 @@ class Database:
     @classmethod
     def log_exhibit_visit(cls, username, exhibit_name):
         print("log exhibits vars provided: " + username + ", " + exhibit_name)
-        log_exhibit_query = """INSERT into ExhibitVisits values(%s, %s ,Default)"""
-        cls.cur.execute(log_exhibit_query, (username, exhibit_name))
-        result = cls.cur.fetchone()
-        print("log exhibit visit returned: " + str(result))
-
-        return result
+        try:
+            log_exhibit_query = """INSERT into ExhibitVisits values(%s, %s ,Default)"""
+            cls.cur.execute(log_exhibit_query, (username, exhibit_name))
+            result = cls.cur.fetchone()
+            print("log exhibit visit returned: " + str(result))
+            if result is not 0:
+                return 1
+            else:
+                return 0
+        except Exception as e:
+            print("Exception occurred:{}".format(e))
+            return 0
 
     @classmethod
     def get_animal_details(cls, animal_name, animal_species):
@@ -536,6 +542,32 @@ class Database:
         except Exception as e:
             print("Exception occurred:{}".format(e))
             return 0
+
+    @classmethod
+    def delete_show(cls, show_name, date_time):
+        print("Admin delete show provided vars: " + show_name + ", " + date_time)
+        delete_show_q = """delete from Shows where Shows.ShowName=%s and Shows.Date_Time = %s"""
+
+        try:
+            cls.cur.execute(delete_show_q, (show_name, date_time))
+            result = cls.cur.fetchone()
+            print("delete show returned: " + str(result))
+            return 1
+
+        except Exception as e:
+            print("Exception occurred:{}".format(e))
+            return 0
+
+    @classmethod
+    def get_staff_list(cls):
+        staff_list_query = "Select Username From Users where UserType=%s"
+        user_type = "Staff"
+        cls.cur.execute(staff_list_query, user_type)
+
+        result = cls.cur.fetchall()
+        print("staff List returned: " + str(result))
+        return result
+
 
 
 #
@@ -706,7 +738,7 @@ def log_show_visit():
 
     result = Database.log_show_visits(show_name, show_date, username)
 
-    if result is not 1:
+    if result is not 0:
         return json.dumps({'status': 'OK'})
     else:
         return json.dumps({'status': 'BAD'})
@@ -755,15 +787,20 @@ def log_exhibit_visit():
 
     exhibit_name = str(request.json['exhibit'])
     exhibit_name = exhibit_name.replace("Name: ", "").replace(" ", "")
-    Database.log_exhibit_visit(username, exhibit_name)
-    return json.dumps({'status': 'OK'})
+    result = Database.log_exhibit_visit(username, exhibit_name)
+
+    print("result returned back for Log Exhibit Visits: " + str(result))
+    if result is not 0:
+        return json.dumps({'status': 'OK'})
+    else:
+        return json.dumps({'status': 'BAD'})
 
 
 @app.route('/AnimalDetails', methods=['POST'])
 def animal_details():
     print("request json for Animal Details: " + str(request.json))
     animal_name = str(request.json['animal'])
-    animal_name = animal_name.replace(" ", "").replace("\n", "")
+    animal_name = animal_name.strip().replace("\n", "")
     animal_species = str(request.json['species'])
     print("animal_name for animal Details: " + animal_name + ", species: " + animal_species)
     animal_row = Database.get_animal_details(animal_name, animal_species)
@@ -792,7 +829,7 @@ def staff_view_shows():
 def render_animal_care():
     print("request json for Animal Care: " + str(request.json))
     animal_name = str(request.json['animal'])
-    animal_name = animal_name.replace(" ", "").replace("\n", "")
+    animal_name = animal_name.strip().replace("\n", "")
     animal_species = str(request.json['species'])
 
     animal_data = Database.get_animal_details(animal_name, animal_species)
@@ -813,9 +850,9 @@ def log_staff_note():
         username = "staff"
 
     animal_name = str(request.json['animal'])
-    animal_name = animal_name.replace("Name: ", "").replace(" ", "")
+    animal_name = animal_name.replace("Name: ", "")
     animal_species = str(request.json['species'])
-    animal_species = animal_species.replace("Species: ", "").replace(" ", "")
+    animal_species = animal_species.replace("Species: ", "")
     staff_note = str(request.json['staff_note'])
     print("final log staff note query vars: " + username + ", " + animal_name + ", " + animal_species + ", "
           + staff_note)
@@ -854,7 +891,8 @@ def admin_view_shows():
 
 @app.route('/addShow')
 def add_show():
-    return render_template("./AdminTemplates/addShow.html")
+    rows = Database.get_staff_list()
+    return render_template("./AdminTemplates/addShow.html", rows=rows)
 
 
 @app.route('/addShowValidation', methods=['POST'])
@@ -879,7 +917,7 @@ def add_show_query():
 def admin_view_animals():
     rows = Database.view_all_animals()
     # inject SQL data into jinja html template
-    return render_template("./AdminTemplates/addAnimal.html", rows=rows)
+    return render_template("./AdminTemplates/viewAnimals.html", rows=rows)
 
 
 @app.route('/AddAnimalsPage')
@@ -894,9 +932,9 @@ def add_animal_query():
     print("add_animal Request Received from Admin")
     animal_name = request.form['animalName']
     species = request.form['species']
-    exhibit = request.form['exhibit']
+    exhibit = request.form['exhibit_name']
     age = request.form['age']
-    animal_type = request.form['type']
+    animal_type = request.form['animal_type']
 
     result = Database.add_animal(animal_name, species, exhibit, age, animal_type)
 
@@ -917,10 +955,10 @@ def delete_visitor_query():
     result = Database.delete_user(username)
 
     if result is not 0:
-        print("returning json with status OK")
+        print("user deleted successfully, returning json with status OK")
         return json.dumps({'status': 'OK'})
     else:
-        print("returning json with status BAD")
+        print("user not deleted, error: returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
 
@@ -938,6 +976,16 @@ def delete_staff_query():
     else:
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
+
+
+@app.route('/deleteShow', methods=['POST'])
+def delete_show_query():
+    print("delete show user request recieved from Admin")
+    show_name = request.form['show']
+
+    print("delete show show_name: " + show_name)
+    # result = delete_show()
+    return json.dumps({'status': 'BAD'})
 
 
 #
