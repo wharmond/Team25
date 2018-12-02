@@ -380,13 +380,13 @@ class Database:
             cls.cur.execute(add_animal_query, (animalname, species, exhibit, age, animaltype))
             result = cls.cur.fetchall()
             print("add animal result: " + str(result))
-
             return 1
 
         except Exception as e:
             print("Exception occurred:{}".format(e))
             return 0
 
+    @classmethod
     def delete_animal(cls, animalname, species, exhibit, age, animaltype):
         try:
             delete_animal_query = """DELETE FROM Animals WHERE (AnimalName = %s, Species = %s , Exhibit = %s, Age = %s, 
@@ -394,9 +394,7 @@ class Database:
             cls.cur.execute(delete_animal_query, (animalname, species, exhibit, age, animaltype))
             result = cls.cur.fetchall()
             print("add animal result: " + str(result))
-
             return 1
-
         except Exception as e:
             print("Exception occurred:{}".format(e))
             return 0
@@ -430,7 +428,6 @@ class Database:
             result = cls.cur.fetchall()
             print("delete user result: " + str(result))
             return 1
-
         except Exception as e:
             print("Exception occurred:{}".format(e))
             return 0
@@ -527,7 +524,7 @@ def Register():
         return json.dumps({'status': 'BAD', 'email': email, 'pass': 'error', 'error': 'User_Exists'})
 
 
-@app.route("/addNote")
+@app.route("/addNote", methods=["POST"])
 def addNote():
     return json.dumps({'status': 'OK', 'note': "note"})
 
@@ -617,7 +614,8 @@ def exhibit_detail():
 
 @app.route('/AnimalDetails')
 def animal_details():
-    return render_template('./VisitorTemplates/AnimalDetail.html')
+    rows = Database.animal_details()
+    return render_template('./VisitorTemplates/AnimalDetail.html', rows=rows)
 
 
 #
