@@ -699,8 +699,7 @@ def log_show_visit():
         username = "xavier_swenson"
 
     show_name = str(request.json['show_name'])
-    exhibit = str(request.json['exhibit'])
-    exhibit = exhibit.replace(" ", "").replace("\n", "")
+    exhibit = str(request.json['exhibit']).replace(" ", "").replace("\n", "")
     show_date = str(request.json['date_time'])
 
     print("log Show information before query: " + show_name + ", " + show_date + ", " + username)
