@@ -1,6 +1,43 @@
 <html>
   <head>
     <title> Visitor </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    function deleteVisitor() {
+
+        var user = $('#user').find(":selected").val();
+        alert(user);
+        if (user.length !== 0) {
+            $.ajax({
+                url: '/deleteVisitor',
+                data: $('form').serialize(),
+                type: 'POST',
+                success: function (response) {
+                    var obj = JSON.parse(response);
+                    if (obj.status === 'OK') {
+                        alert("User " + user + " successfully deleted");
+                        //refresh the page to update table with added animal
+                        updatePage();
+                    }
+                    else {
+                        alert("Error in deleting User" + user);
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        } else {
+            alert("Error in deleting User. Please refresh the page.");
+        }
+    }
+
+    function updatePage() {
+        window.location.href = "/viewVisitors";
+    }
+
+</script>
   </head>
   <body>
     <h2 class="ZooHeading"> Atlanta Zoo </h2>
@@ -8,6 +45,7 @@
     <table class="data-table">
       <thead>
         <tr>
+          <th></th>
           <th>Username</th>
           <th>Email</th>
         </tr>
@@ -21,6 +59,19 @@
     {% endfor %}
       </tbody>
     </table>
-    <button id="delete_visitor_btn" class="btn btn-lg btn-primary btn-block" type="button">Delete Visitor</button>
+    <div>
+      <form action="../deleteAnimal" method="post">>
+        <select class="form-control" name="user" id="user">
+        {% for row in rows %}
+          <option value={{ row.Username }}>
+            {{ row.Username }}
+          </option>
+        {% endfor %}
+        </select>
+        <button id="delete-visitor-btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="deleteVisitor()">
+          Delete Visitor
+        </button>
+      </form>
+    </div>
   </body>
 </html>

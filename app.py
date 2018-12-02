@@ -412,9 +412,53 @@ class Database:
             print("Exception occurred:{}".format(e))
             return 0
 
+    def delete_animal(cls, animalname, species, exhibit, age, animaltype):
+        try:
+            delete_animal_query = """DELETE FROM Animals WHERE (AnimalName = %s, Species = %s , Exhibit = %s, Age = %s, 
+                Type_of_Animal = %s)"""
+            cls.cur.execute(delete_animal_query, (animalname, species, exhibit, age, animaltype))
+            result = cls.cur.fetchall()
+            print("add animal result: " + str(result))
+
+            return 1
+
+        except Exception as e:
+            print("Exception occurred:{}".format(e))
+            return 0
+
     @classmethod
     def add_shows(cls):
         add_show_query = """"""
+
+    @classmethod
+    def search_visitors(cls):
+        get_visitor_query = """SELECT s.Username as Username, s.Email as Email FROM Users as s 
+          WHERE s.UserType='visitor'"""
+        cls.cur.execute(get_visitor_query)
+        result = cls.cur.fetchall()
+        print("search staff result: " + str(result))
+        return result
+
+    @classmethod
+    def search_staff(cls):
+        get_staff_query = """SELECT s.Username as Username, s.Email as Email FROM Users as s WHERE s.UserType='staff'"""
+        cls.cur.execute(get_staff_query)
+        result = cls.cur.fetchall()
+        print("search staff result: " + str(result))
+        return result
+
+    @classmethod
+    def delete_user(cls, username):
+        try:
+            delete_user_query = """ DELETE FROM Users WHERE Username = %s """
+            cls.cur.execute(delete_user_query, username)
+            result = cls.cur.fetchall()
+            print("delete user result: " + str(result))
+            return 1
+
+        except Exception as e:
+            print("Exception occurred:{}".format(e))
+            return 0
 
 
 #
@@ -649,12 +693,14 @@ def staff_view_shows():
 
 @app.route('/viewVisitors')
 def view_visitors():
-    return render_template('./AdminTemplates/viewVisitors.html')
+    rows = Database.search_visitors()
+    return render_template('./AdminTemplates/viewVisitors.html', rows=rows)
 
 
 @app.route('/viewStaff')
 def view_staff():
-    return render_template('./AdminTemplates/viewStaff.html')
+    rows = Database.search_staff()
+    return render_template('./AdminTemplates/viewStaff.html', rows=rows)
 
 
 @app.route('/AdminViewShows')
@@ -710,6 +756,35 @@ def add_animal_query():
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
+@app.route('/deleteVisitor', methods=['POST'])
+def delete_visitor_query():
+    print("Delete Visitor User request received from Admin")
+    username = request.form['user']
+    print("Username to be deleted: " + username)
+
+    result = Database.delete_user(username)
+
+    if result is not 0:
+        print("returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
+
+@app.route('/deleteStaff', methods=['POST'])
+def delete_staff_query():
+    print("Delete Staff User request received from Admin")
+    username = request.form['user']
+    print("Username to be deleted: " + username)
+
+    result = Database.delete_user(username)
+
+    if result is not 0:
+        print("returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
 
 #
 #
