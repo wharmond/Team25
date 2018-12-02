@@ -44,7 +44,6 @@
       }
     function sortMyTable(n) {
       var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-      alert("sorting table!");
       table = document.getElementById("myTable");
       switching = true;
       // Set the sorting direction to ascending:
@@ -143,6 +142,9 @@
 <button id="log_show_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Show</button>
 <p id="info">Click an Exhibit to see more details</p>
 <p id="show_info">Click on a row to Log a Show Visit</p>
+<button id="back_btn" class="btn btn-lg btn-primary btn-block" type="button"
+        onclick="window.location.href='/visitorHomePage'">Go Back to Homepage
+</button>
 </body>
 
 <script type="text/javascript">

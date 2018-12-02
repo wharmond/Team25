@@ -1,77 +1,134 @@
 <html>
-  <head>
+<head>
     <title> Visitor </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript">
-
-    function deleteVisitor() {
-
-        var user = $('#user').find(":selected").val();
-        alert(user);
-        if (user.length !== 0) {
-            $.ajax({
-                url: '/deleteVisitor',
-                data: $('form').serialize(),
-                type: 'POST',
-                success: function (response) {
-                    var obj = JSON.parse(response);
-                    if (obj.status === 'OK') {
-                        alert("User " + user + " successfully deleted");
-                        //refresh the page to update table
-                        updatePage();
+        function sortMyTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("admin_visitor_table");
+            switching = true;
+            // Set the sorting direction to ascending:
+            dir = "asc";
+            /* Make a loop that will continue until
+            no switching has been done: */
+            while (switching) {
+                // Start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /* Loop through all table rows (except the
+                first, which contains table headers): */
+                for (i = 1; i < (rows.length - 1); i++) {
+                    // Start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /* Get the two elements you want to compare,
+                    one from current row and one from the next: */
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /* Check if the two rows should switch place,
+                    based on the direction, asc or desc: */
+                    if (dir === "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            // If so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir === "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            // If so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
                     }
-                    else {
-                        alert("Error in deleting User" + user);
-                    }
-                },
-                error: function (error) {
-                    console.log(error);
                 }
-            });
-        } else {
-            alert("Error in deleting User. Please refresh the page.");
+                if (shouldSwitch) {
+                    /* If a switch has been marked, make the switch
+                    and mark that a switch has been done: */
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    // Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /* If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again. */
+                    if (switchcount === 0 && dir === "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
         }
-    }
 
-    function updatePage() {
-        window.location.href = "/viewVisitors";
-    }
+        function deleteVisitor() {
 
-</script>
-  </head>
-  <body>
-    <h2 class="ZooHeading"> Atlanta Zoo </h2>
-    <h3 class="SiteHeading"> Visitor </h3>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Username</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
-         {% for row in rows %}
+            var user = $('#user').find(":selected").val();
+            alert(user);
+            if (user.length !== 0) {
+                $.ajax({
+                    url: '/deleteVisitor',
+                    data: $('form').serialize(),
+                    type: 'POST',
+                    success: function (response) {
+                        var obj = JSON.parse(response);
+                        if (obj.status === 'OK') {
+                            alert("User " + user + " successfully deleted");
+                            //refresh the page to update table
+                            updatePage();
+                        }
+                        else {
+                            alert("Error in deleting User" + user);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            } else {
+                alert("Error in deleting User. Please refresh the page.");
+            }
+        }
+
+        function updatePage() {
+            window.location.href = "/viewVisitors";
+        }
+
+    </script>
+</head>
+<body>
+<h2 class="ZooHeading"> Atlanta Zoo </h2>
+<h3 class="SiteHeading"> Visitor </h3>
+<table class="data-table" id="admin_visitor_table">
+    <thead>
     <tr>
-        <td>{{ row.Username }}</td>
-        <td>{{ row.Email }}</td>
+        <th onclick="sortMyTable(0)">Username</th>
+        <th onclick="sortMyTable(1)">Email</th>
     </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row.Username }}</td>
+            <td>{{ row.Email }}</td>
+        </tr>
     {% endfor %}
-      </tbody>
-    </table>
-    <div>
-      <form action="../deleteAnimal" method="post">>
+    </tbody>
+</table>
+<div>
+    <form action="../deleteAnimal" method="post">>
         <select class="form-control" name="user" id="user">
-        {% for row in rows %}
-          <option value={{ row.Username }}>
-            {{ row.Username }}
-          </option>
-        {% endfor %}
+            {% for row in rows %}
+                <option value={{ row.Username }}>
+                    {{ row.Username }}
+                </option>
+            {% endfor %}
         </select>
-        <button id="delete-visitor-btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="deleteVisitor()">
-          Delete Visitor
+        <button id="delete-visitor-btn" class="btn btn-lg btn-primary btn-block" type="button"
+                onclick="deleteVisitor()">
+            Delete Visitor
         </button>
-      </form>
-    </div>
-  </body>
+    </form>
+</div>
+<button id="back_btn" class="btn btn-lg btn-primary btn-block" type="button"
+        onclick="window.location.href='/adminHomePage'">Go Back to Homepage
+</button>
+</body>
 </html>

@@ -1,81 +1,192 @@
-<html>
-  <head>
-    <title> Animals </title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title> View Animals </title>
+    <link rel="stylesheet" href="../static/css/signup.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript">
-      function myFunction() {
-        // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("searchInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("animalTable");
-        tr = table.getElementsByTagName("tr");
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
 
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[0];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
             }
-          }
         }
-      }
+
+        function sortMyTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("myTable");
+            switching = true;
+            // Set the sorting direction to ascending:
+            dir = "asc";
+            /* Make a loop that will continue until
+            no switching has been done: */
+            while (switching) {
+                // Start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /* Loop through all table rows (except the
+                first, which contains table headers): */
+                for (i = 1; i < (rows.length - 1); i++) {
+                    // Start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /* Get the two elements you want to compare,
+                    one from current row and one from the next: */
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /* Check if the two rows should switch place,
+                    based on the direction, asc or desc: */
+                    if (dir === "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            // If so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir === "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            // If so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /* If a switch has been marked, make the switch
+                    and mark that a switch has been done: */
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    // Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /* If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again. */
+                    if (switchcount === 0 && dir === "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+        function AnimalSubmit() {
+
+        $("#div_add_alert").html("Validating Animal Data..");
+
+        var animal_name = $('#animalName').val();
+        var species = $('#species').val();
+        var exhibit = $('#exhibit').val();
+        var age = $('#age').val();
+        var type = $('#type').val();
+
+        if (animal_name.length !== 0 && species.length !== 0 && exhibit.length !== 0 && (age >= 0) && type.length !== 0) {
+            $.ajax({
+                url: '/addAnimal',
+                data: $('form').serialize(),
+                type: 'POST',
+                success: function (response) {
+                    var obj = JSON.parse(response);
+                    if (obj.status === 'OK') {
+                        $('#animalName').val("");
+                        $('#species').val("");
+                        $('#exhibit').val("");
+                        $('#age').val("");
+                        $('#type').val("");
+
+                        //refresh the page to update table with added animal
+                        updatePage();
+                    }
+                    else {
+                        $("#div_add_alert").html("Error in adding Animal: Please make sure to specify the exact valid"
+                            + " exhibit name and that all fields are non empty");
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        } else {
+            $("#div_add_alert").html("Error in adding Animal PLease make sure all fields are non empty");
+        }
+    }
+
+    function updatePage() {
+        window.location.href = "/AdminViewAnimals";
+    }
     </script>
-  </head>
-  <body>
-    <h2 class="ZooHeading"> Atlanta Zoo </h2>
-    <h3 class="SiteHeading"> Animals </h3>
-    <a href="./StaffTemplates/AnimalDetail.html">View Animal Details</a>
-    <form class="Animals-Search">
-      <input type="text">
-      <input type="text">
-      <select>
-        <option selected disabled>Choose one</option>
-        <option value="Pacific">Pacific</option>
-        <option value="Jungle">Jungle</option>
-        <option value="Sahara">Sahara</option>
-        <option value="Mountainous">Mountainous</option>
-        <option value="Birds">Birds</option>
-      </select>  
-      Min Age of Animal:<input type="number" id="min_age" name="min_age" min="0" value="0">
-      Max Age:<input type="number" id="max_age" name="max_age" min="0" max="9999999">
-      <div class="unselected-field" style="display: inline-block;" id="Water">
-      <select>
-        <option selected disabled>Choose one</option>
-        <option value="Mammal">Mammal</option>
-        <option value="Bird">Bird</option>
-        <option value="Amphibian">Amphibian</option>
-        <option value="Reptile">Reptile</option>
-        <option value="Fish">Fish</option>
-        <option value="Invertebrate">Invertevbrate</option>
-      </select>  
-      </div>  
-    </form>
-    <button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="myFunction()">Search</button>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Species</th>
-          <th>Exhibit</th>
-          <th>Age</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody id="animalTable">
-         {% for row in rows %}
+</head>
+<body>
+<h2 class="ZooHeading"> Atlanta Zoo </h2>
+<h3 class="SiteHeading"> Animals </h3>
+<form class="Animals-Search">
+    Name: <input type="text" id="search_name_txt">
+    Species: <input type="text" id="search_species_txt">
+    Exhibit: <select>
+    <option selected disabled>Choose one</option>
+    <option value="Pacific">Pacific</option>
+    <option value="Jungle">Jungle</option>
+    <option value="Sahara">Sahara</option>
+    <option value="Mountainous">Mountainous</option>
+    <option value="Birds">Birds</option>
+</select>
+    Min Age of Animal:<input type="number" id="min_age" name="min_age" min="0" value="0">
+    Max Age:<input type="number" id="max_age" name="max_age" min="0" max="9999999">
+    Type:
+    <div class="unselected-field" style="display: inline-block;" id="animal_type">
+        <select>
+            <option selected disabled>Choose one</option>
+            <option value="Mammal">Mammal</option>
+            <option value="Bird">Bird</option>
+            <option value="Amphibian">Amphibian</option>
+            <option value="Reptile">Reptile</option>
+            <option value="Fish">Fish</option>
+            <option value="Invertebrate">Invertebrate</option>
+        </select>
+    </div>
+</form>
+<button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="myFunction()">Search
+</button>
+<div class="form-container">
+</div>
+<table class="data-table" id="myTable">
+    <thead>
     <tr>
-        <td>{{ row.Name }}</td>
-        <td>{{ row.Species }}</td>
-        <td>{{ row.Exhibit }}</td>
-        <td>{{ row.Age }}</td>
-        <td>{{ row.Type }}</td>
+        <th onclick="sortMyTable(0)">Name</th>
+        <th onclick="sortMyTable(1)">Species</th>
+        <th onclick="sortMyTable(2)">Exhibit</th>
+        <th onclick="sortMyTable(3)">Age</th>
+        <th onclick="sortMyTable(4)">Type</th>
     </tr>
+    </thead>
+    <tbody id="animalTable">
+    {% for row in rows %}
+        <tr>
+            <td>{{ row.Name }}</td>
+            <td>{{ row.Species }}</td>
+            <td>{{ row.Exhibit }}</td>
+            <td>{{ row.Age }}</td>
+            <td>{{ row.Type }}</td>
+        </tr>
     {% endfor %}
-      </tbody>
-    </table>
-  </body>
+    </tbody>
+</table>
+<div class="add_animal_alert" id="div_add_alert"></div>
+<button id="back_btn" class="btn btn-lg btn-primary btn-block" type="button"
+        onclick="window.location.href='/adminHomePage'">Go Back to Homepage
+</button>
+</body>
 </html>
