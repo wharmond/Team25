@@ -1,31 +1,93 @@
 <html>
-  <head>
+<head>
     <title> Animal Detail </title>
-  </head>
-  <body>
-    <h2 class="ZooHeading"> Atlanta Zoo </h2>
-    <h3 class="SiteHeading"> Animals </h3>
-    <form class="Animal Note">
-      <input type="text">
-    </form>
-        <button id="create_animal_detail_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Notes</button>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Staff Member</th>
-          <th>Note</th>
-          <th>Time</th>
-        </tr>
-      </thead>
-      <tbody>
-         {% for row in rows %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<h2 class="ZooHeading"> Atlanta Zoo </h2>
+<h3 class="SiteHeading"> Animals </h3>
+<p id="animal_name_id">Name: {{ animal_data.AnimalName }}</p>
+<p id="animal_species_id">Species: {{ animal_data.Species }}</p>
+<p>Age: {{ animal_data.Age }}</p>
+<p>Exhibit: {{ animal_data.Exhibit }}</p>
+<p>Type: {{ animal_data.Type_of_Animal }}</p>
+<form class="Animal Note">
+    <input id="staff_note_id" type="text">
+</form>
+<button id="create_animal_detail_btn" class="btn btn-lg btn-primary btn-block" type="button">Log Notes</button>
+<p id="logging_info"></p>
+<table class="data-table">
+    <thead>
     <tr>
-        <td>{{ row.Staff Member }}</td>
-        <td>{{ row.Note }}</td>
-        <td>{{ row.Time }}</td>
+        <th>Staff Member</th>
+        <th>Note</th>
+        <th>Time</th>
     </tr>
+    </thead>
+    <tbody>
+    {% for row in notes_data %}
+        <tr>
+            <td>{{ row.Staff }}</td>
+            <td>{{ row.Text_Input }}</td>
+            <td>{{ row.Date_Time }}</td>
+        </tr>
     {% endfor %}
-      </tbody>
-    </table>
-  </body>
+    </tbody>
+</table>
+<button id="back_btn" class="btn btn-lg btn-primary btn-block" type="button"
+        onclick="window.location.href='/StaffSearchAnimals'">Go Back to Search Animals Page
+</button>
+</body>
+<script type="text/javascript">
+
+
+    $('#create_animal_detail_btn').click(function () {
+        $("#logging_info").text("Logging into System..");
+
+        //JSON object containing exhibit name clicked
+        var animal_info = {
+            'animal': $("#animal_name_id").text(),
+            'species': $("#animal_species_id").text(),
+            'staff_note': $("#staff_note_id").val()
+        };
+
+        $.ajax({
+            url: '/LogStaffNote',
+            type: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify(animal_info),
+            success: function (response) {
+                $("#logging_info").text("Successfully added Note");
+                var obj = JSON.parse(response);
+
+                var refresh_page = {
+                    'animal': obj.animal_name,
+                    'species': obj.animal_species
+                }
+
+                $.ajax({
+                url: '/AnimalCare',
+                type: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify(refresh_page),
+                success: function (response) {
+                    document.open();
+
+                    setTimeout(document.write(response), 5000);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+            },
+            error: function (error) {
+                $("#logging_info").text("Error adding Note, make sure animal Exists (species and unique name");
+                console.log(error);
+            }
+        });
+    });
+
+
+</script>
+
 </html>

@@ -317,6 +317,7 @@ class Database:
         cls.cur.execute(exhibit_detail_query, exhibit_name)
         result = cls.cur.fetchone()
         print("Exhibit Detail info result: " + str(result))
+
         return result
 
     @classmethod
@@ -327,6 +328,7 @@ class Database:
         cls.cur.execute(search_animals_query)
         result = cls.cur.fetchall()
         print("Search for animals result: " + str(result))
+
         return result
 
     @classmethod
@@ -335,7 +337,8 @@ class Database:
                                  "        ( partition by e.ExhibitName ) as \"Number of Visits\" from ExhibitVisits as e Where e.Visitor = %s""")
         cls.cur.execute(exhibit_history_query, username)
         result = cls.cur.fetchall()
-        print("Search for animals result: " + str(result))
+        print("View Exhibit History result: " + str(result))
+
         return result
 
     @classmethod
@@ -344,6 +347,7 @@ class Database:
         cls.cur.execute(get_shows_query)
         result = cls.cur.fetchall()
         print("search shows result: " + str(result))
+
         return result
 
     @classmethod
@@ -353,7 +357,31 @@ class Database:
         cls.cur.execute(show_history_query, username)
         result = cls.cur.fetchall()
         print("view show history result: " + str(result))
+
         return result
+
+    @classmethod
+    def log_show_visits(cls, show_name, date_time, username):
+
+        print("log show visits variables: " + show_name + ", " + date_time + ", " + username)
+        date_time_query_check = """SELECT * FROM ShowVisits  where %s <= NOW()"""
+        log_show_query = "INSERT into ShowVisits values(%s, %s, %s) "
+
+        try:
+            date_check = cls.cur.execute(date_time_query_check, date_time)
+
+            print("log show visits query returned: " + str(date_check))
+            if date_check is not 0:
+                result = cls.cur.execute(log_show_query, (str(show_name), str(date_time), str(username)))
+                print("add log Show Visits returned: " + str(result))
+                return 1
+            else:
+                return 0
+
+        except Exception as e:
+
+            print("Exeception occured:{}".format(e))
+            return 0
 
     @classmethod
     def get_exhibit_animals(cls, exhibit_name):
@@ -361,8 +389,74 @@ class Database:
         cls.cur.execute(exhibit_animals_query, exhibit_name)
         result = cls.cur.fetchall()
         print("exhibit animals query: " + str(result))
-        return result;
 
+        return result
+
+    @classmethod
+    def log_exhibit_visit(cls, username, exhibit_name):
+        print("log exhibits vars provided: " + username + ", " + exhibit_name)
+        log_exhibit_query = """INSERT into ExhibitVisits values(%s, %s ,Default)"""
+        cls.cur.execute(log_exhibit_query, (username, exhibit_name))
+        result = cls.cur.fetchone()
+        print("log exhibit visit returned: " + str(result))
+
+        return result
+
+    @classmethod
+    def get_animal_details(cls, animal_name, animal_species):
+        print("get animal details animal name provided: " + animal_name)
+        animal_details_query = "Select * From Animals where AnimalName = %s and Species = %s"
+        cls.cur.execute(animal_details_query, (animal_name, animal_species))
+        result = cls.cur.fetchone()
+        print("animal details returned: " + str(result))
+
+        return result
+
+    @classmethod
+    def order_by_animals_attribute(cls, order_by_attr):
+        print("order by animals attribute provided: " + order_by_attr)
+        order_by_animal_query = """SELECT AnimalName as Name, Species FROM Animals WHERE Exhibit="Pacific" 
+        order by %s"""
+
+        cls.cur.execute(order_by_animal_query, order_by_attr)
+        result = cls.cur.fetchall()
+        print("order by animals column result: " + str(result))
+
+        return result
+
+    #
+    #
+    # # # # # # # # # # # # SQL Scripts for Staff # # # # # # # # # # # #
+    #
+    #
+
+    @classmethod
+    def get_animal_care_details(cls, animal_name, animal_species):
+        print("get animal care details provided: " + animal_name + ", " + animal_species)
+        animal_care_details_query = "Select * From Notes where AnimalName = %s and Species=%s"
+        cls.cur.execute(animal_care_details_query, (animal_name, animal_species))
+
+        result = cls.cur.fetchall()
+        print("animal Care Details results set: " + str(result))
+        return result
+
+    @classmethod
+    def add_animal_note(cls, username, staff_note, animal_name, animal_species, ):
+        print("add animal note vars: " + username + ", " + animal_name + ", " + animal_species + ", " + staff_note)
+        add_note_query = """Insert into Notes values(%s, default, %s, %s, %s)"""
+        try:
+            result = cls.cur.execute(add_note_query, (username, staff_note, animal_name, animal_species))
+            print("log show visits query returned: " + str(result))
+            if result is not 0:
+                print("add log Show Visits returned: " + str(result))
+                return 1
+            else:
+                return 0
+
+        except Exception as e:
+
+            print("Exeception occured:{}".format(e))
+        return 0
 
     #
     #
@@ -585,6 +679,32 @@ def view_shows():
     return render_template('./VisitorTemplates/searchShows.html', rows=rows)
 
 
+@app.route('/logShowVisit', methods=['POST'])
+def log_show_visit():
+    print("log show visit JSON request: " + str(request.json))
+
+    # Only for testing purposes- after testing completed, remove the if/else, session must contain a username
+    if 'username' in session:
+        username = session['username']
+    else:
+        # Use default username of xavier_swenson
+        username = "xavier_swenson"
+
+    show_name = str(request.json['show_name'])
+    exhibit = str(request.json['exhibit'])
+    exhibit = exhibit.replace(" ", "").replace("\n", "")
+    show_date = str(request.json['date_time'])
+
+    print("log Show information before query: " + show_name + ", " + show_date + ", " + username)
+
+    result = Database.log_show_visits(show_name, show_date, username)
+
+    if result is not 1:
+        return json.dumps({'status': 'OK'})
+    else:
+        return json.dumps({'status': 'BAD'})
+
+
 @app.route('/viewShowHistory')
 def view_show_history():
     # Only for testing purposes- after testing completed, remove the if/else, session must contain a username
@@ -612,12 +732,35 @@ def exhibit_detail():
 
     exhibit_rows = Database.exhibit_details_info(exhibit_name)
     exhibit_animals_row = Database.get_exhibit_animals(exhibit_name)
-    return render_template("./VisitorTemplates/ExhibitDetail.html", exhibit=exhibit_rows, animals_row=exhibit_animals_row)
+    return render_template("./VisitorTemplates/ExhibitDetail.html", exhibit=exhibit_rows,
+                           animals_row=exhibit_animals_row)
 
 
-@app.route('/AnimalDetails')
+@app.route('/LogExhibitVisit', methods=['POST'])
+def log_exhibit_visit():
+    print("request json for log exhibit visit: " + str(request.json))
+
+    if 'username' in session:
+        username = session['username']
+    else:
+        # Use default username of xavier_swenson
+        username = "xavier_swenson"
+
+    exhibit_name = str(request.json['exhibit'])
+    exhibit_name = exhibit_name.replace("Name: ", "").replace(" ", "")
+    Database.log_exhibit_visit(username, exhibit_name)
+    return json.dumps({'status': 'OK'})
+
+
+@app.route('/AnimalDetails', methods=['POST'])
 def animal_details():
-    return render_template('./VisitorTemplates/AnimalDetail.html')
+    print("request json for Animal Details: " + str(request.json))
+    animal_name = str(request.json['animal'])
+    animal_name = animal_name.replace(" ", "").replace("\n", "")
+    animal_species = str(request.json['species'])
+    print("animal_name for animal Details: " + animal_name + ", species: " + animal_species)
+    animal_row = Database.get_animal_details(animal_name, animal_species)
+    return render_template('./VisitorTemplates/AnimalDetail.html', animal=animal_row)
 
 
 #
@@ -636,6 +779,45 @@ def search_animals():
 def staff_view_shows():
     rows = Database.search_shows()
     return render_template("./StaffTemplates/StaffViewShows.html", rows=rows)
+
+
+@app.route('/AnimalCare', methods=['POST'])
+def render_animal_care():
+    print("request json for Animal Care: " + str(request.json))
+    animal_name = str(request.json['animal'])
+    animal_name = animal_name.replace(" ", "").replace("\n", "")
+    animal_species = str(request.json['species'])
+
+    animal_data = Database.get_animal_details(animal_name, animal_species)
+    notes_data = Database.get_animal_care_details(animal_name, animal_species)
+
+    return render_template("./StaffTemplates/AnimalDetail.html", animal_data=animal_data, notes_data=notes_data)
+
+
+@app.route('/LogStaffNote', methods=['POST'])
+def log_staff_note():
+    print("request json for log staff note: " + str(request.json))
+
+    # for testing purposes only
+    if 'username' in session:
+        username = session['username']
+    else:
+        # Use default username of xavier_swenson
+        username = "staff"
+
+    animal_name = str(request.json['animal'])
+    animal_name = animal_name.replace("Name: ", "").replace(" ", "")
+    animal_species = str(request.json['species'])
+    animal_species = animal_species.replace("Species: ", "").replace(" ", "")
+    staff_note = str(request.json['staff_note'])
+    print("final log staff note query vars: " + username + ", " + animal_name + ", " + animal_species + ", "
+          + staff_note)
+    result = Database.add_animal_note(username, staff_note, animal_name, animal_species)
+
+    if result is not 0:
+        return json.dumps({'status': 'OK', 'animal_name': animal_name, 'animal_species': animal_species})
+    else:
+        return json.dumps({'status': 'BAD'})
 
 
 #
@@ -709,6 +891,7 @@ def add_animal_query():
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
+
 @app.route('/deleteVisitor', methods=['POST'])
 def delete_visitor_query():
     print("Delete Visitor User request received from Admin")
@@ -723,6 +906,7 @@ def delete_visitor_query():
     else:
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
+
 
 @app.route('/deleteStaff', methods=['POST'])
 def delete_staff_query():

@@ -27,7 +27,7 @@
 </form>
 <button id="search_exhibit_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
 <table class="data-table" id="exhibit_table">
-    <p id="info">test text</p>
+    <p id="info">Click an Exhibit to see more details</p>
     <thead>
     <tr>
         <th>Name</th>
@@ -40,7 +40,7 @@
     {% for row in rows %}
         <tr>
             <td>
-                <a id="exhibit_name_id" href="#">{{ row.ExhibitName }}</a>
+                <a id="exhibit_name_id" href="#">{{ row.ExhibitName}}</a>
             </td>
             <td>{{ row.Size }}</td>
             <td>{{ row.NumAnimals }}</td>
@@ -63,7 +63,7 @@
             setTimeout(3000);
 
             //JSON object containing exhibit name clicked
-            var Something = {
+            var animal_info = {
                 'exhibit': $(this).closest('tr').find('td:eq(0)').text()
             };
 
@@ -71,7 +71,7 @@
                 url: '/ExhibitDetail',
                 type: 'POST',
                 contentType: "application/json",
-                data: JSON.stringify(Something),
+                data: JSON.stringify(animal_info),
                 success: function (response) {
 
                     document.write(response);
@@ -84,26 +84,5 @@
         });
     });
 
-    /*
-        function getExhibitDetail() {
-
-            var Something = {
-                'exhibit': $(this).closest('tr').find('td:eq(0)').text()
-            };
-
-            $.ajax({
-                url: '/ExhibitDetail',
-                type: 'POST',
-                data: JSON.stringify(Something),
-                success: function (response) {
-                    document.write(response);
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-
-        }
-    */
 </script>
 </html>
