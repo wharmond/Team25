@@ -423,17 +423,17 @@ class Database:
         return result
 
     @classmethod
-    def search_staff(cls, username):
-    try:
-        delete_user_query = """DELETE FROM Users as s WHERE s.Username = %s"""
-        cls.cur.execute(delete_user_query, username)
-        result = cls.cur.fetchall()
-        print("delete user result: " + str(result))
-        return 1
+    def delete_user(cls, username):
+        try:
+            delete_user_query = """ DELETE FROM Users WHERE Username = %s """
+            cls.cur.execute(delete_user_query, username)
+            result = cls.cur.fetchall()
+            print("delete user result: " + str(result))
+            return 1
 
-    except Exception as e:
-        print("Exception occurred:{}".format(e))
-        return 0
+        except Exception as e:
+            print("Exception occurred:{}".format(e))
+            return 0
 
 
 #
@@ -710,11 +710,35 @@ def add_animal_query():
         return json.dumps({'status': 'BAD'})
 
 @app.route('/deleteVisitor', methods=['POST'])
-def delete_animal_query():
-    print("delete animal Request Received from Admin")
+def delete_visitor_query():
+    print("Delete Visitor User request received from Admin")
     username = request.form['user']
     print("Username to be deleted: " + username)
-    return json.dumps({'status': 'OK'})
+
+    result = Database.delete_user(username)
+
+    if result is not 0:
+        print("returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
+
+@app.route('/deleteStaff', methods=['POST'])
+def delete_staff_query():
+    print("Delete Staff User request received from Admin")
+    username = request.form['user']
+    print("Username to be deleted: " + username)
+
+    result = Database.delete_user(username)
+
+    if result is not 0:
+        print("returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
+
 
 #
 #
