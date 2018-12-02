@@ -1,29 +1,7 @@
 <html>
 <head>
     <title> Animals </title>
-    <script type="text/javascript">
-        function myFunction() {
-            // Declare variables
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("animalTable");
-            tr = table.getElementsByTagName("tr");
-
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 <h2 class="ZooHeading"> Atlanta Zoo </h2>
@@ -41,7 +19,8 @@
 </select>
     Min Age of Animal:<input type="number" id="min_age" name="min_age" min="0" value="0">
     Max Age:<input type="number" id="max_age" name="max_age" min="0" max="9999999">
-    Type: <div class="unselected-field" style="display: inline-block;" id="animal_type">
+    Type:
+    <div class="unselected-field" style="display: inline-block;" id="animal_type">
         <select>
             <option selected disabled>Choose one</option>
             <option value="Mammal">Mammal</option>
@@ -55,7 +34,7 @@
 </form>
 <button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="myFunction()">Search
 </button>
-<table class="data-table">
+<table class="data-table" id="animal_table_id">
     <thead>
     <tr>
         <th>Name</th>
@@ -68,7 +47,9 @@
     <tbody id="animalTable">
     {% for row in rows %}
         <tr>
-            <td>{{ row.Name }}</td>
+            <td>
+                <a id="animal_name_id" href="#">{{ row.Name }}</a>
+            </td>
             <td>{{ row.Species }}</td>
             <td>{{ row.Exhibit }}</td>
             <td>{{ row.Age }}</td>
@@ -77,5 +58,60 @@
     {% endfor %}
     </tbody>
 </table>
+<p id="click_info">Click the Name of Animal to see Animal Care Details</p>
 </body>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#animal_table_id tr').click(function () {
+            $("#click_info").text("animal name clicked: " + $(this).closest('tr').find('td:eq(0)').text());
+            setTimeout(3000);
+
+            //JSON object containing exhibit name clicked
+            var animal_info = {
+                'animal': $(this).closest('tr').find('td:eq(0)').text(),
+                'species': $(this).closest('tr').find('td:eq(1)').text()
+
+            };
+
+            $.ajax({
+                url: '/AnimalCare',
+                type: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify(animal_info),
+                success: function (response) {
+
+                    document.write(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("animalTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
 </html>

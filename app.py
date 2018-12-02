@@ -403,14 +403,60 @@ class Database:
         return result
 
     @classmethod
-    def get_animal_details(cls, animal_name):
+    def get_animal_details(cls, animal_name, animal_species):
         print("get animal details animal name provided: " + animal_name)
-        animal_details_query = "Select * From Animals where AnimalName = %s"
-        cls.cur.execute(animal_details_query, animal_name)
+        animal_details_query = "Select * From Animals where AnimalName = %s and Species = %s"
+        cls.cur.execute(animal_details_query, (animal_name, animal_species))
         result = cls.cur.fetchone()
         print("animal details returned: " + str(result))
 
         return result
+
+    @classmethod
+    def order_by_animals_attribute(cls, order_by_attr):
+        print("order by animals attribute provided: " + order_by_attr)
+        order_by_animal_query = """SELECT AnimalName as Name, Species FROM Animals WHERE Exhibit="Pacific" 
+        order by %s"""
+
+        cls.cur.execute(order_by_animal_query, order_by_attr)
+        result = cls.cur.fetchall()
+        print("order by animals column result: " + str(result))
+
+        return result
+
+    #
+    #
+    # # # # # # # # # # # # SQL Scripts for Staff # # # # # # # # # # # #
+    #
+    #
+
+    @classmethod
+    def get_animal_care_details(cls, animal_name, animal_species):
+        print("get animal care details provided: " + animal_name + ", " + animal_species)
+        animal_care_details_query = "Select * From Notes where AnimalName = %s and Species=%s"
+        cls.cur.execute(animal_care_details_query, (animal_name, animal_species))
+
+        result = cls.cur.fetchall()
+        print("animal Care Details results set: " + str(result))
+        return result
+
+    @classmethod
+    def add_animal_note(cls, username, staff_note, animal_name, animal_species, ):
+        print("add animal note vars: " + username + ", " + animal_name + ", " + animal_species + ", " + staff_note)
+        add_note_query = """Insert into Notes values(%s, default, %s, %s, %s)"""
+        try:
+            result = cls.cur.execute(add_note_query, (username, staff_note, animal_name, animal_species))
+            print("log show visits query returned: " + str(result))
+            if result is not 0:
+                print("add log Show Visits returned: " + str(result))
+                return 1
+            else:
+                return 0
+
+        except Exception as e:
+
+            print("Exeception occured:{}".format(e))
+        return 0
 
     #
     #
@@ -653,7 +699,7 @@ def log_show_visit():
 
     result = Database.log_show_visits(show_name, show_date, username)
 
-    if result == 1:
+    if result is not 1:
         return json.dumps({'status': 'OK'})
     else:
         return json.dumps({'status': 'BAD'})
@@ -711,8 +757,9 @@ def animal_details():
     print("request json for Animal Details: " + str(request.json))
     animal_name = str(request.json['animal'])
     animal_name = animal_name.replace(" ", "").replace("\n", "")
-    print("animal_name for animal Details: " + animal_name)
-    animal_row = Database.get_animal_details(animal_name)
+    animal_species = str(request.json['species'])
+    print("animal_name for animal Details: " + animal_name + ", species: " + animal_species)
+    animal_row = Database.get_animal_details(animal_name, animal_species)
     return render_template('./VisitorTemplates/AnimalDetail.html', animal=animal_row)
 
 
@@ -732,6 +779,45 @@ def search_animals():
 def staff_view_shows():
     rows = Database.search_shows()
     return render_template("./StaffTemplates/StaffViewShows.html", rows=rows)
+
+
+@app.route('/AnimalCare', methods=['POST'])
+def render_animal_care():
+    print("request json for Animal Care: " + str(request.json))
+    animal_name = str(request.json['animal'])
+    animal_name = animal_name.replace(" ", "").replace("\n", "")
+    animal_species = str(request.json['species'])
+
+    animal_data = Database.get_animal_details(animal_name, animal_species)
+    notes_data = Database.get_animal_care_details(animal_name, animal_species)
+
+    return render_template("./StaffTemplates/AnimalDetail.html", animal_data=animal_data, notes_data=notes_data)
+
+
+@app.route('/LogStaffNote', methods=['POST'])
+def log_staff_note():
+    print("request json for log staff note: " + str(request.json))
+
+    # for testing purposes only
+    if 'username' in session:
+        username = session['username']
+    else:
+        # Use default username of xavier_swenson
+        username = "staff"
+
+    animal_name = str(request.json['animal'])
+    animal_name = animal_name.replace("Name: ", "").replace(" ", "")
+    animal_species = str(request.json['species'])
+    animal_species = animal_species.replace("Species: ", "").replace(" ", "")
+    staff_note = str(request.json['staff_note'])
+    print("final log staff note query vars: " + username + ", " + animal_name + ", " + animal_species + ", "
+          + staff_note)
+    result = Database.add_animal_note(username, staff_note, animal_name, animal_species)
+
+    if result is not 0:
+        return json.dumps({'status': 'OK', 'animal_name': animal_name, 'animal_species': animal_species})
+    else:
+        return json.dumps({'status': 'BAD'})
 
 
 #

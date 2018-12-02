@@ -44,7 +44,8 @@
 
         //JSON object containing exhibit name clicked
         var animal = {
-            'animal': $(this).closest('tr').find('td:eq(0)').text()
+            'animal': $(this).closest('tr').find('td:eq(0)').text(),
+            'species': $(this).closest('tr').find('td:eq(1)').text()
         };
 
         $.ajax({
