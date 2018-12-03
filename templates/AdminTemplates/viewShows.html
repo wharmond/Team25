@@ -91,7 +91,6 @@
             var name = res[0];
             var dt = res[1];
             alert(name + " | " | dt);
-            alert(user);
             if (name.length !== 0) {
                 $.ajax({
                     url: '/deleteShow',
@@ -105,7 +104,7 @@
                             updatePage();
                         }
                         else {
-                            alert("Error in deleting User" + user);
+                            alert("Error in deleting Show" + name);
                         }
                     },
                     error: function (error) {
@@ -113,7 +112,7 @@
                     }
                 });
             } else {
-                alert("Error in deleting User. Please refresh the page.");
+                alert("Error in deleting show. Please refresh the page.");
             }
         }
 

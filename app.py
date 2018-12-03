@@ -547,7 +547,6 @@ class Database:
     def delete_show(cls, show_name, date_time):
         print("Admin delete show provided vars: " + show_name + ", " + date_time)
         delete_show_q = """delete from Shows where Shows.ShowName=%s and Shows.Date_Time = %s"""
-
         try:
             cls.cur.execute(delete_show_q, (show_name, date_time))
             result = cls.cur.fetchone()
@@ -989,11 +988,16 @@ def delete_staff_query():
 @app.route('/deleteShow', methods=['POST'])
 def delete_show_query():
     print("delete show user request recieved from Admin")
-    show_name = request.form['show']
-
+    show_name = request.form['show'][0]
+    show_time = request.form['show'][1]
     print("delete show show_name: " + show_name)
-    # result = delete_show()
-    return json.dumps({'status': 'BAD'})
+    result = Database.delete_show(show_name,show_time)
+    if result is not 0:
+        print("returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
 
 
 #
