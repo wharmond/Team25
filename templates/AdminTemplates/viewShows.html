@@ -88,9 +88,8 @@
 
         function deleteShow() {
             var res = $('#show').val();
-            var name = res[0];
-            var dt = res[1];
-            alert(name + " | " | dt);
+            var name = res;
+            alert(name);
 
             $('#info').html("Value of selected show: " + res[res.substring(0, res.indexOf(","))]);
             if (name.length !== 0) {
@@ -101,7 +100,7 @@
                     success: function (response) {
                         var obj = JSON.parse(response);
                         if (obj.status === 'OK') {
-                            alert("User " + user + " successfully deleted");
+                            //alert("User " + name + " successfully deleted");
                             //refresh the page to update table with added animal
                             updatePage();
                         }
@@ -119,7 +118,7 @@
         }
 
         function updatePage() {
-            window.location.href = "/viewStaff";
+            window.location.href = "/AdminViewShows";
         }
 
     </script>

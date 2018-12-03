@@ -989,8 +989,10 @@ def delete_staff_query():
 @app.route('/deleteShow', methods=['POST'])
 def delete_show_query():
     print("delete show user request recieved from Admin")
-    show_name = request.form['show'][0]
-    show_time = request.form['show'][1]
+    show_info = request.form['show']
+    s = show_info.strip().split(",")
+    show_name = s[0].replace("[","")
+    show_time = s[1].replace("]", "")
     print("delete show show_name: " + show_name)
     result = Database.delete_show(show_name,show_time)
     if result is not 0:
