@@ -487,15 +487,15 @@ class Database:
             print("Exception occurred:{}".format(e))
             return 0
 
-    def delete_animal(cls, animalname, species, exhibit, age, animaltype):
+    @classmethod
+    def delete_animal(cls, animalname, species):
         try:
-            delete_animal_query = """DELETE FROM Animals WHERE (AnimalName = %s, Species = %s , Exhibit = %s, Age = %s, 
-                Type_of_Animal = %s)"""
-            cls.cur.execute(delete_animal_query, (animalname, species, exhibit, age, animaltype))
+            print("delete_animal args: " + animalname + ", " + species)
+            animal_delete_query = """DELETE FROM Animals WHERE (AnimalName = %s AND Species = %s)"""
+            cls.cur.execute(animal_delete_query, (animalname, species))
             result = cls.cur.fetchall()
             print("delete animal result: " + str(result))
             return 1
-
         except Exception as e:
             print("Exception occurred:{}".format(e))
             return 0
@@ -707,7 +707,7 @@ def view_exhibit_history():
     if 'username' in session:
         rows = Database.view_exhibit_history(session['username'])
     else:
-        rows = Database.view_exhibit_history("xavier_swenson")
+        rows = Database.view_exhibit_history("")
     # pass returned SQL query into jinja HTML template
     return render_template("./VisitorTemplates/ExhibitHistory.html", rows=rows)
 
@@ -726,8 +726,8 @@ def log_show_visit():
     if 'username' in session:
         username = session['username']
     else:
-        # Use default username of xavier_swenson
-        username = "xavier_swenson"
+        # Use default ""
+        username = ""
 
     show_name = str(request.json['show_name'])
     exhibit = str(request.json['exhibit']).replace(" ", "").replace("\n", "")
@@ -749,7 +749,7 @@ def view_show_history():
     if 'username' in session:
         rows = Database.view_show_history(session['username'])
     else:
-        rows = Database.view_show_history("xavier_swenson")
+        rows = Database.view_show_history("")
     # pass returned SQL query into jinja HTML template
     return render_template('./VisitorTemplates/ShowHistory.html', rows=rows)
 
@@ -781,8 +781,8 @@ def log_exhibit_visit():
     if 'username' in session:
         username = session['username']
     else:
-        # Use default username of xavier_swenson
-        username = "xavier_swenson"
+        # Use default username
+        username = ""
 
     exhibit_name = str(request.json['exhibit'])
     exhibit_name = exhibit_name.replace("Name: ", "").replace(" ", "")
@@ -845,8 +845,8 @@ def log_staff_note():
     if 'username' in session:
         username = session['username']
     else:
-        # Use default username of xavier_swenson
-        username = "staff"
+        # Use default username
+        username = ""
 
     animal_name = str(request.json['animal'])
     animal_name = animal_name.replace("Name: ", "")
@@ -954,6 +954,25 @@ def add_animal_query():
         return json.dumps({'status': 'BAD'})
 
 
+@app.route('/deleteAnimal', methods=['POST'])
+def delete_animal_query():
+    print("Delete Animal request received from Admin: " + str(request.form))
+
+    show_info = request.form['show']
+    s = show_info.strip().split(",")
+    animalname = s[0].replace("[", "")
+    species = s[1].replace("]", "").lstrip()
+    print("delete animal: " + str(animalname) + ", species: " + str(species))
+    result = Database.delete_animal(animalname, species)
+
+    if result is not 0:
+        print("user deleted successfully, returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("user not deleted, error: returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
+
+
 @app.route('/deleteVisitor', methods=['POST'])
 def delete_visitor_query():
     print("Delete Visitor User request received from Admin")
@@ -991,10 +1010,10 @@ def delete_show_query():
     print("delete show user request recieved from Admin")
     show_info = request.form['show']
     s = show_info.strip().split(",")
-    show_name = s[0].replace("[","")
+    show_name = s[0].replace("[", "")
     show_time = s[1].replace("]", "")
     print("delete show show_name: " + show_name)
-    result = Database.delete_show(show_name,show_time)
+    result = Database.delete_show(show_name, show_time)
     if result is not 0:
         print("returning json with status OK")
         return json.dumps({'status': 'OK'})

@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8"/>
     <title> View Animals </title>
-    <link rel="stylesheet" href="../static/css/signup.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -89,9 +88,40 @@
             }
         }
 
-    function updatePage() {
-        window.location.href = "/AdminViewAnimals";
-    }
+    function deleteAnimal() {
+            var res = $('#show').val();
+            var name = res;
+            alert(name);
+
+            $('#info').html("Value of selected show: " + res[res.substring(0, res.indexOf(","))]);
+            if (name.length !== 0) {
+                $.ajax({
+                    url: '/deleteAnimal',
+                    data: $('form').serialize(),
+                    type: 'POST',
+                    success: function (response) {
+                        var obj = JSON.parse(response);
+                        if (obj.status === 'OK') {
+                            //alert("User " + name + " successfully deleted");
+                            //refresh the page to update table with added animal
+                            updatePage();
+                        }
+                        else {
+                            alert("Error in deleting Show" + name);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            } else {
+                alert("Error in deleting show. Please refresh the page.");
+            }
+        }
+
+        function updatePage() {
+            window.location.href = "/AdminViewAnimals";
+        }
     </script>
 </head>
 <body>
@@ -152,6 +182,20 @@
     {% endfor %}
     </tbody>
 </table>
+<div>
+    <form action="../deleteAnimal" method="post">
+        <select class="form-control" name="show" id="show">
+            {% for row in rows %}
+                <option value="[{{ row.Name }}, {{ row.Species }}]">
+                {{ row.Name }} , {{ row.Species }}
+            {% endfor %}
+        </select>
+        <button id="delete-visitor-btn" class="btn btn-lg btn-primary btn-block" type="button"
+                onclick="deleteAnimal()">
+            Delete Animal
+        </button>
+    </form>
+</div>
 <div class="add_animal_alert" id="div_add_alert"></div>
 <button id="back_btn" class="btn btn-lg btn-primary btn-block" type="button"
         onclick="window.location.href='/adminHomePage'">Go Back to Homepage
