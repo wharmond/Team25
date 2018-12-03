@@ -88,10 +88,8 @@
 
         function deleteShow() {
             var res = $('#show').val();
-            var name = res[0];
-            var dt = res[1];
-
-            alert(name + " | " | dt);
+            var name = res;
+            alert(name);
 
             $('#info').html("Value of selected show: " + res[res.substring(0, res.indexOf(","))]);
             if (name.length !== 0) {
@@ -102,12 +100,12 @@
                     success: function (response) {
                         var obj = JSON.parse(response);
                         if (obj.status === 'OK') {
-                            alert("User " + user + " successfully deleted");
+                            //alert("User " + name + " successfully deleted");
                             //refresh the page to update table with added animal
                             updatePage();
                         }
                         else {
-                            alert("Error in deleting User" + user);
+                            alert("Error in deleting Show" + name);
                         }
                     },
                     error: function (error) {
@@ -115,12 +113,12 @@
                     }
                 });
             } else {
-                alert("Error in deleting User. Please refresh the page.");
+                alert("Error in deleting show. Please refresh the page.");
             }
         }
 
         function updatePage() {
-            window.location.href = "/viewStaff";
+            window.location.href = "/AdminViewShows";
         }
 
     </script>
@@ -173,7 +171,7 @@
     <form action="../deleteShow" method="post">
         <select class="form-control" name="show" id="show">
             {% for row in rows %}
-                <option value="showName, showDate">
+                <option value="[{{ row.Name }}, {{ row.Date }}]">
                 {{ row.Name }} , {{ row.Date }}
             {% endfor %}
         </select>
