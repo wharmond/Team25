@@ -3,6 +3,33 @@
     <title> Exhibit History </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript">
+        $(document).ready(function () {
+        $("#searchBox").keyup(myFunction);
+        });
+
+      function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchBox").value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++ ){
+            filter = input;
+            // Loop through all table rows, and hide those who don't match the search query
+            for (j = 0; j < 3; j++) {
+              td = tr[i].getElementsByTagName("td")[j];
+              if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                  break;s
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+        }
+      }
         function sortMyTable(n) {
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
             table = document.getElementById("myTable");
@@ -63,14 +90,14 @@
 <h2 class="ZooHeading"> Atlanta Zoo </h2>
 <h3 class="SiteHeading"> Exhibit History </h3>
 <form class="Exhibit-History">
-    Search: <input type="text" id="searchBox">
-    <!---Name: <input type="text" id="search_exhibit_name_id">
+    Search: <input id="searchBox">
+<!--    Name: <input type="text" id="search_exhibit_name_id">
     Time:
     <form>
         <input type="time" name="time">
     </form>
     Min Number of Visits: <input type="number" id="min_num_visits" name="min_visits" min="0" value="0">
-    Max Number of Visits: <input type="number" id="max_num_visits" name="max_visits" min="0" max="9999999">--->
+    Max Number of Visits: <input type="number" id="max_num_visits" name="max_visits" min="0" max="9999999">-->
 </form>
 <button id="search_exhibit_history_btn" class="btn btn-lg btn-primary btn-block" type="button">Search</button>
 <table class="data-table" id="myTable">
