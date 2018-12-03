@@ -958,7 +958,7 @@ def delete_animal_query():
     s = show_info.strip().split(",")
     animalname = s[0].replace("[", "")
     species = s[1].replace("]", "")
-    print("delete show show_name: " + show_name)
+    print("delete animal: " + animalname)
     result = Database.delete_animal(animalname, species)
 
     if result is not 0:

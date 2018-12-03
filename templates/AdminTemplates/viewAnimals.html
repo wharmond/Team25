@@ -89,7 +89,7 @@
             }
         }
 
-    function deleteShow() {
+    function deleteAnimal() {
             var res = $('#show').val();
             var name = res;
             alert(name);
@@ -97,7 +97,7 @@
             $('#info').html("Value of selected show: " + res[res.substring(0, res.indexOf(","))]);
             if (name.length !== 0) {
                 $.ajax({
-                    url: '/deleteShow',
+                    url: '/deleteAnimal',
                     data: $('form').serialize(),
                     type: 'POST',
                     success: function (response) {
