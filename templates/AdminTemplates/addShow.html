@@ -8,42 +8,58 @@
 
         function ShowSubmit() {
 
-            $("#div_add_alert").html("Validating Show Data..");
 
             var show_name = $('#showName').val();
-            var exhibit = $('#exhibit').val();
-            var staff = $('#species').val();
-            var date_time = $('#date_time').val();
+            var exhibit = $('#exhibit_name').val();
+            var staff = $('#exhibit_name').val();
+            var date = $('#date').val();
             var time = $('#time').val();
 
-            /* if (animal_name.length !== 0 && species.length !== 0 && exhibit.length !== 0 && (age >= 0) && type.length !== 0) {
-                 $.ajax({
-                     url: '/addAnimal',
-                     data: $('form').serialize(),
-                     type: 'POST',
-                     success: function (response) {
-                         var obj = JSON.parse(response);
-                         if (obj.status === 'OK') {
-                             $('#animalName').val("");
-                             $('#species').val("");
-                             $('#exhibit').val("");
-                             $('#age').val("");
-                             $('#type').val("");
+            $("#show_info").html("Validating Show Input...");
+
+            //concatenate the date and time to produce a searchable SQL query, for example:
+            //2017-01-01, 01:01 -> "2017-01-01 01%", which means if this host (staff) has another date with
+            //a matching minute, that means they can't add a show at that minute, they should schedule a show later
+            //var final_date = date + " %" + time.substring(0, time.indexOf(":"));
+
+            //$("#show_info").html("inputs: " + show_name + ", " + exhibit + "," + staff + ", final date: " + final_date);
+
+            if ($('#showName').val() && $('#exhibit_name').val() && $('#exhibit_name').val()
+                && $('#date').val() && $('#time').val()) {
 
 
-                         }
-                         else {
-                             $("#div_add_alert").html("Error in adding Animal: Please make sure to specify the exact valid"
-                                 + " exhibit name and that all fields are non empty");
-                         }
-                     },
-                     error: function (error) {
-                         console.log(error);
-                     }
-                 });
-             } else {
-                 $("#div_add_alert").html("Error in adding Animal PLease make sure all fields are non empty");
-             }*/
+                $.ajax({
+                    url: '/addShowValidation',
+                    data: $('form').serialize(),
+                    type: 'POST',
+                    success: function (response) {
+                        var obj = JSON.parse(response);
+                        if (obj.status === 'OK') {
+                            $('#showName').val("");
+                            $('#staff_name').val("");
+                            $('#exhibit_name').val("");
+                            $('#date').val("");
+                            $('#time').val("");
+
+                            $("#show_info").html("Successfully added Show!");
+                        }
+                        else {
+                            $("#show_info").html("Error in adding Animal: A Staff show already exists for this Date " +
+                                "and time");
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+
+
+            } else {
+
+                $("#show_info").html("Error in adding Animal: Make sure all fields are non empty");
+            }
+
+
         }
 
 
@@ -57,7 +73,7 @@
             "Add Show"
         </h2>
         <input class="form-control" name="showName" placeholder="Show Name" type="text" id="showName"/>
-        <select id="exhibit_name">
+        <select id="exhibit_name" name="exhibit_name">
             <option selected disabled>Exhibit</option>
             <option value="Pacific">Pacific</option>
             <option value="Jungle">Jungle</option>
@@ -65,18 +81,22 @@
             <option value="Mountainous">Mountainous</option>
             <option value="Birds">Birds</option>
         </select>
-        <select id="staff_name">
+        <select id="staff_name" name="staff_name">
             {% for row in rows %}
                 <option value="{{ row.Username }}">
                 {{ row.Username }}
             {% endfor %}
         </select>
-        <input class="form-control" name="date" placeholder="Date" type="datetime-local" id="date_time"/>
+        <input class="form-control" name="date" placeholder="Date" type="date" id="date"/>
         <input class="form-control" name="time" placeholder="Time" type="time" id="time"/>
 
-        <button id="addShowBtn" class="btn btn-primary btn-block" type="button"> Create Show</button>
+        <button id="addShowBtn" class="btn btn-primary btn-block" type="button" onclick="ShowSubmit()"> Create Show
+        </button>
     </form>
 </div>
-
+<p id="show_info"></p>
+<button id="back_btn" class="btn btn-lg btn-primary btn-block" type="button"
+        onclick="window.location.href='/adminHomePage'">Go Back to Homepage
+</button>
 </body>
 </html>
