@@ -19,7 +19,7 @@ class Database:
 
     # Create the connection with configured parameters, autocommit specifies whether SQL INSERT statements actually
     # insert, leave to false if you just want to test if an INSERT query executes correctly
-    con = pymysql.connect(host=host, user=user, password=password, autocommit=False, db=db, charset=charSet,
+    con = pymysql.connect(host=host, user=user, password=password, autocommit=True, db=db, charset=charSet,
                           cursorclass=pymysql.cursors.DictCursor)
 
     # Obtain a cursor for executing queries
