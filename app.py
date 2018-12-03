@@ -707,7 +707,7 @@ def view_exhibit_history():
     if 'username' in session:
         rows = Database.view_exhibit_history(session['username'])
     else:
-        rows = Database.view_exhibit_history("xavier_swenson")
+        rows = Database.view_exhibit_history("")
     # pass returned SQL query into jinja HTML template
     return render_template("./VisitorTemplates/ExhibitHistory.html", rows=rows)
 
@@ -726,8 +726,8 @@ def log_show_visit():
     if 'username' in session:
         username = session['username']
     else:
-        # Use default username of xavier_swenson
-        username = "xavier_swenson"
+        # Use default ""
+        username = ""
 
     show_name = str(request.json['show_name'])
     exhibit = str(request.json['exhibit']).replace(" ", "").replace("\n", "")
@@ -749,7 +749,7 @@ def view_show_history():
     if 'username' in session:
         rows = Database.view_show_history(session['username'])
     else:
-        rows = Database.view_show_history("xavier_swenson")
+        rows = Database.view_show_history("")
     # pass returned SQL query into jinja HTML template
     return render_template('./VisitorTemplates/ShowHistory.html', rows=rows)
 
@@ -781,8 +781,8 @@ def log_exhibit_visit():
     if 'username' in session:
         username = session['username']
     else:
-        # Use default username of xavier_swenson
-        username = "xavier_swenson"
+        # Use default username
+        username = ""
 
     exhibit_name = str(request.json['exhibit'])
     exhibit_name = exhibit_name.replace("Name: ", "").replace(" ", "")
@@ -845,8 +845,8 @@ def log_staff_note():
     if 'username' in session:
         username = session['username']
     else:
-        # Use default username of xavier_swenson
-        username = "staff"
+        # Use default username
+        username = ""
 
     animal_name = str(request.json['animal'])
     animal_name = animal_name.replace("Name: ", "")
