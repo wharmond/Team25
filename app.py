@@ -569,7 +569,6 @@ class Database:
         return result
 
 
-
 #
 #
 # # # # # # # # # # # # Login/Registration Pages & Validation Server Scripts Below # # # # # # # # # # # #
@@ -899,12 +898,21 @@ def add_show():
 def add_show_query():
     print("add_show Request Received from Admin")
     show_name = request.form['showName']
-    date_time = request.form['dateTime']
-    located_at = request.form['locatedAt']
-    hosted_by = request.form['hostedBy']
+    date = request.form['date']
+    time = request.form['time']
+    hosted_by = request.form['staff_name']
+    exhibit_name = request.form['exhibit_name']
 
-    result = Database.add_shows(show_name, date_time, located_at, hosted_by)
+    time = str(time)
+    date = str(date)
 
+    # concatenate the date and time to produce a searchable SQL query, for example:
+    # 2017-01-01, 01:01 -> "2017-01-01 01%", which means if this host (staff) has another date with
+    # a matching minute, that means they can't add a show at that minute, they should schedule a show later
+    date_time = date + " " + time[:2] + "%"
+    result = Database.add_shows(show_name, date_time, exhibit_name, hosted_by)
+
+    print("add_show date_time final: " + str(result))
     if result is not 0:
         print("returning json with status OK")
         return json.dumps({'status': 'OK'})
