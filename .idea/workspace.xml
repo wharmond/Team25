@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a75c927-1ad2-4e4f-a707-e50cdf711911" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" afterDir="false" />
-    </list>
+    <list default="true" id="4a75c927-1ad2-4e4f-a707-e50cdf711911" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,10 +48,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/Visitor_Homepage.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-85" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7361">
+              <caret line="556" column="21" lean-forward="true" selection-start-line="556" selection-start-column="21" selection-end-line="556" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#64#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -192,11 +196,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="160" />
-    <option name="y" value="92" />
-    <option name="width" value="1750" />
-    <option name="height" value="980" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-15" />
+    <option name="y" value="-23" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -461,7 +465,21 @@
       <option name="project" value="LOCAL" />
       <updated>1543802726769</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Admin's View Shows delete functionality- currently in progress">
+      <created>1543803369776</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1543803369776</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Admin's View Shows delete functionality- currently in progress">
+      <created>1543803384416</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1543803384416</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -475,7 +493,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.121416524" side_tool="true" weight="0.15811966" />
       <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.8785835" visible="true" weight="0.17114094" />
@@ -584,16 +601,6 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/core-scripting.rnc" />
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/web-forms2.rnc" />
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="556" column="21" lean-forward="true" selection-start-line="556" selection-start-column="21" selection-end-line="556" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/searchTable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -723,6 +730,16 @@
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/Visitor_Homepage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-85" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7361">
+          <caret line="556" column="21" lean-forward="true" selection-start-line="556" selection-start-column="21" selection-end-line="556" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
