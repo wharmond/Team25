@@ -487,10 +487,12 @@ class Database:
             print("Exception occurred:{}".format(e))
             return 0
 
+    @classmethod
     def delete_animal(cls, animalname, species):
         try:
-            delete_animal_query = """DELETE FROM Animals WHERE (AnimalName = %s, Species = %s)"""
-            cls.cur.execute(delete_animal_query, (animalname, species, exhibit, age, animaltype))
+            print("delete_animal args: " + animalname + ", " + species)
+            animal_delete_query = """DELETE FROM Animals WHERE (AnimalName = %s AND Species = %s)"""
+            cls.cur.execute(animal_delete_query, (animalname, species))
             result = cls.cur.fetchall()
             print("delete animal result: " + str(result))
             return 1
@@ -951,14 +953,16 @@ def add_animal_query():
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
+
 @app.route('/deleteAnimal', methods=['POST'])
 def delete_animal_query():
-    print("Delete Animal request received from Admin")
+    print("Delete Animal request received from Admin: " + str(request.form))
+
     show_info = request.form['show']
     s = show_info.strip().split(",")
     animalname = s[0].replace("[", "")
-    species = s[1].replace("]", "")
-    print("delete animal: " + animalname)
+    species = s[1].replace("]", "").lstrip()
+    print("delete animal: " + str(animalname) + ", species: " + str(species))
     result = Database.delete_animal(animalname, species)
 
     if result is not 0:
@@ -967,6 +971,7 @@ def delete_animal_query():
     else:
         print("user not deleted, error: returning json with status BAD")
         return json.dumps({'status': 'BAD'})
+
 
 @app.route('/deleteVisitor', methods=['POST'])
 def delete_visitor_query():
@@ -1005,10 +1010,10 @@ def delete_show_query():
     print("delete show user request recieved from Admin")
     show_info = request.form['show']
     s = show_info.strip().split(",")
-    show_name = s[0].replace("[","")
+    show_name = s[0].replace("[", "")
     show_time = s[1].replace("]", "")
     print("delete show show_name: " + show_name)
-    result = Database.delete_show(show_name,show_time)
+    result = Database.delete_show(show_name, show_time)
     if result is not 0:
         print("returning json with status OK")
         return json.dumps({'status': 'OK'})
