@@ -547,6 +547,7 @@ class Database:
     def delete_show(cls, show_name, date_time):
         print("Admin delete show provided vars: " + show_name + ", " + date_time)
         delete_show_q = """delete from Shows where Shows.ShowName=%s and Shows.Date_Time = %s"""
+
         try:
             cls.cur.execute(delete_show_q, (show_name, date_time))
             result = cls.cur.fetchone()
