@@ -992,6 +992,7 @@ def delete_show_query():
     show_name = request.form['show']
 
     print("delete show show_name: " + show_name)
+    print("showName: " + show_name[1:show_name.index(',')])
     # result = delete_show()
     return json.dumps({'status': 'BAD'})
 

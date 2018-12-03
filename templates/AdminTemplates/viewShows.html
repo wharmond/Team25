@@ -87,11 +87,13 @@
         }
 
         function deleteShow() {
-            var res = $('#show option:selected').text();
+            var res = $('#show').val();
             var name = res[0];
             var dt = res[1];
+
             alert(name + " | " | dt);
-            alert(user);
+
+            $('#info').html("Value of selected show: " + res[res.substring(0, res.indexOf(","))]);
             if (name.length !== 0) {
                 $.ajax({
                     url: '/deleteShow',
@@ -171,7 +173,7 @@
     <form action="../deleteShow" method="post">
         <select class="form-control" name="show" id="show">
             {% for row in rows %}
-                <option value="[{{ row.Name }}, {{ row.Date }}]">
+                <option value="showName, showDate">
                 {{ row.Name }} , {{ row.Date }}
             {% endfor %}
         </select>
@@ -184,5 +186,6 @@
 <button id="back_btn" class="btn btn-lg btn-primary btn-block" type="button"
         onclick="window.location.href='/adminHomePage'">Go Back to Homepage
 </button>
+<p id="info">Delete a Show Page</p>
 </body>
 </html>
