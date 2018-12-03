@@ -89,47 +89,6 @@
             }
         }
 
-        function AnimalSubmit() {
-
-        $("#div_add_alert").html("Validating Animal Data..");
-
-        var animal_name = $('#animalName').val();
-        var species = $('#species').val();
-        var exhibit = $('#exhibit').val();
-        var age = $('#age').val();
-        var type = $('#type').val();
-
-        if (animal_name.length !== 0 && species.length !== 0 && exhibit.length !== 0 && (age >= 0) && type.length !== 0) {
-            $.ajax({
-                url: '/addAnimal',
-                data: $('form').serialize(),
-                type: 'POST',
-                success: function (response) {
-                    var obj = JSON.parse(response);
-                    if (obj.status === 'OK') {
-                        $('#animalName').val("");
-                        $('#species').val("");
-                        $('#exhibit').val("");
-                        $('#age').val("");
-                        $('#type').val("");
-
-                        //refresh the page to update table with added animal
-                        updatePage();
-                    }
-                    else {
-                        $("#div_add_alert").html("Error in adding Animal: Please make sure to specify the exact valid"
-                            + " exhibit name and that all fields are non empty");
-                    }
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            });
-        } else {
-            $("#div_add_alert").html("Error in adding Animal PLease make sure all fields are non empty");
-        }
-    }
-
     function updatePage() {
         window.location.href = "/AdminViewAnimals";
     }
@@ -143,7 +102,8 @@
 <h2 class="ZooHeading"> Atlanta Zoo </h2>
 <h3 class="SiteHeading"> Animals </h3>
 <form class="Animals-Search">
-    Name: <input type="text" id="search_name_txt">
+    Search: <input id="searchBox">
+<!--    Name: <input type="text" id="search_name_txt">
     Species: <input type="text" id="search_species_txt">
     Exhibit: <select>
     <option selected disabled>Choose one</option>
@@ -166,7 +126,7 @@
             <option value="Fish">Fish</option>
             <option value="Invertebrate">Invertebrate</option>
         </select>
-    </div>
+    </div>-->
 </form>
 <button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="myFunction()">Search
 </button>
