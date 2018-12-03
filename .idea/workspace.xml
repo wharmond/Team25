@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4a75c927-1ad2-4e4f-a707-e50cdf711911" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,20 +42,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-532">
-              <caret line="114" column="45" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
+            <state relative-caret-position="131">
+              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="992" selection-start-line="992" selection-end-line="992" selection-end-column="39" />
+            <state relative-caret-position="223">
+              <caret line="883" column="27" selection-start-line="883" selection-start-column="13" selection-end-line="883" selection-end-column="27" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -125,8 +124,8 @@
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" />
-        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" />
       </list>
     </option>
   </component>
@@ -398,7 +397,21 @@
       <option name="project" value="LOCAL" />
       <updated>1543798500980</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Bug Fixes">
+      <created>1543799232110</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1543799232110</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Bug Fixes">
+      <created>1543799381151</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1543799381151</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -658,20 +671,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-532">
-          <caret line="114" column="45" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="992" selection-start-line="992" selection-end-line="992" selection-end-column="39" />
+        <state relative-caret-position="223">
+          <caret line="883" column="27" selection-start-line="883" selection-start-column="13" selection-end-line="883" selection-end-column="27" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
         </state>
       </provider>
     </entry>
