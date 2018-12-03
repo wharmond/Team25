@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a75c927-1ad2-4e4f-a707-e50cdf711911" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Team25.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Team25.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,56 +30,6 @@
     <expand />
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1414574407">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.0" value="3" />
-          <entry key="project.opened" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="html" value="76" />
-          <entry key="js" value="8" />
-          <entry key="py" value="2" />
-          <entry key="rnc" value="3" />
-          <entry key="sql" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="HTML" value="76" />
-          <entry key="JavaScript" value="8" />
-          <entry key="Python" value="2" />
-          <entry key="RNG Compact" value="3" />
-          <entry key="Scratch" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="html" value="5658" />
-          <entry key="py" value="7222" />
-          <entry key="sql" value="34" />
-          <entry key="txt" value="846" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="HTML" value="5658" />
-          <entry key="PLAIN_TEXT" value="846" />
-          <entry key="Python" value="7218" />
-          <entry key="SQL" value="4" />
-          <entry key="Scratch" value="34" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.vcs.git.usages">
-        <counts>
-          <entry key="git.branch.merge" value="2" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="Team25" />
   </component>
@@ -91,40 +38,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="888" column="53" selection-start-line="888" selection-start-column="53" selection-end-line="888" selection-end-column="53" />
+            <state relative-caret-position="291">
+              <caret line="734" column="2" lean-forward="true" selection-start-line="734" selection-start-column="2" selection-end-line="734" selection-end-column="2" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
-                <marker date="1543785382098" expanded="true" signature="36235:36240" ph="..." />
-                <marker date="1543785382098" expanded="true" signature="39047:39265" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="106" column="12" lean-forward="true" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="174" column="12" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+            <state relative-caret-position="255">
+              <caret line="15" column="45" lean-forward="true" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addShow.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="78" column="6" lean-forward="true" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
+            <state relative-caret-position="509">
+              <caret line="42" column="7" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="42" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -184,14 +120,14 @@
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" />
         <option value="$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html" />
         <option value="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" />
-        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" />
+        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" />
       </list>
     </option>
   </component>
@@ -201,9 +137,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="160" />
-    <option name="y" value="92" />
+    <option name="y" value="91" />
     <option name="width" value="1750" />
     <option name="height" value="980" />
   </component>
@@ -244,6 +180,18 @@
               <item name="Team25" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="AdminTemplates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Team25" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Team25" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="StaffTemplates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Team25" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Team25" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="VisitorTemplates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -292,11 +240,6 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Flask server.Flask (app.py)" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -434,11 +377,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.121416524" side_tool="true" weight="0.15811966" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.8785835" visible="true" weight="0.16666667" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.8785835" visible="true" weight="0.16912752" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32857144" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50061053" side_tool="true" weight="0.32857144" />
@@ -494,9 +437,6 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="wilson's push" />
     <MESSAGE value="workspace file for pycharm IDE" />
@@ -540,48 +480,12 @@
     <entry file="file://$PROJECT_DIR$/static/css/Visitor_Homepage.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/phrase.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="345" column="16" selection-start-line="345" selection-start-column="16" selection-end-line="345" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/globals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/wrappers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="98" column="8" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/jupyterlab/build/main.bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="25870" column="6" selection-start-line="25870" selection-start-column="6" selection-end-line="25870" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ddf0a379-d32f-4041-83ba-ccaa12950aa9/console_3.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/spyder/utils/help/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="5387" selection-start-line="5387" selection-end-line="5387" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/phrase.rnc" />
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/globals.py" />
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/flask/wrappers.py" />
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/jupyterlab/build/main.bundle.js" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ddf0a379-d32f-4041-83ba-ccaa12950aa9/console_3.sql" />
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/spyder/utils/help/js/jquery.js" />
     <entry file="file://$PROJECT_DIR$/templates/Login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
@@ -613,13 +517,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="877">
-          <caret line="122" column="4" selection-start-line="122" selection-start-column="4" selection-end-line="122" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-759">
@@ -648,24 +545,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/core-scripting.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/core-scripting.rnc" />
     <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="139" column="24" lean-forward="true" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -676,31 +560,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="85" column="3" lean-forward="true" selection-start-line="85" selection-start-column="3" selection-end-line="85" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="64" column="49" lean-forward="true" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="140" column="8" lean-forward="true" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="74" column="9" lean-forward="true" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -711,36 +574,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addShow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="106" column="12" lean-forward="true" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
+        <state relative-caret-position="1122">
+          <caret line="78" column="6" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="174" column="12" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+        <state relative-caret-position="1371">
+          <caret line="134" column="18" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1717">
+          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="85" column="3" lean-forward="true" selection-start-line="85" selection-start-column="3" selection-end-line="85" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="155" column="55" lean-forward="true" selection-start-line="155" selection-start-column="55" selection-end-line="155" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1734">
+          <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="888" column="53" selection-start-line="888" selection-start-column="53" selection-end-line="888" selection-end-column="53" />
+        <state relative-caret-position="291">
+          <caret line="734" column="2" lean-forward="true" selection-start-line="734" selection-start-column="2" selection-end-line="734" selection-end-column="2" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
-            <marker date="1543785382098" expanded="true" signature="36235:36240" ph="..." />
-            <marker date="1543785382098" expanded="true" signature="39047:39265" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addShow.html">
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="78" column="6" lean-forward="true" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
+        <state relative-caret-position="509">
+          <caret line="42" column="7" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="42" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="45" lean-forward="true" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
         </state>
       </provider>
     </entry>

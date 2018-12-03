@@ -3,6 +3,34 @@
     <title> Shows </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript">
+        $(document).ready(function () {
+        $("#searchBox").keyup(myFunction);
+        });
+
+          function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchBox").value.toUpperCase();
+            table = document.getElementById("showsTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++ ){
+                filter = input;
+                // Loop through all table rows, and hide those who don't match the search query
+                for (j = 0; j < 3; j++) {
+                  td = tr[i].getElementsByTagName("td")[j];
+                  if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      tr[i].style.display = "";
+                      break;s
+                    } else {
+                      tr[i].style.display = "none";
+                    }
+                  }
+                }
+            }
+          }
+
         function sortMyTable(n) {
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
             table = document.getElementById("showsTable");
@@ -93,48 +121,14 @@
             window.location.href = "/viewStaff";
         }
 
-        function searchTable() {
-            var showName, showExhibit, showDate, table, tr, y;
-            showName = document.getElementById("showName").value;
-            showExhibit = document.getElementById("showExhibit").value;
-            showDate = document.getElementById("showDate").value;
-            table = document.getElementById("showsTable");
-            tr = table.getElementsByTagName("tr");
-            y = 0;
-
-            // Check if inputs have values and run appropriate script
-            if (showName !== "") {
-                nameFilter(showName, tr, 0);
-                y = 1;
-            }
-            nameFilter(showExhibit, tr, 1, y);
-        }
-
-        function nameFilter(input, tr, k, y) {
-            // Declare variables
-            var td, i, txtValue;
-            filter = input.toUpperCase();
-
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[k];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
     </script>
 </head>
 <body>
 <h2 class="ZooHeading"> Atlanta Zoo </h2>
 <h3 class="SiteHeading"> Shows </h3>
 <form class="Shows-Search">
-    <p>Name: <input id="showName" type="text"></p>
+    Search: <input type="text" id="searchBox">
+<!--    <p>Name: <input id="showName" type="text"></p>
     <p>
         Exhibit:
         <select id="showExhibit">
@@ -147,7 +141,7 @@
             <option value="Birds">Birds</option>
         </select>
     </p>
-    <p>Date: <input id="showDate" type="date"></p>
+    <p>Date: <input id="showDate" type="date"></p>-->
 </form>
 <button id="search_shows_btn" onclick="searchTable()" class="btn btn-lg btn-primary btn-block" type="button">Search
 </button>
