@@ -487,15 +487,13 @@ class Database:
             print("Exception occurred:{}".format(e))
             return 0
 
-    def delete_animal(cls, animalname, species, exhibit, age, animaltype):
+    def delete_animal(cls, animalname, species):
         try:
-            delete_animal_query = """DELETE FROM Animals WHERE (AnimalName = %s, Species = %s , Exhibit = %s, Age = %s, 
-                Type_of_Animal = %s)"""
+            delete_animal_query = """DELETE FROM Animals WHERE (AnimalName = %s, Species = %s)"""
             cls.cur.execute(delete_animal_query, (animalname, species, exhibit, age, animaltype))
             result = cls.cur.fetchall()
             print("delete animal result: " + str(result))
             return 1
-
         except Exception as e:
             print("Exception occurred:{}".format(e))
             return 0
@@ -953,6 +951,22 @@ def add_animal_query():
         print("returning json with status BAD")
         return json.dumps({'status': 'BAD'})
 
+@app.route('/deleteAnimal', methods=['POST'])
+def delete_animal_query():
+    print("Delete Animal request received from Admin")
+    show_info = request.form['show']
+    s = show_info.strip().split(",")
+    animalname = s[0].replace("[", "")
+    species = s[1].replace("]", "")
+    print("delete animal: " + animalname)
+    result = Database.delete_animal(animalname, species)
+
+    if result is not 0:
+        print("user deleted successfully, returning json with status OK")
+        return json.dumps({'status': 'OK'})
+    else:
+        print("user not deleted, error: returning json with status BAD")
+        return json.dumps({'status': 'BAD'})
 
 @app.route('/deleteVisitor', methods=['POST'])
 def delete_visitor_query():
