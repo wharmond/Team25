@@ -11,7 +11,7 @@
             // Declare variables
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("searchBox").value.toUpperCase();
-            table = document.getElementById("myTable");
+            table = document.getElementById("animal_table_id");
             tr = table.getElementsByTagName("tr");
             for (i = 0; i < tr.length; i++ ){
                 filter = input;
@@ -22,7 +22,7 @@
                     txtValue = td.textContent || td.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
                       tr[i].style.display = "";
-                      break;
+                      break;s
                     } else {
                       tr[i].style.display = "none";
                     }
@@ -89,36 +89,23 @@
 <body>
 <h2 class="ZooHeading"> Atlanta Zoo </h2>
 <h3 class="SiteHeading"> Animals </h3>
-<form class="Animals-Search">
-    Search: <input id="searchBox">
-    <!--Name: <input type="text" id="search_name_txt">
-    Species: <input type="text" id="search_species_txt">
-    Exhibit: <select>
-    <option selected disabled>Choose one</option>
-    <option value="Pacific">Pacific</option>
-    <option value="Jungle">Jungle</option>
-    <option value="Sahara">Sahara</option>
-    <option value="Mountainous">Mountainous</option>
-    <option value="Birds">Birds</option>
-</select>
-    Min Age of Animal:<input type="number" id="min_age" name="min_age" min="0" value="0">
-    Max Age:<input type="number" id="max_age" name="max_age" min="0" max="9999999">
-    Type:
-    <div class="unselected-field" style="display: inline-block;" id="animal_type">
-        <select>
-            <option selected disabled>Choose one</option>
-            <option value="Mammal">Mammal</option>
-            <option value="Bird">Bird</option>
-            <option value="Amphibian">Amphibian</option>
-            <option value="Reptile">Reptile</option>
-            <option value="Fish">Fish</option>
-            <option value="Invertebrate">Invertevbrate</option>
-        </select>
-    </div>-->
+<form class="Animal-Search">
+    Search: <input type="text" id="searchBox">
+<!--    Name: <input type="text" id="searchInput1">
+    Exhibit: <select id="searchInput2">
+                <option value="All">All Exhibits</option>
+                <option value="Pacific">Pacific</option>
+                <option value="Jungle">Jungle</option>
+                <option value="Sahara">Sahara</option>
+                <option value="Mountainous">Mountainous</option>
+                <option value="Birds">Birds</option>
+            </select>
+    <input type="date" name="date" id="searchInput3">
+    <button id="reset-search" onclick="myFunction()" type="reset" value="reset"> Reset </button>-->
 </form>
-<button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="myFunction()">Search
+<button id="search_animals_btn" class="btn btn-lg btn-primary btn-block" type="button" onclick="searchTable()">Search
 </button>
-<table class="data-table" id="myTable">
+<table class="data-table" id="animal_table_id">
     <thead>
     <tr>
         <th onclick="sortMyTable(0)">Name</th>
