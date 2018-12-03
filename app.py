@@ -400,7 +400,6 @@ class Database:
             cls.cur.execute(log_exhibit_query, (username, exhibit_name))
             result = cls.cur.fetchone()
             print("log exhibit visit returned: " + str(result))
-
             if result is not 0:
                 return 1
             else:
@@ -732,6 +731,7 @@ def log_show_visit():
         username = "xavier_swenson"
 
     show_name = str(request.json['show_name'])
+    exhibit = str(request.json['exhibit']).replace(" ", "").replace("\n", "")
     show_date = str(request.json['date_time'])
 
     print("log Show information before query: " + show_name + ", " + show_date + ", " + username)
