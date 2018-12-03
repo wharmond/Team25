@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a75c927-1ad2-4e4f-a707-e50cdf711911" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,20 +44,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addShow.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="74" column="17" lean-forward="true" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
+            <state relative-caret-position="187">
+              <caret line="97" column="26" lean-forward="true" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="369">
+              <caret line="43" column="7" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="43" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="952">
+              <caret line="56" column="13" lean-forward="true" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -54,11 +74,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="883" column="27" selection-start-line="883" selection-start-column="13" selection-end-line="883" selection-end-column="27" />
+            <state relative-caret-position="495">
+              <caret line="556" column="21" lean-forward="true" selection-start-line="556" selection-start-column="21" selection-end-line="556" selection-end-column="21" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1071">
+              <caret line="34" column="54" lean-forward="true" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1224">
+              <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="49" lean-forward="true" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -111,21 +167,21 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/ddf0a379-d32f-4041-83ba-ccaa12950aa9/console_3.sql" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/Admin_Homepage.html" />
         <option value="$PROJECT_DIR$/templates/StaffTemplates/StaffViewShows.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html" />
         <option value="$PROJECT_DIR$/templates/VisitorTemplates/ExhibitDetail.html" />
         <option value="$PROJECT_DIR$/templates/StaffTemplates/AnimalDetail.html" />
-        <option value="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/addAnimal.html" />
-        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewVisitors.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html" />
-        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" />
-        <option value="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html" />
+        <option value="$PROJECT_DIR$/templates/AdminTemplates/addShow.html" />
+        <option value="$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html" />
+        <option value="$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html" />
         <option value="$PROJECT_DIR$/templates/AdminTemplates/viewShows.html" />
+        <option value="$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html" />
       </list>
     </option>
   </component>
@@ -411,7 +467,21 @@
       <option name="project" value="LOCAL" />
       <updated>1543799381151</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Bug Fixes">
+      <created>1543800300599</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1543800300599</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Bug Fixes">
+      <created>1543800371339</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1543800371339</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -544,20 +614,6 @@
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/Visitor_Homepage.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-899">
-          <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1183">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ExhibitHistory.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-942">
@@ -615,13 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="155" column="55" lean-forward="true" selection-start-line="155" selection-start-column="55" selection-end-line="155" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewStaff.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1161">
@@ -643,27 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2397">
-          <caret line="141" column="42" lean-forward="true" selection-start-line="141" selection-start-column="42" selection-end-line="141" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="64" column="29" lean-forward="true" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-935">
-          <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/addShow.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
@@ -673,18 +701,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="883" column="27" selection-start-line="883" selection-start-column="13" selection-end-line="883" selection-end-column="27" />
+        <state relative-caret-position="495">
+          <caret line="556" column="21" lean-forward="true" selection-start-line="556" selection-start-column="21" selection-end-line="556" selection-end-column="21" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/ShowHistory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="13" lean-forward="true" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewShows.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="221">
+          <caret line="13" column="49" lean-forward="true" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AdminTemplates/viewAnimals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchAnimals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224">
+          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/StaffTemplates/StaffSearchAnimals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1071">
+          <caret line="34" column="54" lean-forward="true" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/searchShows.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="43" column="7" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="43" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/VisitorTemplates/SearchExhibits.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="97" column="26" lean-forward="true" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
         </state>
       </provider>
     </entry>
