@@ -26,6 +26,9 @@ class Database:
     cur = con.cursor()
 
     # Execute this query if you don't want to setup the local SQL server tables
+
+    create_schema = """CREATE Schema AtlantaZoo"""
+    
     sqlQuery = """CREATE TABLE Users(
             Username VARCHAR(50) NOT NULL UNIQUE,
             Password VARCHAR(255) NOT NULL,
