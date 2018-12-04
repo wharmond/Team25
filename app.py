@@ -26,95 +26,96 @@ class Database:
     cur = con.cursor()
 
     # Execute this query if you don't want to setup the local SQL server tables
-    sqlQuery = ("CREATE TABLE Users(\n"
-                "            Username VARCHAR(50) NOT NULL UNIQUE,\n"
-                "            Password VARCHAR(255) NOT NULL,\n"
-                "            Email VARCHAR(50) NOT NULL UNIQUE,\n"
-                "            UserType VARCHAR(50) NOT NULL, \n"
-                "            PRIMARY KEY(Username),\n"
-                "            CHECK(Email LIKE ‘%@%.%’)\n"
-                "        );\n"
-                "            \n"
-                "        CREATE TABLE Admins(\n"
-                "            Username VARCHAR(50) NOT NULL,\n"
-                "            PRIMARY KEY(Username),\n"
-                "            FOREIGN KEY(Username)REFERENCES Users(Username) ON UPDATE CASCADE ON DELETE CASCADE\n"
-                "        );\n"
-                "        \n"
-                "        CREATE TABLE Staff(\n"
-                "            Username VARCHAR(50) NOT NULL,\n"
-                "            PRIMARY KEY(Username),\n"
-                "            FOREIGN KEY(Username)REFERENCES Users(Username) ON UPDATE CASCADE ON DELETE CASCADE\n"
-                "        );\n"
-                "        \n"
-                "        CREATE TABLE Visitor(\n"
-                "            Username VARCHAR(50) NOT NULL,\n"
-                "            PRIMARY KEY(Username),\n"
-                "            FOREIGN KEY(Username)REFERENCES Users(Username) ON UPDATE CASCADE ON DELETE CASCADE\n"
-                "        );\n"
-                "        \n"
-                "        CREATE TABLE Exhibits(\n"
-                "            ExhibitName VARCHAR(50) NOT NULL UNIQUE,\n"
-                "            WaterFeature BOOLEAN,\n"
-                "            Size INTEGER,\n"
-                "            PRIMARY KEY(ExhibitName)\n"
-                "        );\n"
-                "        \n"
-                "        CREATE TABLE Animals(\n"
-                "            AnimalName VARCHAR(50) NOT NULL,\n"
-                "            Species VARCHAR(50) NOT NULL,\n"
-                "            Exhibit VARCHAR(50),\n"
-                "            Age INTEGER,\n"
-                "            Type_of_Animal VARCHAR(50),\n"
-                "            PRIMARY KEY(AnimalName, Species),\n"
-                "            FOREIGN KEY(Exhibit)REFERENCES Exhibits(ExhibitName) ON UPDATE CASCADE ON DELETE RESTRICT\n"
-                "        );    \n"
-                "        \n"
-                "        CREATE TABLE Shows(\n"
-                "            ShowName VARCHAR(100) NOT NULL,\n"
-                "            Date_Time DATETIME NOT NULL,\n"
-                "            LocatedAt VARCHAR(50) NOT NULL,\n"
-                "            HostedBy VARCHAR(50) NOT NULL,\n"
-                "            PRIMARY KEY(ShowName, Date_Time),\n"
-                "            FOREIGN KEY(LocatedAt)REFERENCES Exhibits(ExhibitName) ON UPDATE CASCADE ON DELETE RESTRICT,\n"
-                "            FOREIGN KEY(HostedBy)REFERENCES Staff(username) ON UPDATE CASCADE ON DELETE CASCADE\n"
-                "        );    \n"
-                "            \n"
-                "        CREATE TABLE ShowVisits(\n"
-                "            ShowName VARCHAR(100) NOT NULL,\n"
-                "            Date_Time DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,\n"
-                "            Visitor VARCHAR(50) NOT NULL,\n"
-                "            PRIMARY KEY(ShowName, Date_Time, Visitor),\n"
-                "            FOREIGN KEY(ShowName, Date_Time)REFERENCES Shows(ShowName, Date_Time) ON UPDATE CASCADE ON DELETE CASCADE,\n"
-                "            FOREIGN KEY(Visitor)REFERENCES Visitor(username) ON UPDATE CASCADE ON DELETE CASCADE\n"
-                "        );\n"
-                "            \n"
-                "        CREATE TABLE ExhibitVisits(\n"
-                "            Visitor VARCHAR(50) NOT NULL,\n"
-                "            ExhibitName VARCHAR(50) NOT NULL,\n"
-                "            Date_Time DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,\n"
-                "            PRIMARY KEY(Visitor, ExhibitName, Date_Time),\n"
-                "            FOREIGN KEY(Visitor)REFERENCES Visitor(Username) ON UPDATE CASCADE ON DELETE CASCADE,\n"
-                "            FOREIGN KEY(ExhibitName)REFERENCES Exhibits(ExhibitName) ON UPDATE CASCADE ON DELETE RESTRICT\n"
-                "        );\n"
-                "        \n"
-                "        CREATE TABLE Notes(\n"
-                "             Staff VARCHAR(50) NOT NULL,\n"
-                "             Date_Time DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,\n"
-                "             Text_Input VARCHAR(250),\n"
-                "             AnimalName VARCHAR(50) NOT NULL,\n"
-                "             Species VARCHAR(50) NOT NULL,\n"
-                "             PRIMARY KEY(Staff, Date_Time, AnimalName, Species),\n"
-                "             FOREIGN KEY(Staff)REFERENCES Staff(Username) ON UPDATE CASCADE ON DELETE CASCADE,\n"
-                "             FOREIGN KEY(AnimalName, Species)REFERENCES Animals(AnimalName, Species) ON UPDATE CASCADE ON DELETE CASCADE\n"
-                "        );\n"
-                "        ")
+    sqlQuery = """CREATE TABLE Users(
+            Username VARCHAR(50) NOT NULL UNIQUE,
+            Password VARCHAR(255) NOT NULL,
+            Email VARCHAR(50) NOT NULL UNIQUE,
+            UserType VARCHAR(50) NOT NULL,
+            PRIMARY KEY(Username),
+            CHECK(Email LIKE "%@%.%")
+        );
+            
+        CREATE TABLE Admins(
+            Username VARCHAR(50) NOT NULL,
+            PRIMARY KEY(Username),
+            FOREIGN KEY(Username)REFERENCES Users(Username) ON UPDATE CASCADE ON DELETE CASCADE
+        );
+        
+        CREATE TABLE Staff(
+            Username VARCHAR(50) NOT NULL,
+            PRIMARY KEY(Username),
+            FOREIGN KEY(Username)REFERENCES Users(Username) ON UPDATE CASCADE ON DELETE CASCADE
+        );
+        
+        CREATE TABLE Visitor(
+            Username VARCHAR(50) NOT NULL,
+            PRIMARY KEY(Username),
+            FOREIGN KEY(Username)REFERENCES Users(Username) ON UPDATE CASCADE ON DELETE CASCADE
+        );
+        
+        CREATE TABLE Exhibits(
+            ExhibitName VARCHAR(50) NOT NULL UNIQUE,
+            WaterFeature BOOLEAN,
+            Size INTEGER,
+            PRIMARY KEY(ExhibitName)
+        );
+        
+        CREATE TABLE Animals(
+            AnimalName VARCHAR(50) NOT NULL,
+            Species VARCHAR(50) NOT NULL,
+            Exhibit VARCHAR(50),
+            Age INTEGER,
+            Type_of_Animal VARCHAR(50),
+            PRIMARY KEY(AnimalName, Species),
+            FOREIGN KEY(Exhibit)REFERENCES Exhibits(ExhibitName) ON UPDATE CASCADE ON DELETE RESTRICT
+        );    
+        
+        CREATE TABLE Shows(
+            ShowName VARCHAR(100) NOT NULL,
+            Date_Time DATETIME NOT NULL,
+            LocatedAt VARCHAR(50) NOT NULL,
+            HostedBy VARCHAR(50) NOT NULL,
+            PRIMARY KEY(ShowName, Date_Time),
+            FOREIGN KEY(LocatedAt)REFERENCES Exhibits(ExhibitName) ON UPDATE CASCADE ON DELETE RESTRICT,
+            FOREIGN KEY(HostedBy)REFERENCES Staff(username) ON UPDATE CASCADE ON DELETE CASCADE
+        );    
+            
+        CREATE TABLE ShowVisits(
+            ShowName VARCHAR(100) NOT NULL,
+            Date_Time DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+            Visitor VARCHAR(50) NOT NULL,
+            PRIMARY KEY(ShowName, Date_Time, Visitor),
+            FOREIGN KEY(ShowName, Date_Time)REFERENCES Shows(ShowName, Date_Time) ON UPDATE CASCADE ON DELETE CASCADE,
+            FOREIGN KEY(Visitor)REFERENCES Visitor(username) ON UPDATE CASCADE ON DELETE CASCADE
+        );
+            
+        CREATE TABLE ExhibitVisits(
+            Visitor VARCHAR(50) NOT NULL,
+            ExhibitName VARCHAR(50) NOT NULL,
+            Date_Time DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+            PRIMARY KEY(Visitor, ExhibitName, Date_Time),
+            FOREIGN KEY(Visitor)REFERENCES Visitor(Username) ON UPDATE CASCADE ON DELETE CASCADE,
+            FOREIGN KEY(ExhibitName)REFERENCES Exhibits(ExhibitName) ON UPDATE CASCADE ON DELETE RESTRICT
+        );
+        
+        CREATE TABLE Notes(
+             Staff VARCHAR(50) NOT NULL,
+             Date_Time DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+             Text_Input VARCHAR(250),
+             AnimalName VARCHAR(50) NOT NULL,
+             Species VARCHAR(50) NOT NULL,
+             PRIMARY KEY(Staff, Date_Time, AnimalName, Species),
+             FOREIGN KEY(Staff)REFERENCES Staff(Username) ON UPDATE CASCADE ON DELETE CASCADE,
+             FOREIGN KEY(AnimalName, Species)REFERENCES Animals(AnimalName, Species) ON UPDATE CASCADE ON DELETE CASCADE
+        );
+        """
 
     #
     # Create Initial Users SQL Query, execute this if you want to run SQL server with this schema data
     #
 
     create_users = """Insert into Users values ("martha_johnson","password1",	"marthajohnson@hotmail.com", "staff");
+                        Insert into Users values ("benjamin_rao","password2",	"benjaminrao@gmail.com", "staff");
                         Insert into Users values ("ethan_roswell","password3",	"ethanroswell@yahoo.com", "staff");
                         Insert into Users values ("xavier_swenson","password4",	"xavierswenson@outlook.com", "visitor");
                         Insert into Users values ("isabella_rodriguez","password5",	"isabellarodriguez@mail.com", "visitor");

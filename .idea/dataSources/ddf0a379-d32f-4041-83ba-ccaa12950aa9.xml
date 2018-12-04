@@ -1114,7 +1114,7 @@
     <table id="284" parent="2" name="Staff"/>
     <table id="285" parent="2" name="Users"/>
     <table id="286" parent="2" name="Visitor"/>
-    <column id="287" parent="277" name="username">
+    <column id="287" parent="277" name="Username">
       <Position>1</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1122,14 +1122,16 @@
     </column>
     <key id="288" parent="277" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>username</ColNames>
+      <ColNames>Username</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="289" parent="277" name="admins_ibfk_1">
-      <ColNames>username</ColNames>
+      <ColNames>Username</ColNames>
       <RefSchemaName>atlantazoo</RefSchemaName>
       <RefTableName>Users</RefTableName>
       <RefColNames>username</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="290" parent="278" name="AnimalName">
       <Position>1</Position>
